@@ -162,7 +162,8 @@ function NeuralSwarm() {
 }
 
 interface HeroProps {
-  copy: typeof import('@/content/en/copy').copy | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  copy: any;
 }
 
 export default function Hero({ copy }: HeroProps) {

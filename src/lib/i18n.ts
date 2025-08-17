@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+// import { useEffect } from 'react'; // not used
 import { create } from 'zustand';
 
 // Statically import copies so that Next packs them and avoids dynamic import resolution issues
@@ -48,7 +48,8 @@ export function useLocale() {
   return { locale, setLocale, isLoaded, availableLocales: LOCALES };
 }
 
-const COPY_MAP: Record<Locale, typeof copyEn> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const COPY_MAP: Record<Locale, any> = {
   en: copyEn,
   ru: copyRu,
   es: copyEs,

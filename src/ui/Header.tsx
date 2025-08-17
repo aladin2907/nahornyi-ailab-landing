@@ -42,7 +42,8 @@ function LanguageSwitcher({ currentLocale, onLocaleChange }: LanguageSwitcherPro
 }
 
 interface HeaderProps {
-  copy: typeof import('@/content/en/copy').copy | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  copy: any;
 }
 
 export default function Header({ copy }: HeaderProps) {

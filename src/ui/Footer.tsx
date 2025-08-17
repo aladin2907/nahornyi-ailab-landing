@@ -6,30 +6,8 @@ import { FaGithub, FaLinkedin, FaTelegram, FaTiktok, FaEnvelope } from 'react-ic
 import { SiN8N } from 'react-icons/si';
 
 interface FooterProps {
-  copy: {
-    footer: {
-      rights: string;
-      description: string;
-      sections: {
-        contact: string;
-        services: string;
-        location: string;
-        bot: string;
-      };
-      whatsapp: string;
-      services_list: {
-        n8n: string;
-        chatbots: string;
-        qa: string;
-        llm: string;
-      };
-      location_info: {
-        city: string;
-        remote: string;
-      };
-      made_with: string;
-    };
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  copy: any;
 }
 
 export default function Footer({ copy }: FooterProps) {

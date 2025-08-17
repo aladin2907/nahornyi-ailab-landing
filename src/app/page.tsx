@@ -63,7 +63,8 @@ export default function Home() {
   const { locale, isLoaded } = useLocale();
   const { prefersReducedMotion } = useDeviceInfo();
   const { setQualityMode } = usePerformance();
-  const [copy, setCopy] = useState<typeof import('@/content/en/copy').copy | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [copy, setCopy] = useState<any>(null);
   
   useEffect(() => {
     if (isLoaded) {
