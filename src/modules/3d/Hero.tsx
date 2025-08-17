@@ -201,21 +201,22 @@ export default function Hero({ copy }: HeroProps) {
           {copy && (
             <>
               <motion.p 
-                className="text-lg text-[--foreground]/60 mb-8 max-w-2xl text-center"
+                className="text-xl md:text-2xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-6 max-w-2xl text-center"
+                style={{ fontFamily: 'Georgia, serif' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {copy.hero.subtitle}
+                &ldquo;{copy.hero.slogan}&rdquo;
               </motion.p>
               <motion.p 
                 className="text-lg text-[--foreground]/60 mb-8 max-w-2xl text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                          >
-              &ldquo;{copy.hero.slogan}&rdquo;
-            </motion.p>
+              >
+                {copy.hero.subtitle}
+              </motion.p>
             </>
           )}
           
