@@ -9,10 +9,10 @@ import dynamic from 'next/dynamic';
 import Header from '@/ui/Header';
 import Footer from '@/ui/Footer';
 import ServicesSection from '@/ui/ServicesSection';
-import ValueSection from '@/ui/ValueSection';
-import ROICalculator from '@/ui/ROICalculator';
-import CasesSection from '@/ui/CasesSection';
-import ContactForm from '@/ui/ContactForm';
+
+
+import ContactList from '@/ui/ContactList';
+import SectionDivider from '@/ui/SectionDivider';
 
 
 const Hero = dynamic(() => import('@/modules/3d/Hero'), { 
@@ -29,12 +29,32 @@ const Hero = dynamic(() => import('@/modules/3d/Hero'), {
   )
 });
 
-const Chapters = dynamic(() => import('@/modules/3d/Chapters'), { 
+// const Chapters = dynamic(() => import('@/modules/3d/Chapters'), { 
+//   ssr: false,
+//   loading: () => <div className="h-[300vh] bg-[--background]" />
+// });
+
+// const NeuralBackground = dynamic(() => import('@/ui/NeuralBackground'), {
+//   ssr: false,
+//   loading: () => null
+// });
+
+const FloatingParticles = dynamic(() => import('@/ui/FloatingParticles'), {
   ssr: false,
-  loading: () => <div className="h-[300vh] bg-[--background]" />
+  loading: () => null
 });
 
-const NeuralBackground = dynamic(() => import('@/ui/NeuralBackground'), {
+const SmoothScroll = dynamic(() => import('@/ui/SmoothScroll'), {
+  ssr: false,
+  loading: () => null
+});
+
+const ScrollProgress = dynamic(() => import('@/ui/ScrollProgress'), {
+  ssr: false,
+  loading: () => null
+});
+
+const CustomCursor = dynamic(() => import('@/ui/CustomCursor'), {
   ssr: false,
   loading: () => null
 });
@@ -64,23 +84,24 @@ export default function Home() {
     }
   }, [locale, isLoaded]);
   
-  if (!copy || !isLoaded) {
+  if (!copy) {
     return (
-      <div className="h-screen bg-[#0B0B0F] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-8 h-8 border-2 border-[#00FFF0] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-[#EDEDED]">Loading...</p>
-        </div>
+      <div className="w-full h-screen flex items-center justify-center bg-black">
+        <div className="text-white">Loading...</div>
       </div>
     );
   }
   
   return (
-    <div className="min-h-screen bg-[--background] text-[--foreground]">
-      <Header />
+    <div className="min-h-screen bg-[--background] text-[--foreground] relative cursor-none">
+      <CustomCursor />
+      <ScrollProgress />
+      <FloatingParticles />
+      <SmoothScroll />
+      <Header copy={copy} />
       
       <main>
-        <Hero />
+        <Hero copy={copy} />
         
         {/* <Chapters /> - Temporarily disabled due to layout issues */}
         
@@ -89,31 +110,10 @@ export default function Home() {
           services={copy.services.items}
         />
         
-        <ValueSection
-          title={copy.value.title}
-          lead={copy.value.lead}
-          bullets={copy.value.bullets}
-        />
+        <SectionDivider />
         
-        <ROICalculator
-          title={copy.roi.title}
-          cta={copy.roi.cta}
-          fields={copy.roi.fields}
-          formulaDesc={copy.roi.formulaDesc}
-          copy={copy}
-        />
-        
-        <CasesSection
-          title={copy.cases.title}
-          cases={copy.cases.items}
-        />
-        
-        <ContactForm
+        <ContactList
           title={copy.contact.title}
-          form={copy.contact.form}
-          submit={copy.contact.submit}
-          thanks={copy.contact.thanks}
-          copy={copy}
         />
       </main>
       

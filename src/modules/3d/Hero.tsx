@@ -1,12 +1,12 @@
 'use client';
 
-import { useRef, useMemo, useState, useEffect } from 'react';
+import { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { InstancedMesh, Vector3, BufferGeometry, BufferAttribute } from 'three';
 import * as THREE from 'three';
 import { usePerformance, getQualitySettings } from '@/lib/performance';
 import { useDeviceInfo } from '@/lib/device';
-import { useLocale, loadCopy } from '@/lib/i18n';
+import { motion } from 'framer-motion';
 
 
 interface Particle {
@@ -161,16 +161,12 @@ function NeuralSwarm() {
   );
 }
 
-export default function Hero() {
+interface HeroProps {
+  copy: typeof import('@/content/en/copy').copy | null;
+}
+
+export default function Hero({ copy }: HeroProps) {
   const { isMobile } = useDeviceInfo();
-  const { locale, isLoaded } = useLocale();
-  const [copy, setCopy] = useState<typeof import('@/content/en/copy').copy | null>(null);
-  
-  useEffect(() => {
-    if (isLoaded) {
-      loadCopy(locale).then(setCopy);
-    }
-  }, [locale, isLoaded]);
   
   if (isMobile) {
     return (
@@ -186,7 +182,7 @@ export default function Hero() {
   }
   
   return (
-    <div className="h-screen relative">
+    <div id="hero" className="h-screen relative">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 75 }}
         style={{ background: '#0B0B0F' }}
@@ -198,20 +194,43 @@ export default function Hero() {
       
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="text-center max-w-4xl px-4">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
             Nahornyi AILab
           </h1>
-          <p className="text-xl md:text-2xl opacity-80 mb-8">
-            {copy?.hero_hardcoded.subtitle_desktop || 'AI automation that drives revenue — not reports.'}
-          </p>
-          <div className="flex gap-4 justify-center pointer-events-auto">
-            <button className="glass-hover px-8 py-4 text-lg font-medium">
+          {copy && (
+            <>
+              <motion.p 
+                className="text-lg text-[--foreground]/60 mb-8 max-w-2xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                {copy.hero.subtitle}
+              </motion.p>
+              <motion.p 
+                className="text-lg text-[--foreground]/60 mb-8 max-w-2xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                          >
+              &ldquo;{copy.hero.slogan}&rdquo;
+            </motion.p>
+            </>
+          )}
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <button className="glass-intense magnetic-button ripple px-8 py-4 text-lg font-medium pulse-glow">
               {copy?.hero_hardcoded.cta_primary || 'Discuss your use case'}
             </button>
-            <button className="px-8 py-4 text-lg font-medium border border-[--subtle] rounded-xl hover:border-[--accent] transition-colors">
+            <button className="px-8 py-4 text-lg font-medium border border-[--subtle] rounded-xl glass-hover shimmer transition-all duration-300">
               {copy?.hero_hardcoded.cta_secondary || 'What we build'}
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

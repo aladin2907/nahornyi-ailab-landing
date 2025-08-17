@@ -67,12 +67,13 @@ function ValueCard({ bullet, index }: { bullet: ValueBullet; index: number }) {
       initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="glass-hover p-8 text-center"
+      className="glass-intense p-8 text-center card-3d magnetic-button floating"
+      style={{ animationDelay: `${index * 0.5}s` }}
     >
       <div className="mb-4">
         <AnimatedCounter target={bullet.title.split(' ')[0]} />
       </div>
-      <h3 className="text-lg font-semibold mb-3">
+      <h3 className="text-lg font-semibold mb-3 gradient-text">
         {bullet.title.split(' ').slice(1).join(' ')}
       </h3>
       <p className="text-[--foreground]/70 leading-relaxed">
@@ -96,7 +97,7 @@ export default function ValueSection({ title, lead, bullets }: ValueSectionProps
           transition={{ duration: 0.8 }}
           className="col-span-12 text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text floating">
             {title}
           </h2>
           <p className="text-xl md:text-2xl opacity-80 max-w-3xl mx-auto">

@@ -1,6 +1,9 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { brand } from '@/content/brand';
+import { FaGithub, FaLinkedin, FaTelegram, FaTiktok, FaEnvelope } from 'react-icons/fa';
+import { SiN8N } from 'react-icons/si';
 
 interface FooterProps {
   copy: {
@@ -30,86 +33,92 @@ interface FooterProps {
 }
 
 export default function Footer({ copy }: FooterProps) {
+
+  const socialLinks = [
+    { name: 'Telegram', href: `https://t.me/${brand.contacts.telegram.slice(1)}`, icon: FaTelegram },
+    { name: 'Email', href: `mailto:${brand.contacts.email}`, icon: FaEnvelope },
+    { name: 'LinkedIn', href: brand.contacts.linkedin, icon: FaLinkedin },
+    { name: 'n8n', href: brand.contacts.n8n, icon: SiN8N },
+    { name: 'TikTok', href: brand.contacts.tiktok, icon: FaTiktok },
+    { name: 'GitHub', href: 'https://github.com/VadimNahornii', icon: FaGithub },
+  ];
+
   return (
-    <footer className="py-16 bg-[--background] border-t border-[--subtle]">
-      <div className="grid-12">
-        <div className="col-span-12 md:col-span-8">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-[--accent] mb-4">
-              {brand.name}
-            </h3>
-            <p className="text-[--foreground]/60 max-w-md">
-              {copy.footer.description}
-            </p>
-          </div>
+    <footer className="relative py-24 bg-grid-zinc-900/[0.2] overflow-hidden border-t border-zinc-800">
+       <div 
+        className="absolute inset-0 pointer-events-none" 
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(138, 124, 255, 0.1), transparent 70%)'
+        }}
+      />
+
+      <div className="grid-12 relative z-10">
+        <div className="col-span-12">
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-            <div>
-              <h4 className="font-semibold mb-3 text-[--secondary]">{copy.footer.sections.contact}</h4>
-              <div className="space-y-2 text-sm">
-                <a 
-                  href={`https://t.me/${brand.contacts.telegram.slice(1)}`}
-                  className="block hover:text-[--accent] transition-colors"
+          <div className="text-center max-w-4xl mx-auto">
+            {/* Slogan */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-lg font-medium text-zinc-400 mb-8"
+            >
+              &ldquo;{copy.hero.slogan}&rdquo;
+            </motion.p>
+            
+            {/* Brand */}
+            <motion.h3 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-3xl font-bold mb-6"
+            >
+              <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
+                {brand.name}
+              </span>
+            </motion.h3>
+
+            {/* Social Icons */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4, staggerChildren: 0.1 }}
+              className="flex justify-center items-center gap-x-6 sm:gap-x-8 mb-12"
+            >
+              {socialLinks.map((link) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="text-zinc-500 hover:text-cyan-400 transition-colors duration-300"
+                  initial={{ y: 0, scale: 1 }}
+                  whileHover={{ y: -4, scale: 1.1, color: '#22d3ee' }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  {brand.contacts.telegram}
-                </a>
-                <a 
-                  href={`https://wa.me/${brand.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
-                  className="block hover:text-[--accent] transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {copy.footer.whatsapp}
-                </a>
-                <a 
-                  href={`mailto:${brand.contacts.email}`}
-                  className="block hover:text-[--accent] transition-colors"
-                >
-                  {brand.contacts.email}
-                </a>
-              </div>
-            </div>
+                  {link.icon ? <link.icon size={28} /> : <span className="text-xs font-bold">n8n</span>}
+                </motion.a>
+              ))}
+            </motion.div>
             
-            <div>
-              <h4 className="font-semibold mb-3 text-[--secondary]">{copy.footer.sections.services}</h4>
-              <div className="space-y-2 text-sm opacity-70">
-                <div>{copy.footer.services_list.n8n}</div>
-                <div>{copy.footer.services_list.chatbots}</div>
-                <div>{copy.footer.services_list.qa}</div>
-                <div>{copy.footer.services_list.llm}</div>
+            {/* Bottom Info */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="pt-8 border-t border-zinc-800/50"
+            >
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6 gap-y-3 text-sm text-zinc-600">
+                <p>
+                  {copy.footer.rights}
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                  <span>{copy.footer.location_info.remote}</span>
+                </div>
               </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-3 text-[--secondary]">{copy.footer.sections.location}</h4>
-              <div className="text-sm opacity-70">
-                <div>{copy.footer.location_info.city}</div>
-                <div>{copy.footer.location_info.remote}</div>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-3 text-[--secondary]">{copy.footer.sections.bot}</h4>
-              <a 
-                href={`https://t.me/${brand.contacts.bot.slice(1)}`}
-                className="text-sm hover:text-[--accent] transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {brand.contacts.bot}
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div className="col-span-12 pt-8 border-t border-[--subtle] flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm opacity-60">
-            {copy.footer.rights}
-          </p>
-          <div className="flex items-center gap-4 text-sm opacity-60">
-            <span>{copy.footer.made_with}</span>
+            </motion.div>
           </div>
         </div>
       </div>

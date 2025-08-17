@@ -18,9 +18,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const baseClasses = 'font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[--accent] focus:ring-offset-2 focus:ring-offset-[--background]';
     
     const variants = {
-      primary: 'glass-hover text-[--foreground] hover:scale-105',
-      secondary: 'border border-[--subtle] hover:border-[--accent] hover:bg-[--glass] hover:scale-105',
-      ghost: 'hover:bg-[--glass] hover:text-[--accent]'
+      primary: 'glass-intense text-[--foreground] magnetic-button ripple pulse-glow',
+      secondary: 'border border-[--subtle] hover:border-[--accent] glass-hover shimmer magnetic-button',
+      ghost: 'hover:bg-[--glass] hover:text-[--accent] magnetic-button'
     };
     
     const sizes = {
@@ -36,8 +36,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         onClick={onClick}
         className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
-        whileHover={disabled ? {} : { y: -2 }}
-        whileTap={disabled ? {} : { scale: 0.98 }}
+        whileHover={disabled ? {} : { y: -4, scale: 1.02 }}
+        whileTap={disabled ? {} : { scale: 0.95 }}
       >
         {children}
       </motion.button>

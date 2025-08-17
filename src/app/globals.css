@@ -36,20 +36,83 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.6;
   overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor on desktop only for specific elements */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-none, .cursor-none * {
+    cursor: none !important;
+  }
+  
+  /* Keep normal cursor for inputs and text areas */
+  input, textarea, select {
+    cursor: text !important;
+  }
+}
+
+/* Show default cursor on mobile */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
 }
 
 .glass-hover {
-  background: var(--glass);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, var(--glass) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(15px) saturate(180%);
   border: 1px solid var(--subtle);
   border-radius: 12px;
-  transition: all 0.3s ease;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.glass-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.glass-hover:hover::before {
+  left: 100%;
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 255, 240, 0.05) 100%);
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 255, 240, 0.1), 0 0 20px rgba(0, 255, 240, 0.05);
+}
+
+.glass-intense {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 255, 240, 0.03) 100%);
+  backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(0, 255, 240, 0.2);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-intense::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(0, 255, 240, 0.1), transparent);
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .grid-12 {
@@ -72,3 +135,285 @@ body {
 .animate-counter {
   font-variant-numeric: tabular-nums;
 }
+
+/* Magnetic Button Effect */
+.magnetic-button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.magnetic-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 255, 240, 0.2) 0%, transparent 70%);
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.magnetic-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Gradient Text Animation */
+.gradient-text {
+  background: linear-gradient(45deg, var(--accent), var(--secondary), var(--accent));
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Floating Animation */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Pulse Glow Effect */
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(0, 255, 240, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(0, 255, 240, 0.6), 0 0 60px rgba(0, 255, 240, 0.4);
+  }
+}
+
+/* Reveal Animation */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Hover 3D Effect */
+.card-3d {
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: rotateX(5deg) rotateY(-5deg);
+}
+
+/* Shimmer Effect */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Ripple Effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 255, 240, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  transform-origin: left;
+  z-index: 1000;
+  animation: gradientShift 3s linear infinite;
+}
+
+/* Parallax Container */
+.parallax-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.parallax-element {
+  transform: translateZ(-1px) scale(2);
+}
+
+/* Neon Text Effect */
+.neon-text {
+  color: var(--accent);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+  animation: neonFlicker 2s ease-in-out infinite;
+}
+
+@keyframes neonFlicker {
+  0%, 100% { 
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  50% { 
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor,
+      0 0 12px currentColor;
+  }
+}
+
+/* Holographic Effect */
+.holographic {
+  background: linear-gradient(45deg, 
+    var(--accent) 0%, 
+    var(--secondary) 25%, 
+    var(--accent) 50%, 
+    var(--secondary) 75%, 
+    var(--accent) 100%);
+  background-size: 400% 400%;
+  animation: holographicShift 4s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes holographicShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative;
+  animation: glitch 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+}
+
+.glitch::before {
+  animation: glitch-1 0.5s infinite;
+  color: var(--accent);
+  z-index: -1;
+}
+
+.glitch::after {
+  animation: glitch-2 0.5s infinite;
+  color: var(--secondary);
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-2px, -2px); }
+  20% { transform: translate(-2px, -2px); }
+  30% { transform: translate(-2px, -2px); }
+  40% { transform: translate(-2px, -2px); }
+  50% { transform: translate(-2px, -2px); }
+  60% { transform: translate(-2px, -2px); }
+  70% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, -2px); }
+  90% { transform: translate(-2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(2px, 2px); }
+  20% { transform: translate(2px, 2px); }
+  30% { transform: translate(2px, 2px); }
+  40% { transform: translate(2px, 2px); }
+  50% { transform: translate(2px, 2px); }
+  60% { transform: translate(2px, 2px); }
+  70% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, 2px); }
+  90% { transform: translate(2px, 2px); }
+}
+
+/* Liquid Animation */
+.liquid {
+  background: linear-gradient(45deg, var(--accent), var(--secondary));
+  border-radius: 50% 20% 50% 20%;
+  animation: liquidMorph 8s ease-in-out infinite;
+}
+
+@keyframes liquidMorph {
+  0%, 100% { border-radius: 50% 20% 50% 20%; }
+  25% { border-radius: 20% 50% 20% 50%; }
+  50% { border-radius: 40% 60% 40% 60%; }
+  75% { border-radius: 60% 40% 60% 40%; }
+}
+
+/* Removed lang menu CSS - using inline buttons now */

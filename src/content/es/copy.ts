@@ -6,18 +6,22 @@ export const copy = {
     contact: "Contacto"
   },
   hero: {
-    h1: "Automatización de IA que genera ingresos — no informes.",
-    sub: "n8n, chatbots (Telegram/WhatsApp/Viber), integraciones, pruebas QA automáticas, agentes LLM. Rápido. Pragmático. Con foco en ROI.",
-    cta_primary: "Hablar del proyecto",
-    cta_secondary: "Qué hacemos"
+    title: 'Creamos IA que trabaja para su negocio',
+    subtitle: 'Desde agentes impulsados por LLM hasta flujos de trabajo autónomos, implementamos soluciones de IA de vanguardia que optimizan procesos, reducen costos y aceleran el crecimiento.',
+    slogan: 'La IA no conquistará el mundo, a menos que la ayudemos.',
+    primary_cta: 'Explorar Servicios',
+    secondary_cta: 'Contáctenos',
   },
   services: {
     title: "Servicios",
     items: [
+      {title: "Modelos ML Personalizados", desc: "Entrenamos tus modelos en servidores privados. Manejo de datos sensibles con aislamiento total."},
+      {title: "Infraestructura AI/ML", desc: "Servidores GPU dedicados, despliegue de modelos, pipelines MLOps, monitoreo y escalado."},
+      {title: "Data Science & Engineering", desc: "ETL para ML, feature engineering, validación de modelos, A/B testing para funciones AI."},
       {title: "Automatización n8n", desc: "Integraciones, pipelines, alertas, ETL, endurecimiento en producción."},
+      {title: "Agentes LLM", desc: "RAG, BD vectoriales, prompt engineering, MCP, fine-tuning."},
       {title: "Chatbots", desc: "Telegram/WhatsApp/Viber — captación, soporte, pagos."},
       {title: "Pruebas QA automáticas", desc: "E2E/UI, generación de casos, regresión, capturas e informes."},
-      {title: "Agentes LLM", desc: "RAG, BD vectoriales, prompt engineering, MCP."},
       {title: "BI & Analítica", desc: "Recogida de datos, dashboards, alertas a mensajería."},
       {title: "Consultoría y Arquitectura", desc: "Auditorías, diseño de soluciones, lanzamiento de MVP."}
     ]

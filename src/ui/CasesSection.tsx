@@ -23,12 +23,13 @@ function CaseCard({ case: caseItem, index }: { case: Case; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
-      className="glass-hover p-8 group hover:scale-105 transition-transform duration-300"
+      className="glass-intense p-8 group card-3d magnetic-button floating"
+      style={{ animationDelay: `${index * 1}s` }}
     >
-      <div className="text-4xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity">
+      <div className="text-4xl mb-4 opacity-20 group-hover:opacity-60 transition-opacity duration-500 floating">
         {index === 0 ? '🔔' : '🧪'}
       </div>
-      <h3 className="text-xl font-semibold mb-4 text-[--accent]">
+      <h3 className="text-xl font-semibold mb-4 text-[--accent] gradient-text">
         {caseItem.title}
       </h3>
       <p className="text-[--foreground]/80 leading-relaxed">
@@ -52,7 +53,7 @@ export default function CasesSection({ title, cases }: CasesSectionProps) {
           transition={{ duration: 0.8 }}
           className="col-span-12 text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+          <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text pulse-glow">
             {title}
           </h2>
         </motion.div>

@@ -24,9 +24,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-hover p-6"
+      className="glass-hover p-6 card-3d shimmer group"
     >
-      <h3 className="text-xl font-semibold mb-3 text-[--accent]">
+      <h3 className="text-xl font-semibold mb-3 text-[--accent] gradient-text group-hover:scale-105 transition-transform">
         {service.title}
       </h3>
       <p className="text-[--foreground]/80 leading-relaxed">
@@ -50,7 +50,7 @@ export default function ServicesSection({ title, services }: ServicesSectionProp
           transition={{ duration: 0.8 }}
           className="col-span-12 text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+          <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">
             {title}
           </h2>
         </motion.div>

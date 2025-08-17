@@ -6,18 +6,22 @@ export const copy = {
     contact: "Contact"
   },
   hero: {
-    h1: "AI automation that drives revenue — not reports.",
-    sub: "n8n, chatbots (Telegram/WhatsApp/Viber), integrations, QA autotests, LLM agents. Fast. Pragmatic. ROI-first.",
-    cta_primary: "Discuss your use case",
-    cta_secondary: "What we build"
+    title: 'We Create AI that Works for Your Business',
+    subtitle: 'From LLM-powered agents to autonomous workflows, we implement cutting-edge AI solutions that optimize processes, reduce costs, and accelerate growth.',
+    slogan: 'AI won\'t take over the world, unless we help it.',
+    primary_cta: 'Explore Services',
+    secondary_cta: 'Contact Us',
   },
   services: {
     title: "Services",
     items: [
+      {title: "Custom ML Models", desc: "Train your own models on private servers. Sensitive data handling with full security isolation."},
+      {title: "AI/ML Infrastructure", desc: "Dedicated GPU servers, model deployment, MLOps pipelines, monitoring & scaling."},
+      {title: "Data Science & Engineering", desc: "ETL for ML, feature engineering, model validation, A/B testing for AI features."},
       {title: "n8n Automation", desc: "Integrations, pipelines, alerts, ETL, production hardening."},
+      {title: "LLM Agents", desc: "RAG, vector DBs, prompt engineering, MCP, fine-tuning."},
       {title: "Chatbots", desc: "Telegram/WhatsApp/Viber — leadgen, support, payments."},
       {title: "QA Autotests", desc: "E2E/UI, case generation, regression, screenshots & reports."},
-      {title: "LLM Agents", desc: "RAG, vector DBs, prompt engineering, MCP."},
       {title: "BI & Analytics", desc: "Data collection, dashboards, messenger alerts."},
       {title: "Consulting & Architecture", desc: "Audits, solution design, MVP launch."}
     ]

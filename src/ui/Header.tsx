@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useLocale, loadCopy, type Locale } from '@/lib/i18n';
+// import { useState } from 'react'; // not needed anymore
+import { motion } from 'framer-motion';
+import { useLocale, type Locale } from '@/lib/i18n';
 import { brand } from '@/content/brand';
 
 interface LanguageSwitcherProps {
@@ -10,93 +11,106 @@ interface LanguageSwitcherProps {
 }
 
 function LanguageSwitcher({ currentLocale, onLocaleChange }: LanguageSwitcherProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  
   const locales = [
     { code: 'en', name: 'EN' },
     { code: 'ru', name: 'RU' },
     { code: 'es', name: 'ES' },
     { code: 'uk', name: 'UK' }
   ] as const;
-  
+
   return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="px-3 py-2 text-sm font-medium border border-[--subtle] rounded-lg hover:border-[--accent] transition-colors"
-      >
-        {locales.find(l => l.code === currentLocale)?.name || 'EN'}
-      </button>
-      
-      {isOpen && (
-        <div className="absolute top-full mt-2 right-0 glass-hover p-2 min-w-16 z-50">
-          {locales.map((locale) => (
-            <button
-              key={locale.code}
-              onClick={() => {
-                onLocaleChange(locale.code as Locale);
-                setIsOpen(false);
-              }}
-              className={`block w-full px-3 py-2 text-sm rounded-md text-left hover:bg-[--subtle] transition-colors ${
-                currentLocale === locale.code ? 'text-[--accent]' : ''
-              }`}
-            >
-              {locale.name}
-            </button>
-          ))}
-        </div>
-      )}
+    <div className="flex gap-2">
+      {locales.map((locale) => (
+        <button
+          key={locale.code}
+          type="button"
+          onClick={() => {
+            console.log('CLICK locale', locale.code);
+            onLocaleChange(locale.code as Locale);
+          }}
+          className={`px-3 py-2 text-sm font-bold rounded-lg transition-all duration-200 ${
+            currentLocale === locale.code
+              ? 'bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] text-black'
+              : 'bg-[--glass] text-[--foreground] hover:bg-[--accent]/20 border border-[--subtle]'
+          }`}
+        >
+          {locale.name}
+        </button>
+      ))}
     </div>
   );
 }
 
-export default function Header() {
-  const { locale, setLocale, isLoaded } = useLocale();
-  const [copy, setCopy] = useState<typeof import('@/content/en/copy').copy | null>(null);
-  
-  useEffect(() => {
-    if (isLoaded) {
-      loadCopy(locale).then(setCopy);
-    }
-  }, [locale, isLoaded]);
+interface HeaderProps {
+  copy: typeof import('@/content/en/copy').copy | null;
+}
+
+export default function Header({ copy }: HeaderProps) {
+  const { locale, setLocale } = useLocale();
   
   if (!copy) return null;
   
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-[--background]/80 border-b border-[--subtle]">
-      <nav className="grid-12 py-4 flex items-center justify-between">
-        <div className="col-span-3">
-          <a href="#" className="text-xl font-bold text-[--accent]">
-            {brand.name}
-          </a>
-        </div>
-        
-        <div className="col-span-6 hidden md:flex items-center justify-center gap-8">
-          <a href="#services" className="text-sm font-medium hover:text-[--accent] transition-colors">
-            {copy.nav.services}
-          </a>
-          <a href="#cases" className="text-sm font-medium hover:text-[--accent] transition-colors">
-            {copy.nav.cases}
-          </a>
-          <a href="#value" className="text-sm font-medium hover:text-[--accent] transition-colors">
-            {copy.nav.value}
-          </a>
-          <a href="#contact" className="text-sm font-medium hover:text-[--accent] transition-colors">
-            {copy.nav.contact}
-          </a>
-        </div>
-        
-        <div className="col-span-3 flex items-center justify-end gap-4">
-          <LanguageSwitcher currentLocale={locale} onLocaleChange={setLocale} />
-          <a
-            href={`https://t.me/${brand.contacts.telegram.slice(1)}`}
-            className="glass-hover px-4 py-2 text-sm font-medium hidden sm:block"
-            target="_blank"
-            rel="noopener noreferrer"
+    <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-[--background]/95 border-b border-[--accent]/20 shadow-lg shadow-[--background]/50">
+      <nav className="grid-12 py-12 flex items-center justify-between">
+        <motion.div 
+          className="col-span-3"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.a 
+            href="#" 
+            className="text-2xl font-bold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent tracking-tight"
+            whileHover={{ 
+              scale: 1.05
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
-{copy.header.contact_button}
-          </a>
-        </div>
+            {brand.name}
+          </motion.a>
+        </motion.div>
+        
+        <motion.div 
+          className="col-span-6 hidden md:flex items-center justify-center gap-12"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <motion.a
+            href="#services"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="px-6 py-3 text-base font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent hover:brightness-125 transition-all duration-300"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {copy.nav.services}
+          </motion.a>
+          <motion.a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="px-6 py-3 text-base font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent hover:brightness-125 transition-all duration-300"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {copy.nav.contact}
+          </motion.a>
+        </motion.div>
+        
+        <motion.div 
+          className="col-span-3 flex items-center justify-end"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <LanguageSwitcher currentLocale={locale} onLocaleChange={setLocale} />
+        </motion.div>
       </nav>
     </header>
   );

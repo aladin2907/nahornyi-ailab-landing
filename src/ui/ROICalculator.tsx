@@ -59,12 +59,12 @@ export default function ROICalculator({ title, cta, fields, formulaDesc, copy }:
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text shimmer">
               {title}
             </h2>
           </motion.div>
           
-          <div className="glass-hover p-8">
+          <div className="glass-intense p-8 card-3d">
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {fields.map((field, index) => (
                 <motion.div
@@ -81,7 +81,7 @@ export default function ROICalculator({ title, cta, fields, formulaDesc, copy }:
                     type="number"
                     value={inputs[field.id]}
                     onChange={(e) => handleInputChange(field.id, e.target.value)}
-                    className="w-full px-4 py-3 bg-[--background] border border-[--subtle] rounded-lg focus:border-[--accent] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[--background] border border-[--subtle] rounded-lg focus:border-[--accent] focus:outline-none transition-all duration-300 glass-hover magnetic-button"
                     min="0"
                     step={field.id.includes('Uplift') || field.id.includes('Cost') ? '0.1' : '1'}
                   />
@@ -103,20 +103,20 @@ export default function ROICalculator({ title, cta, fields, formulaDesc, copy }:
                 className="border-t border-[--subtle] pt-8"
               >
                 <div className="grid md:grid-cols-3 gap-6 mb-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-[--accent] mb-2">
+                  <div className="text-center glass-hover p-4 rounded-lg">
+                    <div className="text-3xl font-bold text-[--accent] mb-2 gradient-text pulse-glow animate-counter">
                       {formatCurrency(results.monthlyRevenue)}
                     </div>
                     <div className="text-sm opacity-70">{copy.roi_results.monthly_revenue}</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-[--secondary] mb-2">
+                  <div className="text-center glass-hover p-4 rounded-lg">
+                    <div className="text-3xl font-bold text-[--secondary] mb-2 gradient-text pulse-glow animate-counter">
                       {formatCurrency(results.monthlySavings)}
                     </div>
                     <div className="text-sm opacity-70">{copy.roi_results.monthly_savings}</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-[--accent] mb-2">
+                  <div className="text-center glass-intense p-4 rounded-lg">
+                    <div className="text-4xl font-bold text-[--accent] mb-2 gradient-text pulse-glow animate-counter floating">
                       {formatPercentage(results.roi)}
                     </div>
                     <div className="text-sm opacity-70">{copy.roi_results.roi}</div>
