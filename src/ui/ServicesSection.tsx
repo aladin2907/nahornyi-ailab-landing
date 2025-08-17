@@ -24,12 +24,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-hover p-6 card-3d shimmer group"
+      className="glass-hover p-4 sm:p-6 card-3d shimmer group w-80"
     >
-      <h3 className="text-xl font-semibold mb-3 text-[--accent] gradient-text group-hover:scale-105 transition-transform">
+      <h3 className="text-lg sm:text-xl font-semibold mb-3 text-[--accent] gradient-text group-hover:scale-105 transition-transform">
         {service.title}
       </h3>
-      <p className="text-[--foreground]/80 leading-relaxed">
+      <p className="text-sm sm:text-base text-[--foreground]/80 leading-relaxed">
         {service.desc}
       </p>
     </motion.div>
@@ -41,21 +41,21 @@ export default function ServicesSection({ title, services }: ServicesSectionProp
   const isInView = useInView(ref, { once: true });
   
   return (
-    <section id="services" className="py-32 bg-[--background]/40 backdrop-blur-sm">
-      <div className="grid-12">
+    <section id="services" className="py-16 sm:py-24 lg:py-32 bg-[--background]/40 backdrop-blur-sm">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="col-span-12 text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gradient-text">
             {title}
           </h2>
         </motion.div>
         
-        <div className="col-span-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} index={index} />
           ))}

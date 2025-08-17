@@ -22,7 +22,7 @@ export default function Footer({ copy }: FooterProps) {
   ];
 
   return (
-    <footer className="relative py-24 bg-grid-zinc-900/[0.2] overflow-hidden border-t border-zinc-800">
+    <footer className="relative py-16 sm:py-24 lg:py-32 bg-grid-zinc-900/[0.2] overflow-hidden border-t border-zinc-800 flex justify-center">
        <div 
         className="absolute inset-0 pointer-events-none" 
         style={{
@@ -30,16 +30,14 @@ export default function Footer({ copy }: FooterProps) {
         }}
       />
 
-      <div className="grid-12 relative z-10">
-        <div className="col-span-12">
-          
-          <div className="text-center max-w-6xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center">
             {/* Brand */}
             <motion.h2 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
             >
               <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
                 {brand.name}
@@ -51,7 +49,7 @@ export default function Footer({ copy }: FooterProps) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-12"
+              className="text-lg sm:text-xl md:text-2xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-8 sm:mb-12 px-4"
               style={{ fontFamily: 'Georgia, serif' }}
             >
               &ldquo;{copy.hero.slogan}&rdquo;
@@ -62,12 +60,12 @@ export default function Footer({ copy }: FooterProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4, staggerChildren: 0.1 }}
-              className="flex justify-center items-center gap-x-8 sm:gap-x-12 mb-16"
+              className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 mb-12 sm:mb-16"
             >
                           {socialLinks.map((link) => (
               <motion.div
                 key={link.name}
-                className="flex flex-col items-center gap-2"
+                className="flex flex-col items-center gap-1 sm:gap-2 min-w-0"
                 initial={{ y: 0, scale: 1 }}
                 whileHover={{ y: -4, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -79,9 +77,9 @@ export default function Footer({ copy }: FooterProps) {
                   rel="noopener noreferrer"
                   className="text-zinc-500 hover:text-cyan-400 transition-colors duration-300"
                 >
-                  {link.icon ? <link.icon size={32} /> : <span className="text-sm font-bold">n8n</span>}
+                  {link.icon ? <link.icon size={28} className="sm:text-3xl md:text-4xl" /> : <span className="text-xs sm:text-sm font-bold">n8n</span>}
                 </motion.a>
-                <span className="text-xs text-zinc-600 font-medium">{link.name}</span>
+                <span className="text-xs text-zinc-600 font-medium text-center truncate max-w-16">{link.name}</span>
               </motion.div>
             ))}
             </motion.div>
@@ -91,19 +89,18 @@ export default function Footer({ copy }: FooterProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="pt-12 border-t border-zinc-800/50"
+              className="pt-8 sm:pt-12 border-t border-zinc-800/50"
             >
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-x-8 gap-y-4 text-base text-zinc-500">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-sm sm:text-base text-zinc-500">
                 <p>
                   {copy.footer.rights}
                 </p>
                 <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
+                  <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-cyan-400 animate-pulse" />
                   <span>{copy.footer.location_info.remote}</span>
                 </div>
               </div>
             </motion.div>
-          </div>
         </div>
       </div>
     </footer>

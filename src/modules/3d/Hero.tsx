@@ -171,12 +171,45 @@ export default function Hero({ copy }: HeroProps) {
   
   if (isMobile) {
     return (
-      <div className="h-screen bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] flex items-center justify-center">
-        <div className="text-center px-4">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
+      <div className="h-screen bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] flex items-center justify-center relative overflow-hidden">
+        {/* Mobile background particles */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#00FFF0] rounded-full animate-pulse"></div>
+          <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-[#8A7CFF] rounded-full animate-ping"></div>
+          <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-[#00FFF0] rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-[#8A7CFF] rounded-full animate-ping"></div>
+        </div>
+        
+        <div className="text-center px-6 relative z-10">
+          <motion.h1 
+            className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             Nahornyi AILab
-          </h1>
-          <p className="text-lg opacity-80">{copy?.hero_hardcoded.subtitle_mobile || 'AI automation that drives revenue'}</p>
+          </motion.h1>
+          
+          {copy && (
+            <motion.p
+              className="text-lg sm:text-xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-4 max-w-sm mx-auto"
+              style={{ fontFamily: 'Georgia, serif' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              &ldquo;{copy.hero.slogan}&rdquo;
+            </motion.p>
+          )}
+          
+                      <motion.p 
+              className="text-base sm:text-lg text-[--foreground]/70 max-w-sm mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {copy?.hero.subtitle || 'AI automation that drives revenue'}
+            </motion.p>
         </div>
       </div>
     );
@@ -195,7 +228,7 @@ export default function Hero({ copy }: HeroProps) {
       
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="text-center max-w-4xl px-4">
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
             Nahornyi AILab
           </h1>
           {copy && (
@@ -220,19 +253,7 @@ export default function Hero({ copy }: HeroProps) {
             </>
           )}
           
-          <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <button className="glass-intense magnetic-button ripple px-8 py-4 text-lg font-medium pulse-glow">
-              {copy?.hero_hardcoded.cta_primary || 'Discuss your use case'}
-            </button>
-            <button className="px-8 py-4 text-lg font-medium border border-[--subtle] rounded-xl glass-hover shimmer transition-all duration-300">
-              {copy?.hero_hardcoded.cta_secondary || 'What we build'}
-            </button>
-          </motion.div>
+
         </div>
       </div>
     </div>

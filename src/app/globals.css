@@ -124,6 +124,26 @@ body {
   padding: 0 2rem;
 }
 
+/* Ensure proper centering for all containers */
+.container-center {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Force main sections to center */
+main section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1400px) {
+  .grid-12, .container-center {
+    max-width: 1400px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -417,3 +437,52 @@ body {
 }
 
 /* Removed lang menu CSS - using inline buttons now */
+
+/* Button improvements */
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Mobile glass effects - lighter for better performance */
+  .glass-hover {
+    backdrop-filter: blur(10px) saturate(150%);
+  }
+  
+  .glass-hover:active {
+    transform: scale(0.98);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(0, 255, 240, 0.08) 100%);
+  }
+  
+  /* Reduce glow on mobile for better performance */
+  .pulse-glow {
+    animation: none;
+    box-shadow: 0 0 15px rgba(0, 255, 240, 0.3);
+  }
+  
+  /* Reduce motion on mobile if preferred */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
