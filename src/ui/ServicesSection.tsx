@@ -42,21 +42,21 @@ export default function ServicesSection({ title, services }: ServicesSectionProp
   const isInView = useInView(ref, { once: true });
   
   return (
-    <section id="services" className="py-16 sm:py-24 lg:py-32 bg-[--background]/40 backdrop-blur-sm">
+    <section id="services" className="py-20 sm:py-28 lg:py-36 bg-[--background]/40 backdrop-blur-sm">
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gradient-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-16 sm:mb-20 lg:mb-24">
             {title}
           </h2>
         </motion.div>
         
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-16 sm:mt-20 lg:mt-24">
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} index={index} />
           ))}
