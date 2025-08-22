@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic';
 import Header from '@/ui/Header';
 import Footer from '@/ui/Footer';
 import ServicesSection from '@/ui/ServicesSection';
-
+import AchievementsSection from '@/ui/AchievementsSection';
 
 import ContactList from '@/ui/ContactList';
 import SectionDivider from '@/ui/SectionDivider';
@@ -65,12 +65,24 @@ export default function Home() {
   const { setQualityMode } = usePerformance();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [copy, setCopy] = useState<any>(null);
+  const [achievementImages, setAchievementImages] = useState<string[]>([]);
   
   useEffect(() => {
     if (isLoaded) {
       loadCopy(locale).then(setCopy);
     }
   }, [locale, isLoaded]);
+
+  useEffect(() => {
+    // Static list of achievement images
+    // Add new images to this array when you upload them to public/achievements/
+    const images = [
+      'platonPythonPro.jpg',
+      'hllielsertificat.png'
+      // Add more images here as you upload them
+    ];
+    setAchievementImages(images);
+  }, []);
   
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -112,6 +124,16 @@ export default function Home() {
         />
         
         <SectionDivider />
+        
+        {achievementImages.length > 0 && (
+          <>
+            <AchievementsSection 
+              title={copy.achievements.title}
+              images={achievementImages} 
+            />
+            <SectionDivider />
+          </>
+        )}
         
         <ContactList
           title={copy.contact.title}

@@ -106,5 +106,8 @@ export const copy = {
   },
   contact_messages: {
     response_time: "Normalmente respondemos en 24 horas."
+  },
+  achievements: {
+    title: "Nuestros Logros"
   }
 } as const;

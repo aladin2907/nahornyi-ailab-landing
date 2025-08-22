@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { brand } from '@/content/brand';
+import { FaGithub, FaLinkedin, FaTelegram, FaTiktok, FaEnvelope } from 'react-icons/fa';
 
 interface ContactListProps {
   title: string;
@@ -85,7 +86,7 @@ export default function ContactList({ title }: ContactListProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`glass-hover p-4 sm:p-6 card-3d group block w-72 ${contact.href === '#' ? 'cursor-default' : ''}`}
+              className={`glass-hover p-4 sm:p-6 card-3d group block w-72 ${contact.href === '#' ? 'cursor-default' : ''} focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg`}
             >
               <div className="flex items-center gap-3 sm:gap-4">
                 <div className="text-2xl sm:text-3xl group-hover:scale-110 transition-transform flex-shrink-0">

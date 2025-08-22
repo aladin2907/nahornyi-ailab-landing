@@ -75,7 +75,7 @@ export default function Footer({ copy }: FooterProps) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-cyan-400 transition-colors duration-300"
+                  className="text-zinc-500 hover:text-cyan-400 transition-colors duration-300 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background]"
                 >
                   {link.icon ? <link.icon size={28} className="sm:text-3xl md:text-4xl" /> : <span className="text-xs sm:text-sm font-bold">n8n</span>}
                 </motion.a>
