@@ -172,20 +172,85 @@ export default function Hero({ copy }: HeroProps) {
   if (isMobile) {
     return (
       <div className="h-screen bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] flex items-center justify-center relative overflow-hidden">
-        {/* Mobile background particles */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#00FFF0] rounded-full animate-pulse"></div>
-          <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-[#8A7CFF] rounded-full animate-ping"></div>
-          <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-[#00FFF0] rounded-full animate-pulse"></div>
-          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-[#8A7CFF] rounded-full animate-ping"></div>
+        {/* Enhanced mobile background particles with better animations */}
+        <div className="absolute inset-0 opacity-40">
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#00FFF0] rounded-full"
+            animate={{ 
+              scale: [1, 1.5, 1],
+              opacity: [0.3, 1, 0.3]
+            }}
+            transition={{ 
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute top-1/2 right-1/3 w-1 h-1 bg-[#8A7CFF] rounded-full"
+            animate={{ 
+              scale: [1, 2, 1],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ 
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-[#00FFF0] rounded-full"
+            animate={{ 
+              scale: [1, 1.8, 1],
+              opacity: [0.4, 1, 0.4]
+            }}
+            transition={{ 
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            }}
+          />
+          <motion.div 
+            className="absolute top-1/3 right-1/4 w-1 h-1 bg-[#8A7CFF] rounded-full"
+            animate={{ 
+              scale: [1, 2.2, 1],
+              opacity: [0.6, 1, 0.6]
+            }}
+            transition={{ 
+              duration: 4.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1.5
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 bg-[#00FFF0] rounded-full"
+            animate={{ 
+              scale: [1, 1.6, 1],
+              opacity: [0.3, 1, 0.3]
+            }}
+            transition={{ 
+              duration: 3.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.8
+            }}
+          />
         </div>
         
         <div className="text-center px-6 relative z-10">
           <motion.h1 
             className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 1,
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 100
+            }}
           >
             Nahornyi AILab
           </motion.h1>
@@ -194,22 +259,50 @@ export default function Hero({ copy }: HeroProps) {
             <motion.p
               className="text-lg sm:text-xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-4 max-w-sm mx-auto"
               style={{ fontFamily: 'Georgia, serif' }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, y: 20, rotateX: -15 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ 
+                duration: 1.2, 
+                delay: 0.3,
+                ease: "easeOut"
+              }}
             >
               &ldquo;{copy.hero.slogan}&rdquo;
             </motion.p>
           )}
           
-                      <motion.p 
-              className="text-base sm:text-lg text-[--foreground]/70 max-w-sm mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+          <motion.p 
+            className="text-base sm:text-lg text-[--foreground]/70 max-w-sm mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1, 
+              delay: 0.6,
+              ease: "easeOut"
+            }}
+          >
+            {copy?.hero.subtitle || 'AI automation that drives revenue'}
+          </motion.p>
+          
+          {/* Mobile-specific call to action */}
+          <motion.div
+            className="mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1, 
+              delay: 0.8,
+              ease: "easeOut"
+            }}
+          >
+            <motion.div
+              className="inline-block px-6 py-3 bg-gradient-to-r from-[#00FFF0]/20 to-[#8A7CFF]/20 border border-[#00FFF0]/30 rounded-lg backdrop-blur-sm touch-feedback mobile-animation"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {copy?.hero.subtitle || 'AI automation that drives revenue'}
-            </motion.p>
+              <span className="text-[#00FFF0] font-medium">Swipe to explore</span>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     );
@@ -217,9 +310,37 @@ export default function Hero({ copy }: HeroProps) {
   
   return (
     <div id="hero" className="h-screen relative">
+      {/* Fallback for browsers that don't support Three.js well */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] opacity-0 hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+      
       <Canvas
         camera={{ position: [0, 0, 8], fov: 75 }}
         style={{ background: '#0B0B0F' }}
+        onCreated={({ gl }) => {
+          // Better WebGL support for Safari
+          gl.setClearColor('#0B0B0F', 1);
+          gl.shadowMap.enabled = true;
+          gl.shadowMap.type = THREE.PCFSoftShadowMap;
+        }}
+        fallback={
+          <div className="h-full w-full bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] flex items-center justify-center">
+            <div className="text-center">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
+                Nahornyi AILab
+              </h1>
+              {copy && (
+                <>
+                  <p className="text-xl md:text-2xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-6 max-w-2xl text-center">
+                    &ldquo;{copy.hero.slogan}&rdquo;
+                  </p>
+                  <p className="text-lg text-[--foreground]/60 mb-8 max-w-2xl text-center">
+                    {copy.hero.subtitle}
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        }
       >
         <NeuralSwarm />
         <ambientLight intensity={0.2} />
@@ -252,8 +373,6 @@ export default function Hero({ copy }: HeroProps) {
               </motion.p>
             </>
           )}
-          
-
         </div>
       </div>
     </div>
