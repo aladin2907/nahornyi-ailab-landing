@@ -76,7 +76,7 @@ export default function ContactList({ title }: ContactListProps) {
           </h2>
         </motion.div>
         
-        <div className="flex flex-wrap justify-center gap-4 sm:pt-24 lg:pt-32" style={{ paddingTop: '56px' }}>
+        <div className="flex flex-wrap justify-center gap-4 sm:pt-24 lg:pt-32" style={{ paddingTop: '56px', paddingBottom: '40px' }}>
           {contacts.map((contact, index) => (
             <motion.a
               key={contact.label}
