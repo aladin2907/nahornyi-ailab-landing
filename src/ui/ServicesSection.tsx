@@ -24,7 +24,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-hover p-4 sm:p-6 card-3d shimmer group w-72 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg min-h-[160px] flex flex-col justify-center items-center text-center"
+      className="glass-hover p-4 sm:p-6 card-3d shimmer group w-72 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg min-h-[160px] flex flex-col justify-center items-center text-center touch-feedback mobile-animation"
       tabIndex={0}
       role="article"
       aria-labelledby={`service-title-${index}`}

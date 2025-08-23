@@ -2,12 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useDeviceInfo } from '@/lib/device';
 
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const { isMobile, prefersReducedMotion } = useDeviceInfo();
 
   useEffect(() => {
+    // Don't show custom cursor on mobile
+    if (isMobile) return;
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -31,38 +36,51 @@ export default function CustomCursor() {
         el.removeEventListener('mouseleave', handleMouseLeave);
       });
     };
-  }, []);
+  }, [isMobile]);
+
+  // Don't render on mobile
+  if (isMobile) return null;
 
   return (
     <>
-      {/* Main cursor */}
+      {/* Main cursor - smaller and more elegant */}
       <motion.div
-        className="fixed w-3 h-3 pointer-events-none z-[9999]"
+        className="fixed w-2 h-2 pointer-events-none z-[9999]"
         style={{
-          left: mousePosition.x - 6,
-          top: mousePosition.y - 6,
+          left: mousePosition.x - 4,
+          top: mousePosition.y - 4,
         }}
         animate={{
-          scale: isHovering ? 1.5 : 1,
-          opacity: isHovering ? 0.9 : 0.7,
+          scale: isHovering ? 1.8 : 1,
+          opacity: isHovering ? 1 : 0.8,
         }}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        transition={{ 
+          type: 'spring', 
+          stiffness: 500, 
+          damping: 30,
+          duration: prefersReducedMotion ? 0.1 : 0.3
+        }}
       >
-        <div className="w-full h-full rounded-full bg-[--accent] opacity-80" />
+        <div className="w-full h-full rounded-full bg-[--accent] shadow-lg shadow-[--accent]/50" />
       </motion.div>
 
-      {/* Trailing cursor */}
+      {/* Trailing cursor - more subtle */}
       <motion.div
-        className="fixed w-6 h-6 pointer-events-none z-[9998] border border-[--accent]/20 rounded-full"
+        className="fixed w-4 h-4 pointer-events-none z-[9998] border border-[--accent]/30 rounded-full"
         style={{
-          left: mousePosition.x - 12,
-          top: mousePosition.y - 12,
+          left: mousePosition.x - 8,
+          top: mousePosition.y - 8,
         }}
         animate={{
-          scale: isHovering ? 1.3 : 1,
-          opacity: isHovering ? 0.5 : 0.3,
+          scale: isHovering ? 1.4 : 1,
+          opacity: isHovering ? 0.6 : 0.4,
         }}
-        transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+        transition={{ 
+          type: 'spring', 
+          stiffness: 200, 
+          damping: 20,
+          duration: prefersReducedMotion ? 0.1 : 0.4
+        }}
       />
     </>
   );

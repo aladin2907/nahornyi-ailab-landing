@@ -106,7 +106,7 @@ export default function Home() {
   }
   
   return (
-    <div className="min-h-screen bg-[--background] text-[--foreground] relative cursor-none">
+    <div className="min-h-screen bg-[--background] text-[--foreground] relative custom-cursor-active">
       <CustomCursor />
       <ScrollProgress />
       <FloatingParticles />

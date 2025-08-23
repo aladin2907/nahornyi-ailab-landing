@@ -34,7 +34,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     'aria-haspopup': ariaHaspopup,
     ...props
   }, ref) => {
-    const baseClasses = 'font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[--accent] focus:ring-offset-2 focus:ring-offset-[--background] disabled:opacity-50 disabled:cursor-not-allowed';
+    const baseClasses = 'font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[--accent] focus:ring-offset-2 focus:ring-offset-[--background] disabled:opacity-50 cursor-not-allowed touch-feedback mobile-animation';
     
     const variants = {
       primary: 'glass-intense text-[--foreground] magnetic-button ripple pulse-glow',

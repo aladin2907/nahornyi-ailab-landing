@@ -48,7 +48,6 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
   /* Improve readability on mobile */
   font-size: 16px;
 }
@@ -72,24 +71,26 @@ body {
   top: 6px;
 }
 
-/* Hide default cursor on desktop only for specific elements */
+/* Custom cursor styles for desktop only */
 @media (hover: hover) and (pointer: fine) {
-  .cursor-none, .cursor-none * {
+  /* Custom cursor will handle this */
+  .custom-cursor-active {
     cursor: none !important;
   }
   
   /* Keep normal cursor for inputs and text areas */
-  input, textarea, select, button, a {
-    cursor: pointer !important;
+  input, textarea, select {
+    cursor: text !important;
   }
   
-  input[type="text"], input[type="email"], textarea {
-    cursor: text !important;
+  /* Interactive elements get pointer cursor */
+  button, a, [role="button"] {
+    cursor: pointer !important;
   }
 }
 
-/* Show default cursor on mobile */
-@media (hover: none) and (pointer: coarse) {
+/* Show default cursor on mobile and when custom cursor is disabled */
+@media (hover: none) and (pointer: coarse), (prefers-reduced-motion: reduce) {
   * {
     cursor: auto !important;
   }
@@ -116,8 +117,9 @@ body {
   }
 }
 
-/* Reduced motion support */
+/* Reduced motion support - but allow mobile animations */
 @media (prefers-reduced-motion: reduce) {
+  /* Only reduce motion for users who explicitly prefer it */
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -129,7 +131,7 @@ body {
   }
 }
 
-/* Mobile-first responsive improvements */
+/* Mobile-first responsive improvements with animation support */
 @media (max-width: 768px) {
   body {
     font-size: 16px; /* Prevent zoom on iOS */
@@ -139,6 +141,22 @@ body {
   /* Improve touch targets */
   button, a {
     padding: 12px 16px;
+  }
+  
+  /* Allow animations on mobile for better UX */
+  .mobile-animation {
+    animation-duration: 0.6s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Enhanced touch feedback */
+  .touch-feedback {
+    transition: transform 0.1s ease, opacity 0.1s ease;
+  }
+  
+  .touch-feedback:active {
+    transform: scale(0.95);
+    opacity: 0.8;
   }
 }
 

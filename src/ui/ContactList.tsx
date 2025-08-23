@@ -107,7 +107,7 @@ export default function ContactList({ title }: ContactListProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`glass-hover p-4 sm:p-6 card-3d group block w-64 min-h-[100px] ${contact.href === '#' ? 'cursor-default' : ''} focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg flex items-center justify-center`}
+              className={`glass-hover p-4 sm:p-6 card-3d group block w-64 min-h-[100px] ${contact.href === '#' ? 'cursor-default' : ''} focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg flex items-center justify-center touch-feedback mobile-animation`}
               role="listitem"
               aria-label={`${contact.label}: ${contact.value} - ${contact.description}`}
               aria-describedby={`contact-desc-${index}`}
