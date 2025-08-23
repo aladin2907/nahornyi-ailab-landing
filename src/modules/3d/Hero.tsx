@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { InstancedMesh, Vector3, BufferGeometry, BufferAttribute } from 'three';
 import * as THREE from 'three';
@@ -17,46 +17,39 @@ interface Particle {
   basePosition: Vector3;
 }
 
-interface MobileSettings {
-  particles: number;
-  lines: boolean;
-  maxDistance: number;
-  animationSpeed: number;
-  mouseSensitivity: number;
-}
-
 function NeuralSwarm() {
+  const [particles, setParticles] = useState<Particle[]>([]);
   const meshRef = useRef<InstancedMesh>(null);
   const linesRef = useRef<THREE.LineSegments>(null);
   const { qualityMode } = usePerformance();
   const { isMobile } = useDeviceInfo();
   const { mouse } = useThree();
   
-  // Mobile-optimized settings
+  // Mobile-optimized settings - same as desktop but optimized for mobile
   const settings = useMemo(() => {
     if (isMobile) {
       return {
-        particles: 80, // Fewer particles for mobile
+        particles: 200, // Optimized for mobile performance
         lines: true,
-        maxDistance: 2.0, // Slightly larger connections for visibility
-        animationSpeed: 0.3, // Slower animation for better performance
-        mouseSensitivity: 1.5 // Reduced mouse sensitivity on mobile
-      } as MobileSettings;
+        postprocessing: false, // Disable for mobile performance
+        shadows: false // Disable for mobile performance
+      };
     }
     return getQualitySettings(qualityMode, 'medium');
   }, [qualityMode, isMobile]);
   
+  // Create particles
   const particleCount = settings.particles;
   
-  const particles = useMemo(() => {
-    const particles: Particle[] = [];
-    
+  // Initialize particles
+  useMemo(() => {
+    const newParticles: Particle[] = [];
     for (let i = 0; i < particleCount; i++) {
       const particle: Particle = {
         position: new Vector3(
           (Math.random() - 0.5) * 20,
-          (Math.random() - 0.5) * 15,
-          (Math.random() - 0.5) * 10
+          (Math.random() - 0.5) * 12,
+          (Math.random() - 0.5) * 8
         ),
         velocity: new Vector3(
           (Math.random() - 0.5) * 0.02,
@@ -69,11 +62,10 @@ function NeuralSwarm() {
       };
       
       particle.basePosition.copy(particle.position);
-      particles.push(particle);
+      newParticles.push(particle);
     }
-    
-    return particles;
-  }, [particleCount]);
+    setParticles(newParticles);
+  }, [particleCount, settings]);
   
   
   const lineGeometry = useMemo(() => {
@@ -81,7 +73,7 @@ function NeuralSwarm() {
     
     const geometry = new BufferGeometry();
     const positions: number[] = [];
-    const maxDistance = 1.5;
+    const maxDistance = 1.5; // Standard distance for connections
     
     // Create connections between nearby particles
     for (let i = 0; i < particles.length; i++) {
@@ -104,24 +96,22 @@ function NeuralSwarm() {
     if (!meshRef.current) return;
     
     const time = state.clock.elapsedTime;
-    const isMobileSettings = 'mouseSensitivity' in settings;
-    const mouseX = mouse.x * (isMobileSettings ? settings.mouseSensitivity : 2);
-    const mouseY = mouse.y * (isMobileSettings ? settings.mouseSensitivity : 2);
-    const animationSpeed = isMobileSettings ? settings.animationSpeed : 1;
+    const mouseX = mouse.x * 2;
+    const mouseY = mouse.y * 2;
     
     // Update particle positions with curl noise and mouse magnetism
     particles.forEach((particle, i) => {
-      // Curl noise (simplified) - slower on mobile
-      const curlX = Math.sin(time * 0.5 * animationSpeed + particle.basePosition.y * 0.1) * 0.01;
-      const curlY = Math.cos(time * 0.3 * animationSpeed + particle.basePosition.x * 0.1) * 0.01;
-      const curlZ = Math.sin(time * 0.4 * animationSpeed + particle.basePosition.z * 0.1) * 0.005;
+      // Curl noise (simplified)
+      const curlX = Math.sin(time * 0.5 + particle.basePosition.y * 0.1) * 0.01;
+      const curlY = Math.cos(time * 0.3 + particle.basePosition.x * 0.1) * 0.01;
+      const curlZ = Math.sin(time * 0.4 + particle.basePosition.z * 0.1) * 0.005;
       
-      // Mouse magnetism - reduced on mobile
+      // Mouse magnetism
       const mouseDistance = Math.sqrt(
         Math.pow(particle.position.x - mouseX * 5, 2) + 
         Math.pow(particle.position.y - mouseY * 3, 2)
       );
-      const magnetStrength = Math.max(0, 1 - mouseDistance / 3) * (isMobileSettings ? 0.01 : 0.02);
+      const magnetStrength = Math.max(0, 1 - mouseDistance / 3) * 0.02;
       
       const toMouseX = (mouseX * 5 - particle.position.x) * magnetStrength;
       const toMouseY = (mouseY * 3 - particle.position.y) * magnetStrength;
@@ -149,11 +139,12 @@ function NeuralSwarm() {
     if (linesRef.current && settings.lines) {
       const positions = linesRef.current.geometry.attributes.position.array as Float32Array;
       let posIndex = 0;
+      const maxDistance = 1.5; // Standard distance for connections
       
       for (let i = 0; i < particles.length && posIndex < positions.length; i++) {
         for (let j = i + 1; j < particles.length && posIndex < positions.length; j++) {
           const distance = particles[i].position.distanceTo(particles[j].position);
-          if (distance < 1.5) {
+          if (distance < maxDistance) {
             positions[posIndex++] = particles[i].position.x;
             positions[posIndex++] = particles[i].position.y;
             positions[posIndex++] = particles[i].position.z;
@@ -177,7 +168,11 @@ function NeuralSwarm() {
       
       {settings.lines && lineGeometry && (
         <lineSegments ref={linesRef} geometry={lineGeometry}>
-          <lineBasicMaterial color="#8A7CFF" transparent opacity={0.3} />
+          <lineBasicMaterial 
+            color="#8A7CFF" 
+            transparent 
+            opacity={0.3} 
+          />
         </lineSegments>
       )}
     </group>
@@ -200,7 +195,7 @@ export default function Hero({ copy }: HeroProps) {
           camera={{ position: [0, 0, 8], fov: 75 }}
           style={{ background: '#0B0B0F' }}
           onCreated={({ gl }) => {
-            // Better WebGL support for mobile Safari
+            // Better WebGL support for Safari
             gl.setClearColor('#0B0B0F', 1);
             gl.shadowMap.enabled = true;
             gl.shadowMap.type = THREE.PCFSoftShadowMap;
