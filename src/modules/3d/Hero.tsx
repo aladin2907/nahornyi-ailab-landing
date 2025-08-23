@@ -172,70 +172,110 @@ export default function Hero({ copy }: HeroProps) {
   if (isMobile) {
     return (
       <div className="h-screen bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] flex items-center justify-center relative overflow-hidden">
-        {/* Enhanced mobile background particles with better animations */}
-        <div className="absolute inset-0 opacity-40">
+        {/* Beautiful floating background elements */}
+        <div className="absolute inset-0">
+          {/* Floating orbs with glow effects */}
           <motion.div 
-            className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#00FFF0] rounded-full"
+            className="absolute top-1/4 left-1/4 w-4 h-4 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] rounded-full blur-sm"
             animate={{ 
-              scale: [1, 1.5, 1],
-              opacity: [0.3, 1, 0.3]
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.8, 0.3]
             }}
             transition={{ 
-              duration: 3,
+              duration: 6,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
           <motion.div 
-            className="absolute top-1/2 right-1/3 w-1 h-1 bg-[#8A7CFF] rounded-full"
+            className="absolute top-1/3 right-1/3 w-6 h-6 bg-gradient-to-r from-[#8A7CFF] to-[#00FFF0] rounded-full blur-sm"
             animate={{ 
-              scale: [1, 2, 1],
-              opacity: [0.5, 1, 0.5]
+              y: [0, 15, 0],
+              x: [0, -15, 0],
+              scale: [1, 1.3, 1],
+              opacity: [0.4, 0.9, 0.4]
             }}
             transition={{ 
-              duration: 4,
+              duration: 8,
               repeat: Infinity,
               ease: "easeInOut",
               delay: 1
             }}
           />
           <motion.div 
-            className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-[#00FFF0] rounded-full"
+            className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] rounded-full blur-sm"
             animate={{ 
-              scale: [1, 1.8, 1],
-              opacity: [0.4, 1, 0.4]
+              y: [0, -25, 0],
+              x: [0, 20, 0],
+              scale: [1, 1.4, 1],
+              opacity: [0.2, 0.7, 0.2]
             }}
             transition={{ 
-              duration: 3.5,
+              duration: 7,
               repeat: Infinity,
               ease: "easeInOut",
+              delay: 2
+            }}
+          />
+          
+          {/* Animated gradient lines */}
+          <motion.div 
+            className="absolute top-1/2 left-0 w-32 h-px bg-gradient-to-r from-transparent via-[#00FFF0] to-transparent"
+            animate={{ 
+              x: [-128, "100vw"],
+              opacity: [0, 1, 0]
+            }}
+            transition={{ 
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear",
               delay: 0.5
             }}
           />
           <motion.div 
-            className="absolute top-1/3 right-1/4 w-1 h-1 bg-[#8A7CFF] rounded-full"
+            className="absolute bottom-1/2 right-0 w-32 h-px bg-gradient-to-l from-transparent via-[#8A7CFF] to-transparent"
             animate={{ 
-              scale: [1, 2.2, 1],
-              opacity: [0.6, 1, 0.6]
+              x: ["100vw", -128],
+              opacity: [0, 1, 0]
             }}
             transition={{ 
-              duration: 4.5,
+              duration: 5,
               repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1.5
+              ease: "linear",
+              delay: 2
             }}
           />
+          
+          {/* Floating particles with trails */}
           <motion.div 
-            className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 bg-[#00FFF0] rounded-full"
+            className="absolute top-1/4 right-1/4 w-2 h-2 bg-[#00FFF0] rounded-full"
             animate={{ 
-              scale: [1, 1.6, 1],
+              y: [0, -30, 0],
+              x: [0, 20, 0],
+              scale: [1, 1.5, 1],
               opacity: [0.3, 1, 0.3]
             }}
             transition={{ 
-              duration: 3.2,
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 bg-[#8A7CFF] rounded-full"
+            animate={{ 
+              y: [0, 25, 0],
+              x: [0, -15, 0],
+              scale: [1, 1.8, 1],
+              opacity: [0.4, 1, 0.4]
+            }}
+            transition={{ 
+              duration: 5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 0.8
+              delay: 1.5
             }}
           />
         </div>
@@ -246,7 +286,7 @@ export default function Hero({ copy }: HeroProps) {
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
-              duration: 1,
+              duration: 1.2,
               ease: "easeOut",
               type: "spring",
               stiffness: 100
@@ -262,7 +302,7 @@ export default function Hero({ copy }: HeroProps) {
               initial={{ opacity: 0, y: 20, rotateX: -15 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ 
-                duration: 1.2, 
+                duration: 1.4, 
                 delay: 0.3,
                 ease: "easeOut"
               }}
@@ -276,33 +316,13 @@ export default function Hero({ copy }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
-              duration: 1, 
+              duration: 1.2, 
               delay: 0.6,
               ease: "easeOut"
             }}
           >
             {copy?.hero.subtitle || 'AI automation that drives revenue'}
           </motion.p>
-          
-          {/* Mobile-specific call to action */}
-          <motion.div
-            className="mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 1, 
-              delay: 0.8,
-              ease: "easeOut"
-            }}
-          >
-            <motion.div
-              className="inline-block px-6 py-3 bg-gradient-to-r from-[#00FFF0]/20 to-[#8A7CFF]/20 border border-[#00FFF0]/30 rounded-lg backdrop-blur-sm touch-feedback mobile-animation"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-[#00FFF0] font-medium">Swipe to explore</span>
-            </motion.div>
-          </motion.div>
         </div>
       </div>
     );
