@@ -7,7 +7,7 @@ export const copy = {
   },
   hero: {
     title: 'Creamos IA que trabaja para su negocio',
-    subtitle: 'Desde agentes impulsados por LLM hasta flujos de trabajo autónomos, implementamos soluciones de IA de vanguardia que optimizan procesos, reducen costos y aceleran el crecimiento.',
+    subtitle: 'Implementamos soluciones de IA de vanguardia que optimizan procesos, reducen costos y aceleran el crecimiento.',
     slogan: 'La IA no conquistará el mundo, a menos que la ayudemos.',
     primary_cta: 'Explorar Servicios',
     secondary_cta: 'Contáctenos',
