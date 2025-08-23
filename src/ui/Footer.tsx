@@ -22,7 +22,7 @@ export default function Footer({ copy }: FooterProps) {
   ];
 
   return (
-    <footer className="relative py-16 sm:py-24 lg:py-32 bg-grid-zinc-900/[0.2] overflow-hidden border-t border-zinc-800 flex justify-center">
+    <footer className="relative py-16 sm:py-24 lg:py-32 bg-grid-zinc-900/[0.2] overflow-hidden border-t border-zinc-800 flex justify-center" style={{ paddingTop: '26px' }}>
        <div 
         className="absolute inset-0 pointer-events-none" 
         style={{
@@ -91,7 +91,7 @@ export default function Footer({ copy }: FooterProps) {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="pt-8 sm:pt-12 border-t border-zinc-800/50"
             >
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-sm sm:text-base text-zinc-500">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-sm sm:text-base text-zinc-500" style={{ paddingTop: '20px' }}>
                 <p>
                   {copy.footer.rights}
                 </p>
