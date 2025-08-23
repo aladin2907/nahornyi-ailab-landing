@@ -69,13 +69,14 @@ export default function ContactList({ title }: ContactListProps) {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center"
+          style={{ paddingTop: '40px' }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-16 sm:mb-20 lg:mb-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text">
             {title}
           </h2>
         </motion.div>
         
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-16 sm:mt-20 lg:mt-24">
+        <div className="flex flex-wrap justify-center gap-4 sm:pt-24 lg:pt-32" style={{ paddingTop: '56px' }}>
           {contacts.map((contact, index) => (
             <motion.a
               key={contact.label}
