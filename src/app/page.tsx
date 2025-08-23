@@ -113,7 +113,7 @@ export default function Home() {
       <SmoothScroll />
       <Header copy={copy} />
       
-      <main>
+      <main id="main-content" role="main" aria-label="Main content">
         <Hero copy={copy} />
         
         {/* <Chapters /> - Temporarily disabled due to layout issues */}

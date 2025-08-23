@@ -13,27 +13,34 @@ interface FooterProps {
 export default function Footer({ copy }: FooterProps) {
 
   const socialLinks = [
-    { name: 'Telegram', href: `https://t.me/${brand.contacts.telegram.slice(1)}`, icon: FaTelegram },
-    { name: 'Email', href: `mailto:${brand.contacts.email}`, icon: FaEnvelope },
-    { name: 'LinkedIn', href: brand.contacts.linkedin, icon: FaLinkedin },
-    { name: 'n8n', href: brand.contacts.n8n, icon: SiN8N },
-    { name: 'TikTok', href: brand.contacts.tiktok, icon: FaTiktok },
-    { name: 'GitHub', href: 'https://github.com/VadimNahornii', icon: FaGithub },
+    { name: 'Telegram', href: `https://t.me/${brand.contacts.telegram.slice(1)}`, icon: FaTelegram, description: 'Follow us on Telegram' },
+    { name: 'Email', href: `mailto:${brand.contacts.email}`, icon: FaEnvelope, description: 'Send us an email' },
+    { name: 'LinkedIn', href: brand.contacts.linkedin, icon: FaLinkedin, description: 'Connect on LinkedIn' },
+    { name: 'n8n', href: brand.contacts.n8n, icon: SiN8N, description: 'Check out our n8n templates' },
+    { name: 'TikTok', href: brand.contacts.tiktok, icon: FaTiktok, description: 'Follow us on TikTok' },
+    { name: 'GitHub', href: 'https://github.com/VadimNahornii', icon: FaGithub, description: 'View our code on GitHub' },
   ];
 
   return (
-    <footer className="relative py-16 sm:py-24 lg:py-32 bg-grid-zinc-900/[0.2] overflow-hidden border-t border-zinc-800 flex justify-center" style={{ paddingTop: '26px' }}>
+    <footer 
+      className="relative py-16 sm:py-24 lg:py-32 bg-grid-zinc-900/[0.2] overflow-hidden border-t border-zinc-800 flex justify-center"
+      style={{ paddingTop: '26px' }}
+      role="contentinfo"
+      aria-labelledby="footer-heading"
+    >
        <div 
         className="absolute inset-0 pointer-events-none" 
         style={{
           background: 'radial-gradient(ellipse at center, rgba(138, 124, 255, 0.1), transparent 70%)'
         }}
+        aria-hidden="true"
       />
 
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
             {/* Brand */}
             <motion.h2 
+              id="footer-heading"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
@@ -56,33 +63,36 @@ export default function Footer({ copy }: FooterProps) {
             </motion.p>
 
             {/* Social Icons */}
-            <motion.div 
+            <motion.nav 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4, staggerChildren: 0.1 }}
               className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 mb-12 sm:mb-16"
+              role="navigation"
+              aria-label="Social media links"
             >
-                          {socialLinks.map((link) => (
-              <motion.div
-                key={link.name}
-                className="flex flex-col items-center gap-1 sm:gap-2 min-w-0"
-                initial={{ y: 0, scale: 1 }}
-                whileHover={{ y: -4, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <motion.a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-cyan-400 transition-colors duration-300 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background]"
+              {socialLinks.map((link) => (
+                <motion.div
+                  key={link.name}
+                  className="flex flex-col items-center gap-1 sm:gap-2 min-w-0"
+                  initial={{ y: 0, scale: 1 }}
+                  whileHover={{ y: -4, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  {link.icon ? <link.icon size={28} className="sm:text-3xl md:text-4xl" /> : <span className="text-xs sm:text-sm font-bold">n8n</span>}
-                </motion.a>
-                <span className="text-xs text-zinc-600 font-medium text-center truncate max-w-16">{link.name}</span>
-              </motion.div>
-            ))}
-            </motion.div>
+                  <motion.a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-500 hover:text-cyan-400 transition-colors duration-300 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                    aria-label={`${link.name} - ${link.description}`}
+                  >
+                    {link.icon ? <link.icon size={28} className="sm:text-3xl md:text-4xl" /> : <span className="text-xs sm:text-sm font-bold">n8n</span>}
+                  </motion.a>
+                  <span className="text-xs text-zinc-600 font-medium text-center truncate max-w-16">{link.name}</span>
+                </motion.div>
+              ))}
+            </motion.nav>
             
             {/* Bottom Info */}
             <motion.div 
@@ -90,13 +100,14 @@ export default function Footer({ copy }: FooterProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               className="pt-8 sm:pt-12 border-t border-zinc-800/50"
+              style={{ paddingTop: '20px' }}
             >
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-sm sm:text-base text-zinc-500" style={{ paddingTop: '20px' }}>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-sm sm:text-base text-zinc-500">
                 <p>
                   {copy.footer.rights}
                 </p>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-cyan-400 animate-pulse" />
+                  <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-cyan-400 animate-pulse" aria-hidden="true" />
                   <span>{copy.footer.location_info.remote}</span>
                 </div>
               </div>

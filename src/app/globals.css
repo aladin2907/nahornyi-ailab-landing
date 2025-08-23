@@ -7,6 +7,13 @@
   --secondary: #8A7CFF;
   --subtle: rgba(237, 237, 237, 0.1);
   --glass: rgba(255, 255, 255, 0.05);
+  
+  /* Accessibility improvements */
+  --focus-ring: #00FFF0;
+  --focus-ring-offset: #0B0B0F;
+  --high-contrast-text: #FFFFFF;
+  --error-color: #FF6B6B;
+  --success-color: #4ECDC4;
 }
 
 @theme inline {
@@ -27,6 +34,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Better touch scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -37,6 +49,27 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   cursor: none;
+  /* Improve readability on mobile */
+  font-size: 16px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--accent);
+  color: var(--background);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
 }
 
 /* Hide default cursor on desktop only for specific elements */
@@ -46,7 +79,11 @@ body {
   }
   
   /* Keep normal cursor for inputs and text areas */
-  input, textarea, select {
+  input, textarea, select, button, a {
+    cursor: pointer !important;
+  }
+  
+  input[type="text"], input[type="email"], textarea {
     cursor: text !important;
   }
 }
@@ -55,6 +92,53 @@ body {
 @media (hover: none) and (pointer: coarse) {
   * {
     cursor: auto !important;
+  }
+  
+  /* Ensure minimum touch target size */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --foreground: var(--high-contrast-text);
+    --accent: #00FFFF;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Mobile-first responsive improvements */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* Prevent zoom on iOS */
+    line-height: 1.5;
+  }
+  
+  /* Improve touch targets */
+  button, a {
+    padding: 12px 16px;
   }
 }
 
@@ -88,6 +172,14 @@ body {
   border-color: var(--accent);
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 255, 240, 0.1), 0 0 20px rgba(0, 255, 240, 0.05);
+}
+
+/* Mobile hover fallback */
+@media (hover: none) {
+  .glass-hover:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 .glass-intense {

@@ -13,14 +13,14 @@ interface LanguageSwitcherProps {
 
 function LanguageSwitcher({ currentLocale, onLocaleChange }: LanguageSwitcherProps) {
   const locales = [
-    { code: 'en', name: 'EN' },
-    { code: 'ru', name: 'RU' },
-    { code: 'es', name: 'ES' },
-    { code: 'uk', name: 'UK' }
+    { code: 'en', name: 'EN', fullName: 'English' },
+    { code: 'ru', name: 'RU', fullName: 'Русский' },
+    { code: 'es', name: 'ES', fullName: 'Español' },
+    { code: 'uk', name: 'UK', fullName: 'Українська' }
   ] as const;
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2" role="group" aria-label="Language selection">
       {locales.map((locale) => (
         <button
           key={locale.code}
@@ -34,8 +34,11 @@ function LanguageSwitcher({ currentLocale, onLocaleChange }: LanguageSwitcherPro
               ? 'bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] text-black'
               : 'bg-[--glass] text-[--foreground] hover:bg-[--accent]/20 border border-[--subtle]'
           }`}
+          aria-label={`Switch to ${locale.fullName}`}
+          aria-pressed={currentLocale === locale.code}
         >
-          {locale.name}
+          <span className="sr-only sm:not-sr-only">{locale.name}</span>
+          <span className="sm:hidden">{locale.name}</span>
         </button>
       ))}
     </div>
@@ -55,8 +58,11 @@ export default function Header({ copy }: HeaderProps) {
   if (!copy) return null;
   
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-[--background]/95 border-b border-[--accent]/20 shadow-lg shadow-[--background]/50">
-      <nav className="w-full flex items-center justify-between h-20">
+    <header 
+      className="fixed top-0 w-full z-50 backdrop-blur-md bg-[--background]/95 border-b border-[--accent]/20 shadow-lg shadow-[--background]/50"
+      role="banner"
+    >
+      <nav className="w-full flex items-center justify-between h-20" role="navigation" aria-label="Main navigation">
         {/* Left: Logo */}
         <div 
           className="flex-shrink-0" 
@@ -65,6 +71,7 @@ export default function Header({ copy }: HeaderProps) {
           <a 
             href="#" 
             className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent tracking-tight"
+            aria-label={`${brand.name} - Go to homepage`}
           >
             {brand.name}
           </a>
@@ -80,6 +87,7 @@ export default function Header({ copy }: HeaderProps) {
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className="px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent hover:brightness-125 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg"
+              aria-label={`${copy.nav.services} - Navigate to services section`}
             >
               {copy.nav.services}
             </a>
@@ -90,6 +98,7 @@ export default function Header({ copy }: HeaderProps) {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className="px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent hover:brightness-125 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg"
+              aria-label={`${copy.nav.contact} - Navigate to contact section`}
             >
               {copy.nav.contact}
             </a>
@@ -113,6 +122,7 @@ export default function Header({ copy }: HeaderProps) {
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
+            aria-haspopup="true"
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center" aria-hidden="true">
               <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
@@ -133,6 +143,8 @@ export default function Header({ copy }: HeaderProps) {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden bg-[--background]/98 backdrop-blur-md border-b border-[--accent]/20"
+            role="menu"
+            aria-label="Mobile navigation menu"
           >
             <div className="px-4 py-6 space-y-4">
               <motion.a
@@ -142,10 +154,12 @@ export default function Header({ copy }: HeaderProps) {
                   document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                   setMobileMenuOpen(false);
                 }}
-                className="block text-lg font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent py-2"
+                className="block text-lg font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent py-2 min-h-[44px] flex items-center"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
+                role="menuitem"
+                aria-label={`${copy.nav.services} - Navigate to services section`}
               >
                 {copy.nav.services}
               </motion.a>
@@ -156,10 +170,12 @@ export default function Header({ copy }: HeaderProps) {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                   setMobileMenuOpen(false);
                 }}
-                className="block text-lg font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent py-2"
+                className="block text-lg font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent py-2 min-h-[44px] flex items-center"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
+                role="menuitem"
+                aria-label={`${copy.nav.contact} - Navigate to contact section`}
               >
                 {copy.nav.contact}
               </motion.a>
@@ -170,6 +186,8 @@ export default function Header({ copy }: HeaderProps) {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
+                role="group"
+                aria-label="Mobile language selection"
               >
                 <p className="text-sm text-[--foreground]/60 mb-2">Language:</p>
                 <LanguageSwitcher currentLocale={locale} onLocaleChange={(newLocale) => {
