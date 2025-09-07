@@ -2,6 +2,8 @@
 
 A world-class landing page showcasing AI automation services with advanced 3D scenes and multi-language support.
 
+🌐 **Live Site**: [nahornyi.ai](https://nahornyi.ai)
+
 ## Features
 
 - **3D Hero Scene**: Neural swarm with 3K-6K particles, curl noise, and cursor magnetism

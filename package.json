@@ -1,5 +1,6 @@
 {
   "name": "nahornyi-ailab-landing",
+  "homepage": "https://nahornyi.ai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
