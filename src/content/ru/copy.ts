@@ -109,5 +109,8 @@ export const copy = {
   },
   achievements: {
     title: "Наши Достижения"
+  },
+  works: {
+    title: "Наши Работы"
   }
 } as const;
