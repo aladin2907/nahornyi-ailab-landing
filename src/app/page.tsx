@@ -7,8 +7,7 @@ import Header from '@/ui/Header';
 import Footer from '@/ui/Footer';
 import ServicesSection from '@/ui/ServicesSection';
 import AchievementsSection from '@/ui/AchievementsSection';
-import WorksSection from '@/ui/WorksSection';
-import ProjectsSection from '@/ui/ProjectsSection';
+import WorksProjectsSection from '@/ui/WorksProjectsSection';
 import ContactList from '@/ui/ContactList';
 import SectionDivider from '@/ui/SectionDivider';
 import HeroClient from '@/ui/HeroClient';
@@ -19,7 +18,8 @@ const achievementImages = [
   'hllielsertificat.png'
 ];
 
-const works = [
+// Combined works and projects
+const worksProjects = [
   {
     title: 'Traduktor',
     description: 'AI-powered voice translator supporting 30+ languages. Real-time speech recognition and neural translation.',
@@ -33,10 +33,7 @@ const works = [
     link: 'https://n8n.io',
     type: 'platform' as const,
     icon: <FaCogs className="w-6 h-6 text-[--accent]" />
-  }
-];
-
-const projects = [
+  },
   {
     title: 'Valencia Info Bot',
     description: 'Telegram бот с полезной информацией о Валенсии. Помогает новичкам и жителям города найти нужную информацию.',
@@ -83,16 +80,9 @@ export default function Home() {
         
         <SectionDivider />
         
-        <WorksSection 
-          title={copy.works.title}
-          works={works} 
-        />
-        
-        <SectionDivider />
-        
-        <ProjectsSection 
-          title={copy.projects.title}
-          projects={projects} 
+        <WorksProjectsSection 
+          title={copy.worksProjects.title}
+          items={worksProjects} 
         />
         
         <SectionDivider />

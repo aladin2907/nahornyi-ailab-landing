@@ -3,23 +3,24 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaTelegramPlane, FaRobot, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaMobile, FaCogs, FaTelegramPlane, FaRobot } from 'react-icons/fa';
+import { brand } from '@/content/brand';
 
-interface Project {
+interface WorkProject {
   title: string;
   description: string;
   link: string;
-  type: 'telegram_bot' | 'web_app' | 'automation';
+  type: 'app' | 'platform' | 'telegram_bot' | 'web_app' | 'automation';
   icon: React.ReactNode;
   username?: string; // For Telegram bots
 }
 
-interface ProjectsSectionProps {
+interface WorksProjectsSectionProps {
   title: string;
-  projects: readonly Project[];
+  items: readonly WorkProject[];
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function WorkProjectCard({ item, index }: { item: WorkProject; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   
@@ -32,48 +33,48 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="glass-hover p-6 sm:p-8 card-3d shimmer group w-80 sm:w-96 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg min-h-[220px] flex flex-col justify-between text-center touch-feedback mobile-animation"
       tabIndex={0}
       role="article"
-      aria-labelledby={`project-title-${index}`}
-      aria-describedby={`project-desc-${index}`}
+      aria-labelledby={`item-title-${index}`}
+      aria-describedby={`item-desc-${index}`}
     >
       <div className="w-full">
         <div className="flex justify-center mb-4">
           <div className="p-3 rounded-full bg-[--accent]/10 group-hover:bg-[--accent]/20 transition-colors">
-            {project.icon}
+            {item.icon}
           </div>
         </div>
         
         <h3 
-          id={`project-title-${index}`}
+          id={`item-title-${index}`}
           className="text-xl sm:text-2xl font-semibold mb-3 text-[--accent] gradient-text group-hover:scale-105 transition-transform"
         >
-          {project.title}
+          {item.title}
         </h3>
         
-        {project.username && (
+        {item.username && (
           <p className="text-sm text-[--accent]/80 mb-2 font-mono">
-            {project.username}
+            {item.username}
           </p>
         )}
         
         <p 
-          id={`project-desc-${index}`}
+          id={`item-desc-${index}`}
           className="text-sm sm:text-base text-[--foreground]/80 leading-relaxed mb-4"
         >
-          {project.description}
+          {item.description}
         </p>
       </div>
       
       <motion.a
-        href={project.link}
+        href={item.link}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[--accent] text-white rounded-lg font-medium hover:bg-[--accent]/90 transition-colors group-hover:scale-105 transform"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        aria-label={`Open ${project.title}`}
+        aria-label={`Open ${item.title}`}
       >
         <span>
-          {project.type === 'telegram_bot' ? 'Открыть в Telegram' : 'Посмотреть проект'}
+          {item.type === 'telegram_bot' ? 'Открыть в Telegram' : 'Посмотреть'}
         </span>
         <FaExternalLinkAlt className="w-3 h-3" />
       </motion.a>
@@ -81,8 +82,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Touch-friendly area indicator for mobile */}
       <div className="mt-4 pt-2 border-t border-[--subtle] opacity-0 group-hover:opacity-100 transition-opacity w-full text-center">
         <span className="text-xs text-[--accent]/60">
-          {project.type === 'telegram_bot' ? 'Telegram Bot' : 
-           project.type === 'web_app' ? 'Web Application' : 
+          {item.type === 'app' ? 'Мобильное приложение' :
+           item.type === 'platform' ? 'Веб-платформа' :
+           item.type === 'telegram_bot' ? 'Telegram Bot' :
+           item.type === 'web_app' ? 'Web Application' :
            'Automation Project'}
         </span>
       </div>
@@ -90,15 +93,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   );
 }
 
-export default function ProjectsSection({ title, projects }: ProjectsSectionProps) {
+export default function WorksProjectsSection({ title, items }: WorksProjectsSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   
   return (
     <section 
-      id="projects" 
-      className="py-20 sm:py-28 lg:py-36 bg-[--background]/40 backdrop-blur-sm"
-      aria-labelledby="projects-heading"
+      id="works-projects" 
+      className="py-20 sm:py-28 lg:py-36 bg-gradient-to-b from-[#0F0F1A]/60 to-[--background]/60 backdrop-blur-sm"
+      aria-labelledby="works-projects-heading"
     >
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.header
@@ -110,8 +113,8 @@ export default function ProjectsSection({ title, projects }: ProjectsSectionProp
           style={{ paddingTop: '40px' }}
         >
           <h2 
-            id="projects-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text"
+            id="works-projects-heading"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-12"
           >
             {title}
           </h2>
@@ -121,10 +124,10 @@ export default function ProjectsSection({ title, projects }: ProjectsSectionProp
           className="flex flex-wrap justify-center gap-6 sm:gap-8 pt-20 sm:pt-24 lg:pt-32"
           style={{ paddingTop: '56px' }}
           role="list"
-          aria-label="Our projects and bots"
+          aria-label="Our works and projects"
         >
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+          {items.map((item, index) => (
+            <WorkProjectCard key={index} item={item} index={index} />
           ))}
         </div>
         
@@ -137,7 +140,7 @@ export default function ProjectsSection({ title, projects }: ProjectsSectionProp
           viewport={{ once: true }}
         >
           <p className="text-lg text-[--foreground]/80 mb-6">
-            Хотите создать собственного бота или автоматизацию?
+            Готовы создать что-то похожее для вашего бизнеса?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
@@ -149,7 +152,7 @@ export default function ProjectsSection({ title, projects }: ProjectsSectionProp
               Обсудить ваш проект
             </motion.a>
             <motion.a
-              href="https://t.me/nahornyi_ailab"
+              href={`https://t.me/${brand.contacts.telegram.slice(1)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 border border-[--accent] text-[--accent] rounded-lg font-medium hover:bg-[--accent]/10 transition-colors inline-flex items-center justify-center gap-2"
