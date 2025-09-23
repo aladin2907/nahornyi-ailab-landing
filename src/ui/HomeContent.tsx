@@ -11,6 +11,7 @@ import AchievementsSection from '@/ui/AchievementsSection';
 import WorksProjectsSection from '@/ui/WorksProjectsSection';
 import ContactList from '@/ui/ContactList';
 import SectionDivider from '@/ui/SectionDivider';
+import HeroStatic from '@/ui/HeroStatic';
 import HeroClient from '@/ui/HeroClient';
 
 // Static data for SSG
@@ -50,12 +51,19 @@ export default function HomeContent() {
   const localizedCopy = useCopyLocalized();
   const copy = localizedCopy || ruCopy;
   
+  // Use static hero for better SEO, will be replaced by 3D version on client
+  const useStaticHero = !localizedCopy; // Use static on first render (SSR)
+  
   return (
     <>
       <Header copy={copy} />
       
       <main id="main-content" role="main" aria-label="Main content">
-        <HeroClient copy={copy} />
+        {useStaticHero ? (
+          <HeroStatic copy={copy} />
+        ) : (
+          <HeroClient copy={copy} />
+        )}
         
         <ServicesSection 
           title={copy.services.title}
