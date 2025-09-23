@@ -112,5 +112,8 @@ export const copy = {
   },
   works: {
     title: "Наши Работы"
+  },
+  projects: {
+    title: "Наши Проекты"
   }
 } as const;

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { FaMobile, FaCogs } from 'react-icons/fa';
+import { FaMobile, FaCogs, FaTelegramPlane, FaRobot } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 import { copy as ruCopy } from '@/content/ru/copy';
 import ClientWrapper from './ClientWrapper';
@@ -9,6 +9,7 @@ import Footer from '@/ui/Footer';
 import ServicesSection from '@/ui/ServicesSection';
 import AchievementsSection from '@/ui/AchievementsSection';
 import WorksSection from '@/ui/WorksSection';
+import ProjectsSection from '@/ui/ProjectsSection';
 import ContactList from '@/ui/ContactList';
 import SectionDivider from '@/ui/SectionDivider';
 
@@ -65,6 +66,17 @@ const works = [
   }
 ];
 
+const projects = [
+  {
+    title: 'Valencia Info Bot',
+    description: 'Telegram бот с полезной информацией о Валенсии. Помогает новичкам и жителям города найти нужную информацию.',
+    link: 'https://t.me/valencia_info_bot',
+    type: 'telegram_bot' as const,
+    username: '@valencia_info_bot',
+    icon: <FaTelegramPlane className="w-6 h-6 text-[--accent]" />
+  }
+];
+
 export const metadata: Metadata = {
   title: 'Nahornyi AILab — AI automation that drives revenue',
   description: 'n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach. Valencia → global.',
@@ -104,6 +116,13 @@ export default function Home() {
         <WorksSection 
           title={copy.works.title}
           works={works} 
+        />
+        
+        <SectionDivider />
+        
+        <ProjectsSection 
+          title={copy.projects.title}
+          projects={projects} 
         />
         
         <SectionDivider />
