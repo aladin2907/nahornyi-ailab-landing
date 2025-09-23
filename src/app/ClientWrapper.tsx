@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext, useContext } from 'react';
 import { useLocale, loadCopy } from '@/lib/i18n';
 import { useDeviceInfo } from '@/lib/device';
 import { usePerformance } from '@/lib/performance';
@@ -25,6 +25,27 @@ const CustomCursor = dynamic(() => import('@/ui/CustomCursor'), {
   ssr: false,
   loading: () => null
 });
+
+// Copy Context
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CopyContext = createContext<any>(null);
+
+export function useCopy() {
+  const copy = useContext(CopyContext);
+  return copy;
+}
+
+export function useCopyLocalized() {
+  const { locale } = useLocale();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [copy, setCopy] = useState<any>(null);
+  
+  useEffect(() => {
+    loadCopy(locale).then(setCopy);
+  }, [locale]);
+  
+  return copy;
+}
 
 interface ClientWrapperProps {
   children: React.ReactNode;
@@ -57,12 +78,14 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
   }, [locale, isLoaded]);
   
   return (
-    <div className="min-h-screen bg-[--background] text-[--foreground] relative custom-cursor-active">
-      <CustomCursor />
-      <ScrollProgress />
-      <FloatingParticles />
-      <SmoothScroll />
-      {children}
-    </div>
+    <CopyContext.Provider value={copy}>
+      <div className="min-h-screen bg-[--background] text-[--foreground] relative custom-cursor-active">
+        <CustomCursor />
+        <ScrollProgress />
+        <FloatingParticles />
+        <SmoothScroll />
+{children}
+      </div>
+    </CopyContext.Provider>
   );
 }
