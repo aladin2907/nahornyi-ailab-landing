@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: 'https://nahornyi.ai',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'Nahornyi AILab - AI automation that drives revenue',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nahornyi AILab — AI automation that drives revenue',
     description: 'We create AI that works for your business. n8n workflows, RAG chatbots, LLM agents, QA autotests from Valencia.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.svg'],
     creator: '@VadymNahornyi',
     site: '@VadymNahornyi',
   },
