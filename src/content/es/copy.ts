@@ -6,11 +6,11 @@ export const copy = {
     contact: "Contacto"
   },
   hero: {
-    title: 'Creamos IA que trabaja para su negocio',
-    subtitle: 'Implementamos soluciones de IA de vanguardia que optimizan procesos, reducen costos y aceleran el crecimiento.',
-    slogan: 'La IA no conquistará el mundo, a menos que la ayudemos.',
-    primary_cta: 'Explorar Servicios',
-    secondary_cta: 'Contáctenos',
+    title: 'Automatización con IA que impulsa ingresos',
+    subtitle: 'n8n · chatbots RAG · agentes · integraciones API. Piloto en 2–4 semanas, KPIs claros y soporte continuo.',
+    slogan: 'Automatización revenue-first. Rápido, pragmático, orientado al ROI.',
+    primary_cta: 'Hablar del proyecto',
+    secondary_cta: 'Reservar llamada',
   },
   services: {
     title: "Servicios",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import SchemaMarkup from '@/ui/SchemaMarkup';
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Nahornyi AILab - AI automation that drives revenue"
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nahornyi AILab — AI automation that drives revenue",
     description: "n8n, chatbots, integrations, QA autotests, LLM agents. Valencia → global.",
-    images: ["/og-image.jpg"]
+    images: ["/og-image.svg"]
   },
   robots: {
     index: true,
@@ -85,6 +86,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <SchemaMarkup />
         {children}
       </body>
     </html>
