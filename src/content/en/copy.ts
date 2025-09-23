@@ -6,11 +6,11 @@ export const copy = {
     contact: "Contact"
   },
   hero: {
-    title: 'AI automation that actually drives revenue',
-    subtitle: 'n8n · RAG chatbots · agents · API integrations. Pilot in 2–4 weeks, measurable KPIs, ongoing support.',
-    slogan: 'Revenue-first automation. Fast, pragmatic, ROI-oriented.',
-    primary_cta: 'Discuss your use case',
-    secondary_cta: 'Book a 20-min call',
+    title: 'We create AI that works for your business',
+    subtitle: 'We implement advanced AI solutions that optimize processes, reduce costs and accelerate growth.',
+    slogan: 'AI won\'t take over the world unless we help it.',
+    primary_cta: 'Discuss your project',
+    secondary_cta: 'Book a call',
   },
   services: {
     title: "Services",
