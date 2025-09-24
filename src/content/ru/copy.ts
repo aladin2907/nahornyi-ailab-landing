@@ -139,4 +139,14 @@ export const copy = {
       }
     ]
   }
+  ,
+  process: {
+    title: "Как мы работаем",
+    steps: [
+      { title: "Дискавери", desc: "Короткий звонок и разбор бизнес-целей.", icon: 'discover' },
+      { title: "Архитектура", desc: "Дизайн решения и метрик успеха.", icon: 'design' },
+      { title: "Сборка", desc: "Итеративно, быстро, с демонстрациями.", icon: 'build' },
+      { title: "Запуск", desc: "Мониторинг, алерты, улучшения по данным.", icon: 'launch' }
+    ] as const
+  }
 } as const;

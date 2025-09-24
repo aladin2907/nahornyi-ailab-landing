@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Image from 'next/image';
 
 interface AchievementsSectionProps {
@@ -11,16 +12,34 @@ interface AchievementsSectionProps {
 
 const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
-    if (images.length <= 1) return;
-
+    if (images.length <= 1 || isLightboxOpen) return;
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000); // Меняется каждые 4 секунды
-
+    }, 4000);
     return () => clearInterval(interval);
+  }, [images.length, isLightboxOpen]);
+
+  const prev = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   }, [images.length]);
+
+  const next = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  }, [images.length]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsLightboxOpen(false);
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isLightboxOpen, prev, next]);
 
   if (!images || images.length === 0) {
     return null;
@@ -73,7 +92,8 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
                   {images.map((image, index) => (
                     <div
                       key={index}
-                      className="min-w-full h-full flex items-center justify-center p-4"
+                      className="min-w-full h-full flex items-center justify-center p-4 cursor-zoom-in"
+                      onClick={() => { setCurrentIndex(index); setIsLightboxOpen(true); }}
                       role="group"
                       aria-label={`Achievement ${index + 1} of ${images.length}`}
                     >
@@ -127,6 +147,60 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
             </div>
           </motion.div>
         </div>
+        {/* Lightbox */}
+        <AnimatePresence>
+          {isLightboxOpen && images[currentIndex] && (
+            <motion.div
+              className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Achievement ${currentIndex + 1}`}
+              onClick={() => setIsLightboxOpen(false)}
+            >
+              <motion.div
+                className="relative w-full max-w-5xl h-[70vh]"
+                initial={{ scale: 0.98, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.98, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={`/achievements/${images[currentIndex]}`}
+                  alt={`Achievement ${currentIndex + 1}`}
+                  fill
+                  className="object-contain rounded-lg"
+                  priority
+                />
+                {/* Controls */}
+                <button
+                  onClick={() => setIsLightboxOpen(false)}
+                  className="absolute top-3 right-3 p-3 rounded-full bg-[--glass] text-white hover:bg-white/20"
+                  aria-label="Close"
+                >
+                  <FaTimes />
+                </button>
+                <button
+                  onClick={prev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-3 rounded-full bg-[--glass] text-white hover:bg-white/20"
+                  aria-label="Previous"
+                >
+                  <FaChevronLeft />
+                </button>
+                <button
+                  onClick={next}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-3 rounded-full bg-[--glass] text-white hover:bg-white/20"
+                  aria-label="Next"
+                >
+                  <FaChevronRight />
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

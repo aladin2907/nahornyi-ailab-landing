@@ -6,7 +6,7 @@ import { InstancedMesh, Vector3, BufferGeometry, BufferAttribute } from 'three';
 import * as THREE from 'three';
 import { usePerformance, getQualitySettings } from '@/lib/performance';
 import { useDeviceInfo } from '@/lib/device';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 
 interface Particle {
@@ -186,10 +186,13 @@ interface HeroProps {
 
 export default function Hero({ copy }: HeroProps) {
   const { isMobile } = useDeviceInfo();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   
   if (isMobile) {
     return (
-      <div id="hero" className="h-screen relative">
+      <div id="hero" ref={containerRef} className="h-screen relative">
         {/* Mobile Three.js Canvas with neural network */}
         <Canvas
           camera={{ position: [0, 0, 8], fov: 75 }}
@@ -225,7 +228,7 @@ export default function Hero({ copy }: HeroProps) {
           <pointLight position={[10, 10, 10]} intensity={0.5} />
         </Canvas>
         
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <motion.div style={{ y: parallaxY }} className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="text-center max-w-4xl px-4">
             <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
               Nahornyi AILab
@@ -252,13 +255,13 @@ export default function Hero({ copy }: HeroProps) {
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     );
   }
   
   return (
-    <div id="hero" className="h-screen relative">
+    <div id="hero" ref={containerRef} className="h-screen relative">
       {/* Fallback for browsers that don't support Three.js well */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] opacity-0 hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
       
@@ -296,7 +299,7 @@ export default function Hero({ copy }: HeroProps) {
         <pointLight position={[10, 10, 10]} intensity={0.5} />
       </Canvas>
       
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <motion.div style={{ y: parallaxY }} className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="text-center max-w-4xl px-4">
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
             Nahornyi AILab
@@ -323,7 +326,7 @@ export default function Hero({ copy }: HeroProps) {
             </>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

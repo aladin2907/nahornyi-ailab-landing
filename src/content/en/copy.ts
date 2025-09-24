@@ -139,4 +139,14 @@ export const copy = {
       }
     ]
   }
+  ,
+  process: {
+    title: "How we work",
+    steps: [
+      { title: "Discovery", desc: "Short call and business goals alignment.", icon: 'discover' },
+      { title: "Architecture", desc: "Solution design and success metrics.", icon: 'design' },
+      { title: "Build", desc: "Iterative delivery with frequent demos.", icon: 'build' },
+      { title: "Launch", desc: "Monitoring, alerts, data-driven improvements.", icon: 'launch' }
+    ] as const
+  }
 } as const;
