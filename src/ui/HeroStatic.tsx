@@ -23,20 +23,7 @@ export default function HeroStatic({ copy }: HeroStaticProps) {
             >
               {copy.hero.subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#services" 
-                className="px-8 py-4 bg-[#00FFF0] text-black rounded-lg font-medium hover:bg-[#00FFF0]/90 transition-colors"
-              >
-                {copy.hero.primary_cta}
-              </a>
-              <a 
-                href="#contact" 
-                className="px-8 py-4 border border-[#00FFF0] text-[#00FFF0] rounded-lg font-medium hover:bg-[#00FFF0]/10 transition-colors"
-              >
-                {copy.hero.secondary_cta}
-              </a>
-            </div>
+            
           </>
         )}
       </div>

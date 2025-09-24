@@ -13,20 +13,7 @@ const Hero = dynamic(() => import('@/modules/3d/Hero'), {
         <p className="text-lg sm:text-xl opacity-80 mb-8 leading-relaxed">
           n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="#services" 
-            className="px-8 py-4 bg-[#00FFF0] text-black rounded-lg font-medium hover:bg-[#00FFF0]/90 transition-colors"
-          >
-            Explore Services
-          </a>
-          <a 
-            href="#contact" 
-            className="px-8 py-4 border border-[#00FFF0] text-[#00FFF0] rounded-lg font-medium hover:bg-[#00FFF0]/10 transition-colors"
-          >
-            Book a Call
-          </a>
-        </div>
+        
       </div>
     </section>
   )
