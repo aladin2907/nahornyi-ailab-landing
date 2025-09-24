@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaExternalLinkAlt, FaMobile, FaCogs, FaTelegramPlane, FaRobot } from 'react-icons/fa';
-import { brand } from '@/content/brand';
 
 interface WorkProject {
   title: string;
@@ -130,40 +129,6 @@ export default function WorksProjectsSection({ title, items }: WorksProjectsSect
             <WorkProjectCard key={index} item={item} index={index} />
           ))}
         </div>
-        
-        {/* CTA Section */}
-        <motion.div 
-          className="text-center mt-12 sm:mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-lg text-[--foreground]/80 mb-6">
-            Готовы создать что-то похожее для вашего бизнеса?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
-              href="#contact"
-              className="px-8 py-4 bg-[--accent] text-white rounded-lg font-medium hover:bg-[--accent]/90 transition-colors inline-flex items-center justify-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Обсудить ваш проект
-            </motion.a>
-            <motion.a
-              href={`https://t.me/${brand.contacts.telegram.slice(1)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 border border-[--accent] text-[--accent] rounded-lg font-medium hover:bg-[--accent]/10 transition-colors inline-flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaTelegramPlane className="w-4 h-4" />
-              Написать в Telegram
-            </motion.a>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

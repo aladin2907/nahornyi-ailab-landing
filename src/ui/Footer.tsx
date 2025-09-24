@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { brand } from '@/content/brand';
-import { FaGithub, FaLinkedin, FaTelegram, FaTiktok, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaTelegram, FaTiktok, FaEnvelope } from 'react-icons/fa';
 import { SiN8N } from 'react-icons/si';
 
 interface FooterProps {
@@ -18,7 +18,6 @@ export default function Footer({ copy }: FooterProps) {
     { name: 'LinkedIn', href: brand.contacts.linkedin, icon: FaLinkedin, description: 'Connect on LinkedIn' },
     { name: 'n8n', href: brand.contacts.n8n, icon: SiN8N, description: 'Check out our n8n templates' },
     { name: 'TikTok', href: brand.contacts.tiktok, icon: FaTiktok, description: 'Follow us on TikTok' },
-    { name: 'GitHub', href: 'https://github.com/VadimNahornii', icon: FaGithub, description: 'View our code on GitHub' },
   ];
 
   return (
