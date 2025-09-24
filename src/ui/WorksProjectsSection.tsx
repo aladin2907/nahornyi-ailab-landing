@@ -31,7 +31,7 @@ function WorkProjectCard({ item, index, copy }: { item: WorkProject; index: numb
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-hover p-6 sm:p-8 card-3d shimmer group w-80 sm:w-96 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg min-h-[220px] flex flex-col justify-between text-center touch-feedback mobile-animation"
+      className="glass-hover p-6 sm:p-8 card-3d shimmer group w-72 sm:w-96 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg min-h-[220px] flex flex-col justify-between text-center touch-feedback mobile-animation"
       tabIndex={0}
       role="article"
       aria-labelledby={`item-title-${index}`}
