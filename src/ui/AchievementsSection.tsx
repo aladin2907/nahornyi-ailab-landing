@@ -43,7 +43,7 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
         >
           <h2 
             id="achievements-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-8 sm:mb-12"
           >
             {title}
           </h2>

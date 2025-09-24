@@ -19,12 +19,6 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nahornyi.ai'),
   alternates: {
     canonical: '/',
-    languages: {
-      'en': '/en',
-      'ru': '/ru', 
-      'es': '/es',
-      'uk': '/uk'
-    }
   },
   openGraph: {
     title: "Nahornyi AILab — AI automation that drives revenue",
@@ -35,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/ogphoto.png",
         width: 1200,
         height: 630,
         alt: "Nahornyi AILab - AI automation that drives revenue"
@@ -46,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nahornyi AILab — AI automation that drives revenue",
     description: "n8n, chatbots, integrations, QA autotests, LLM agents. Valencia → global.",
-    images: ["/og-image.svg"]
+    images: ["/ogphoto.png"]
   },
   robots: {
     index: true,
@@ -74,9 +68,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         {/* Preload critical resources */}
         <link rel="preload" href="/achievements/hllielsertificat.png" as="image" />
         <link rel="preload" href="/achievements/platonPythonPro.jpg" as="image" />

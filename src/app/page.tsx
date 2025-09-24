@@ -17,12 +17,6 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nahornyi.ai'),
   alternates: {
     canonical: '/',
-    languages: {
-      'en': '/en',
-      'ru': '/ru', 
-      'es': '/es',
-      'uk': '/uk',
-    },
   },
   openGraph: {
     type: 'website',

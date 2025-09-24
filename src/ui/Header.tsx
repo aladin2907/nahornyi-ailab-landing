@@ -26,7 +26,6 @@ function LanguageSwitcher({ currentLocale, onLocaleChange }: LanguageSwitcherPro
           key={locale.code}
           type="button"
           onClick={() => {
-            console.log('CLICK locale', locale.code);
             onLocaleChange(locale.code as Locale);
           }}
           className={`px-4 py-2 text-sm font-bold rounded-lg transition-all duration-200 flex items-center justify-center min-w-[44px] min-h-[44px] ${

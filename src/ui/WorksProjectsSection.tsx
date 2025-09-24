@@ -111,7 +111,7 @@ export default function WorksProjectsSection({ title, items, copy }: WorksProjec
         >
           <h2 
             id="works-projects-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-12"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-8 sm:mb-12"
           >
             {title}
           </h2>

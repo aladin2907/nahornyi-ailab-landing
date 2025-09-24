@@ -85,7 +85,7 @@ export default function ContactList({ title }: ContactListProps) {
         >
           <h2 
             id="contact-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-8 sm:mb-12"
           >
             {title}
           </h2>
