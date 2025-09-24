@@ -298,12 +298,12 @@ main section {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientShift 3s ease-in-out infinite;
+  animation: gradientShift 6s ease-in-out infinite;
 }
 
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  50% { background-position: 90% 50%; }
 }
 
 /* Floating Animation */

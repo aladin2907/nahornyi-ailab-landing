@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FaRobot, FaServer, FaChartBar, FaCogs, FaComments, FaShieldAlt, FaDatabase, FaProjectDiagram, FaWrench } from 'react-icons/fa';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -24,16 +25,21 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-hover p-4 sm:p-6 card-3d shimmer group w-72 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg min-h-[160px] flex flex-col justify-center items-center text-center touch-feedback mobile-animation"
+      className="glass-hover p-5 sm:p-7 card-3d group w-72 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-xl min-h-[180px] flex flex-col justify-center items-center text-center touch-feedback mobile-animation hover:shadow-xl hover:shadow-[rgba(0,255,240,0.08)]"
       tabIndex={0}
       role="article"
       aria-labelledby={`service-title-${index}`}
       aria-describedby={`service-desc-${index}`}
     >
       <div className="w-full">
+        <div className="flex justify-center mb-3">
+          <div className="p-3 rounded-full bg-[--accent]/10">
+            {getServiceIcon(service.title)}
+          </div>
+        </div>
         <h3 
           id={`service-title-${index}`}
-          className="text-lg sm:text-xl font-semibold mb-3 text-[--accent] gradient-text group-hover:scale-105 transition-transform"
+          className="text-lg sm:text-xl font-semibold mb-2 text-[--accent] gradient-text group-hover:scale-105 transition-transform"
         >
           {service.title}
         </h3>
@@ -95,4 +101,18 @@ export default function ServicesSection({ title, services }: ServicesSectionProp
       </div>
     </section>
   );
+}
+
+function getServiceIcon(title: string) {
+  const t = title.toLowerCase();
+  if (t.includes('ml') && t.includes('модел') || t.includes('custom ml')) return <FaRobot className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('инфраструкт') || t.includes('infrastructure')) return <FaServer className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('data') || t.includes('аналит')) return <FaDatabase className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('n8n')) return <FaCogs className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('llm')) return <FaProjectDiagram className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('чат') || t.includes('chat')) return <FaComments className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('qa')) return <FaShieldAlt className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('bi') || t.includes('analytics')) return <FaChartBar className="w-6 h-6 text-[--accent]" />;
+  if (t.includes('консалт') || t.includes('consult')) return <FaWrench className="w-6 h-6 text-[--accent]" />;
+  return <FaCogs className="w-6 h-6 text-[--accent]" />;
 }

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { brand } from '@/content/brand';
-import { FaGithub, FaLinkedin, FaTelegram, FaTiktok, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaTelegram, FaTiktok, FaEnvelope, FaWhatsapp, FaRobot, FaMapMarkerAlt, FaGlobe } from 'react-icons/fa';
 
 interface ContactListProps {
   title: string;
@@ -14,56 +14,56 @@ export default function ContactList({ title }: ContactListProps) {
       label: 'Telegram',
       value: brand.contacts.telegram,
       href: `https://t.me/${brand.contacts.telegram.slice(1)}`,
-      icon: '📱',
+      icon: <FaTelegram />,
       description: 'Chat with us on Telegram'
     },
     {
       label: 'AI Bot',
       value: '@VadymNahornyiCreateaibot',
       href: 'https://t.me/VadymNahornyiCreateaibot',
-      icon: '🤖',
+      icon: <FaRobot />,
       description: 'Try our AI automation bot'
     },
     {
       label: 'Email',
       value: brand.contacts.email,
       href: `mailto:${brand.contacts.email}`,
-      icon: '📧',
+      icon: <FaEnvelope />,
       description: 'Send us an email'
     },
     {
       label: 'TikTok',
       value: '@vadimatik',
       href: brand.contacts.tiktok,
-      icon: '🎵',
+      icon: <FaTiktok />,
       description: 'Follow us on TikTok'
     },
     {
       label: 'LinkedIn',
       value: 'Vadym Nahornyi',
       href: brand.contacts.linkedin,
-      icon: '💼',
+      icon: <FaLinkedin />,
       description: 'Connect on LinkedIn'
     },
     {
       label: 'n8n Templates',
       value: 'Creator Profile',
       href: brand.contacts.n8n,
-      icon: '🔧',
+      icon: <FaGlobe />,
       description: 'Check out our n8n templates'
     },
     {
       label: 'WhatsApp',
       value: brand.contacts.whatsapp,
       href: `https://wa.me/${brand.contacts.whatsapp.replace(/[^0-9]/g, '')}`,
-      icon: '💬',
+      icon: <FaWhatsapp />,
       description: 'Message us on WhatsApp'
     },
     {
       label: 'Location',
       value: `${brand.location} • Remote Worldwide`,
       href: '#',
-      icon: '📍',
+      icon: <FaMapMarkerAlt />,
       description: 'Based in Valencia, serving worldwide'
     }
   ];

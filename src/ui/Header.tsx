@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, type Locale } from '@/lib/i18n';
 import { brand } from '@/content/brand';
-import { useDeviceInfo } from '@/lib/device';
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;
@@ -51,17 +50,24 @@ interface HeaderProps {
 
 export default function Header({ copy }: HeaderProps) {
   const { locale, setLocale } = useLocale();
-  const { isMobile } = useDeviceInfo();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   
   if (!copy) return null;
   
   return (
     <header 
-      className="fixed top-0 w-full z-50 backdrop-blur-md bg-[--background]/95 border-b border-[--accent]/20 shadow-lg shadow-[--background]/50"
+      className={`fixed top-0 w-full z-50 backdrop-blur-md bg-[--background]/95 border-b border-[--accent]/20 ${isScrolled ? 'shadow-md' : 'shadow-lg'} shadow-[--background]/50 transition-all duration-300`}
       role="banner"
     >
-      <nav className="w-full flex items-center justify-between h-20" role="navigation" aria-label="Main navigation">
+      <nav className={`w-full flex items-center justify-between ${isScrolled ? 'h-16' : 'h-20'} transition-all duration-300`} role="navigation" aria-label="Main navigation">
         {/* Left: Logo */}
         <div 
           className="flex-shrink-0" 
