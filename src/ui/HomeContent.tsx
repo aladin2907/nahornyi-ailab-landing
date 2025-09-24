@@ -13,7 +13,6 @@ import ContactList from '@/ui/ContactList';
 import SectionDivider from '@/ui/SectionDivider';
 import HeroStatic from '@/ui/HeroStatic';
 import HeroClient from '@/ui/HeroClient';
-import ProcessSection from '@/ui/ProcessSection';
 
 // Static data for SSG
 const achievementImages = [
@@ -73,15 +72,7 @@ export default function HomeContent() {
         
         <SectionDivider />
         
-        {copy.process && (
-          <ProcessSection 
-            title={copy.process.title}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            steps={copy.process.steps as any}
-          />
-        )}
-
-        <SectionDivider />
+        
         
         <AchievementsSection 
           title={copy.achievements.title}
