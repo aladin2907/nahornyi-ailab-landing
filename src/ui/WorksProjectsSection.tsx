@@ -17,9 +17,11 @@ interface WorkProject {
 interface WorksProjectsSectionProps {
   title: string;
   items: readonly WorkProject[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  copy: any;
 }
 
-function WorkProjectCard({ item, index }: { item: WorkProject; index: number }) {
+function WorkProjectCard({ item, index, copy }: { item: WorkProject; index: number; copy: { worksProjects: { buttons: { view: string; openInTelegram: string }; types: Record<string, string> } } }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   
@@ -73,7 +75,7 @@ function WorkProjectCard({ item, index }: { item: WorkProject; index: number }) 
         aria-label={`Open ${item.title}`}
       >
         <span>
-          {item.type === 'telegram_bot' ? 'Открыть в Telegram' : 'Посмотреть'}
+          {item.type === 'telegram_bot' ? copy.worksProjects.buttons.openInTelegram : copy.worksProjects.buttons.view}
         </span>
         <FaExternalLinkAlt className="w-3 h-3" />
       </motion.a>
@@ -81,18 +83,14 @@ function WorkProjectCard({ item, index }: { item: WorkProject; index: number }) 
       {/* Touch-friendly area indicator for mobile */}
       <div className="mt-4 pt-2 border-t border-[--subtle] opacity-0 group-hover:opacity-100 transition-opacity w-full text-center">
         <span className="text-xs text-[--accent]/60">
-          {item.type === 'app' ? 'Мобильное приложение' :
-           item.type === 'platform' ? 'Веб-платформа' :
-           item.type === 'telegram_bot' ? 'Telegram Bot' :
-           item.type === 'web_app' ? 'Web Application' :
-           'Automation Project'}
+          {copy.worksProjects.types[item.type]}
         </span>
       </div>
     </motion.article>
   );
 }
 
-export default function WorksProjectsSection({ title, items }: WorksProjectsSectionProps) {
+export default function WorksProjectsSection({ title, items, copy }: WorksProjectsSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   
@@ -123,10 +121,10 @@ export default function WorksProjectsSection({ title, items }: WorksProjectsSect
           className="flex flex-wrap justify-center gap-6 sm:gap-8 pt-20 sm:pt-24 lg:pt-32"
           style={{ paddingTop: '56px' }}
           role="list"
-          aria-label="Our works and projects"
+          aria-label={copy.worksProjects.ariaLabel}
         >
           {items.map((item, index) => (
-            <WorkProjectCard key={index} item={item} index={index} />
+            <WorkProjectCard key={index} item={item} index={index} copy={copy} />
           ))}
         </div>
       </div>

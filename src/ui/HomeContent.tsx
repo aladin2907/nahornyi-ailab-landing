@@ -20,25 +20,19 @@ const achievementImages = [
   'hllielsertificat.png'
 ];
 
-// Combined works and projects
-const worksProjects = [
+// Static project links and config (descriptions come from copy)
+const worksProjectsConfig = [
   {
-    title: 'Traduktor',
-    description: 'AI-powered voice translator supporting 30+ languages. Real-time speech recognition and neural translation.',
     link: 'https://apps.apple.com/ua/app/traduktor/id6743999452',
     type: 'app' as const,
     icon: <FaMobile className="w-6 h-6 text-[--accent]" />
   },
   {
-    title: 'n8n Automation',
-    description: 'Powerful workflow automation platform for integrations, pipelines, and business process automation.',
     link: 'https://n8n.io',
     type: 'platform' as const,
     icon: <FaCogs className="w-6 h-6 text-[--accent]" />
   },
   {
-    title: 'Valencia Info Bot',
-    description: 'Telegram бот с полезной информацией о Валенсии. Помогает новичкам и жителям города найти нужную информацию.',
     link: 'https://t.me/valencia_info_bot',
     type: 'telegram_bot' as const,
     username: '@valencia_info_bot',
@@ -53,6 +47,12 @@ export default function HomeContent() {
   
   // Use static hero for better SEO, will be replaced by 3D version on client
   const useStaticHero = !localizedCopy; // Use static on first render (SSR)
+  
+  // Combine copy data with static config
+  const worksProjects = copy.worksProjects.items.map((item: { title: string; description: string }, index: number) => ({
+    ...item,
+    ...worksProjectsConfig[index]
+  }));
   
   return (
     <>
@@ -81,7 +81,8 @@ export default function HomeContent() {
         
         <WorksProjectsSection 
           title={copy.worksProjects.title}
-          items={worksProjects} 
+          items={worksProjects}
+          copy={copy}
         />
         
         <SectionDivider />

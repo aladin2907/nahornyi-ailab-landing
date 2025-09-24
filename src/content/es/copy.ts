@@ -111,6 +111,32 @@ export const copy = {
     title: "Nuestros Logros"
   },
   worksProjects: {
-    title: "Nuestros Trabajos y Proyectos"
+    title: "Nuestros Trabajos y Proyectos",
+    ariaLabel: "Nuestros trabajos y proyectos",
+    buttons: {
+      view: "Ver",
+      openInTelegram: "Abrir en Telegram"
+    },
+    types: {
+      app: "Aplicación Móvil",
+      platform: "Plataforma Web",
+      telegram_bot: "Bot de Telegram",
+      web_app: "Aplicación Web", 
+      automation: "Proyecto de Automatización"
+    },
+    items: [
+      {
+        title: "Traduktor",
+        description: "Traductor de voz con IA que soporta más de 30 idiomas. Reconocimiento de voz en tiempo real y traducción neuronal."
+      },
+      {
+        title: "n8n Automation",
+        description: "Poderosa plataforma de automatización de flujos de trabajo para integraciones, pipelines y automatización de procesos empresariales."
+      },
+      {
+        title: "Valencia Info Bot",
+        description: "Bot de Telegram con información útil sobre Valencia. Ayuda a recién llegados y residentes de la ciudad a encontrar la información que necesitan."
+      }
+    ]
   }
 } as const;

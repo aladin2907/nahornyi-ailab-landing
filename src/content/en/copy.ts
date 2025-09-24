@@ -111,6 +111,32 @@ export const copy = {
     title: "Our Achievements"
   },
   worksProjects: {
-    title: "Our Works & Projects"
+    title: "Our Works & Projects",
+    ariaLabel: "Our works and projects",
+    buttons: {
+      view: "View",
+      openInTelegram: "Open in Telegram"
+    },
+    types: {
+      app: "Mobile App",
+      platform: "Web Platform",
+      telegram_bot: "Telegram Bot", 
+      web_app: "Web Application",
+      automation: "Automation Project"
+    },
+    items: [
+      {
+        title: "Traduktor",
+        description: "AI-powered voice translator supporting 30+ languages. Real-time speech recognition and neural translation."
+      },
+      {
+        title: "n8n Automation",
+        description: "Powerful workflow automation platform for integrations, pipelines, and business process automation."
+      },
+      {
+        title: "Valencia Info Bot", 
+        description: "Telegram bot with useful information about Valencia. Helps newcomers and city residents find the information they need."
+      }
+    ]
   }
 } as const;
