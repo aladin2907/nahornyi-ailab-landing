@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaExternalLinkAlt, FaMobile, FaCogs, FaTelegramPlane, FaRobot } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 interface WorkProject {
   title: string;

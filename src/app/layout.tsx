@@ -86,19 +86,20 @@ export const metadata: Metadata = {
   }
 };
 
-function getInitialLang(): 'en' | 'ru' | 'es' | 'uk' {
-  const accepted = headers().get('accept-language') || '';
+async function getInitialLang(): Promise<'en' | 'ru' | 'es' | 'uk'> {
+  const hdrs = await headers();
+  const accepted = hdrs.get('accept-language') || '';
   const primary = accepted.split(',')[0]?.slice(0, 2).toLowerCase();
   if (primary === 'ru' || primary === 'es' || primary === 'uk') return primary as 'ru' | 'es' | 'uk';
   return 'en';
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialLang = getInitialLang();
+  const initialLang = await getInitialLang();
   return (
     <html lang={initialLang} className="scroll-smooth">
       <head>
