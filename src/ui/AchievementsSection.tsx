@@ -102,6 +102,7 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
                           src={`/achievements/${image}`}
                           alt={`Achievement ${index + 1} - ${image.replace(/\.(jpg|png|jpeg)$/i, '').replace(/([A-Z])/g, ' $1').trim()}`}
                           fill
+                          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 80vw, 800px"
                           className="object-contain rounded-lg"
                           priority={index === 0}
                         />
@@ -172,6 +173,7 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
                   src={`/achievements/${images[currentIndex]}`}
                   alt={`Achievement ${currentIndex + 1}`}
                   fill
+                  sizes="(max-width: 640px) 95vw, (max-width: 1024px) 85vw, 1000px"
                   className="object-contain rounded-lg"
                   priority
                 />

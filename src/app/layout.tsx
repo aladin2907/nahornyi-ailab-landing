@@ -28,9 +28,17 @@ export const metadata: Metadata = {
   creator: "Nahornyi AILab",
   publisher: "Nahornyi AILab",
   metadataBase: new URL('https://nahornyi.ai'),
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: 'cover',
+  },
   alternates: {
     canonical: '/',
     languages: {
+      'x-default': '/',
       en: '/',
       ru: '/',
       es: '/',
