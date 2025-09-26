@@ -16,6 +16,14 @@ import HeroClient from '@/ui/HeroClient';
 
 // Static data for SSG
 const achievementImages = [
+  // New diplomas
+  'IMG_1039.jpg',
+  'IMG_1040.jpg',
+  'IMG_1041.jpg',
+  'IMG_1042.jpg',
+  'IMG_1043.jpg',
+  'IMG_1044.jpg',
+  // Existing certificates
   'platonPythonPro.jpg',
   'hllielsertificat.png'
 ];
