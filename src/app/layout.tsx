@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import { headers } from 'next/headers';
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SchemaMarkup from '@/ui/SchemaMarkup';
@@ -28,13 +27,6 @@ export const metadata: Metadata = {
   creator: "Nahornyi AILab",
   publisher: "Nahornyi AILab",
   metadataBase: new URL('https://nahornyi.ai'),
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-    viewportFit: 'cover',
-  },
   alternates: {
     canonical: '/',
     languages: {
@@ -86,22 +78,21 @@ export const metadata: Metadata = {
   }
 };
 
-async function getInitialLang(): Promise<'en' | 'ru' | 'es' | 'uk'> {
-  const hdrs = await headers();
-  const accepted = hdrs.get('accept-language') || '';
-  const primary = accepted.split(',')[0]?.slice(0, 2).toLowerCase();
-  if (primary === 'ru' || primary === 'es' || primary === 'uk') return primary as 'ru' | 'es' | 'uk';
-  return 'en';
-}
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+};
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialLang = await getInitialLang();
   return (
-    <html lang={initialLang} className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         {/* Preload critical resources */}
         <link rel="preload" href="/achievements/hllielsertificat.png" as="image" />
