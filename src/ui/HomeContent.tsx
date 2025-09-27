@@ -1,7 +1,7 @@
 'use client';
 
 import { FaMobile, FaCogs, FaTelegramPlane } from 'react-icons/fa';
-import { copy as ruCopy } from '@/content/ru/copy';
+import { copy as enCopy } from '@/content/en/copy';
 import { useCopyLocalized } from '@/app/ClientWrapper';
 
 import Header from '@/ui/Header';
@@ -49,9 +49,9 @@ const worksProjectsConfig = [
 ];
 
 export default function HomeContent() {
-  // Use localized copy or fallback to Russian for SSR
+  // Use localized copy or fallback to English for SSR
   const localizedCopy = useCopyLocalized();
-  const copy = localizedCopy || ruCopy;
+  const copy = localizedCopy || enCopy;
   
   // Use static hero for better SEO, will be replaced by 3D version on client
   const useStaticHero = !localizedCopy; // Use static on first render (SSR)

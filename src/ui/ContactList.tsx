@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { brand } from '@/content/brand';
-import { FaLinkedin, FaTelegram, FaTiktok, FaEnvelope, FaWhatsapp, FaRobot, FaMapMarkerAlt, FaGlobe } from 'react-icons/fa';
+import { FaLinkedin, FaTelegram, FaTiktok, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaGlobe } from 'react-icons/fa';
 
 interface ContactListProps {
   title: string;
@@ -16,13 +16,6 @@ export default function ContactList({ title }: ContactListProps) {
       href: `https://t.me/${brand.contacts.telegram.slice(1)}`,
       icon: <FaTelegram />,
       description: 'Chat with us on Telegram'
-    },
-    {
-      label: 'AI Bot',
-      value: '@VadymNahornyiCreateaibot',
-      href: 'https://t.me/VadymNahornyiCreateaibot',
-      icon: <FaRobot />,
-      description: 'Try our AI automation bot'
     },
     {
       label: 'Email',
