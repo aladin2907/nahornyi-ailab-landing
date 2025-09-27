@@ -596,3 +596,117 @@ button {
     }
   }
 }
+
+/* Enhanced animations for gallery */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 240, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 240, 0.8);
+  }
+}
+
+@keyframes rotating-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-rotating-border {
+  animation: rotating-border 8s linear infinite;
+}
+
+/* CSS Variables for RGB values (for rgba usage) */
+:root {
+  --accent-rgb: 0, 255, 240;
+  --secondary-rgb: 138, 124, 255;
+  --foreground-rgb: 237, 237, 237;
+}
+
+/* Enhanced hover effects for cards */
+.achievement-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+  z-index: 1;
+}
+
+.achievement-card:hover::before {
+  left: 100%;
+}
+
+/* 3D perspective for cards */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+}
+
+/* Enhanced mobile animations */
+@media (max-width: 768px) {
+  .animate-shimmer {
+    animation-duration: 3s;
+  }
+  
+  .animate-float {
+    animation-duration: 8s;
+    transform: translateY(0px);
+  }
+  
+  .animate-glow-pulse {
+    animation: none;
+    box-shadow: 0 0 15px rgba(0, 255, 240, 0.3);
+  }
+}
