@@ -206,9 +206,9 @@ export default function Hero({ copy }: HeroProps) {
           fallback={
             <div className="h-full w-full bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] flex items-center justify-center">
               <div className="text-center">
-                <h1 className="text-4xl sm:text-5xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
+                <div className="text-4xl sm:text-5xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
                   Nahornyi AILab
-                </h1>
+                </div>
                 {copy && (
                   <>
                     <p className="text-lg sm:text-xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-6 max-w-sm mx-auto">
@@ -230,9 +230,9 @@ export default function Hero({ copy }: HeroProps) {
         
         <motion.div style={{ y: parallaxY }} className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="text-center max-w-4xl px-4">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
+            <div className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
               Nahornyi AILab
-            </h1>
+            </div>
             {copy && (
               <>
                 <motion.p 
@@ -277,9 +277,9 @@ export default function Hero({ copy }: HeroProps) {
         fallback={
           <div className="h-full w-full bg-gradient-to-br from-[#0B0B0F] to-[#1a1a2e] flex items-center justify-center">
             <div className="text-center">
-              <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
+              <div className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent">
                 Nahornyi AILab
-              </h1>
+              </div>
               {copy && (
                 <>
                   <p className="text-xl md:text-2xl font-medium italic bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent mb-6 max-w-2xl text-center">

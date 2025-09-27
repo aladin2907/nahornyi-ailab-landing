@@ -9,10 +9,12 @@ export const metadata: Metadata = {
     // EN
     'AI automation', 'artificial intelligence', 'machine learning', 'n8n workflows', 'RAG chatbots', 'LLM agents', 'QA autotests', 'business automation', 'Valencia AI', 'revenue automation', 'custom ML models', 'AI consulting',
     'AI implementation', 'implement AI', 'AI integration', 'AI process automation', 'AI implementation specialist', 'Vadym Nahornyi', 'Nahornyi AI Lab',
+    'Valencia AI consultant', 'AI consultant Spain', 'automation specialist Valencia', 'n8n expert Valencia', 'AI consultant near me', 'Spain AI automation', 'Valencia tech consultant', 'local AI expert Valencia',
     // RU
     'внедрение ИИ', 'внедрить ИИ', 'интеграция ИИ', 'автоматизация процессов с ИИ', 'специалист по внедрению ИИ', 'Вадим Нагорный', 'Nahornyi AI Lab',
     // ES
     'implementación de IA', 'integración de IA', 'automatización con IA', 'especialista en implementación de IA', 'Vadym Nahornyi', 'Nahornyi AI Lab',
+    'consultor IA Valencia', 'especialista IA España', 'automatización Valencia', 'consultor tecnológico Valencia', 'experto n8n Valencia', 'IA empresarial Valencia',
     // UK
     'впровадження ШІ', 'інтеграція ШІ', 'автоматизація процесів ШІ', 'спеціаліст зі впровадження ШІ', 'Вадим Нагорний', 'Nahornyi AI Lab'
   ],

@@ -11,15 +11,17 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Nahornyi AILab — AI automation that drives revenue",
-  description: "n8n, chatbots (Telegram/WhatsApp/Viber), integrations, QA autotests, LLM agents. Fast. Pragmatic. ROI-first.",
+  description: "We create AI that works for your business. Advanced AI solutions, n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach from Valencia to global.",
   keywords: [
     // EN
     "AI automation", "n8n", "chatbots", "QA autotests", "LLM agents", "Valencia", "automation consulting",
     "AI implementation", "implement AI", "AI integration", "AI process automation", "AI implementation specialist", "Vadym Nahornyi", "Nahornyi AI Lab",
+    "Valencia AI consultant", "AI consultant Spain", "automation specialist Valencia", "n8n expert Valencia", "AI consultant near me", "Spain AI automation", "Valencia tech consultant",
     // RU
     "внедрение ИИ", "внедрить ИИ", "интеграция ИИ", "автоматизация процессов с ИИ", "специалист по внедрению ИИ", "Вадим Нагорный", "Nahornyi AI Lab",
     // ES
     "implementación de IA", "integración de IA", "automatización con IA", "especialista en implementación de IA", "Vadym Nahornyi", "Nahornyi AI Lab",
+    "consultor IA Valencia", "especialista IA España", "automatización Valencia", "consultor tecnológico Valencia", "experto n8n Valencia", "IA empresarial Valencia",
     // UK
     "впровадження ШІ", "інтеграція ШІ", "автоматизація процесів ШІ", "спеціаліст зі впровадження ШІ", "Вадим Нагорний", "Nahornyi AI Lab"
   ],
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Nahornyi AILab — AI automation that drives revenue",
-    description: "n8n, chatbots (Telegram/WhatsApp/Viber), integrations, QA autotests, LLM agents. Fast. Pragmatic. ROI-first.",
+    description: "We create AI that works for your business. Advanced AI solutions, n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach from Valencia to global.",
     url: "https://nahornyi.ai",
     siteName: "Nahornyi AILab",
     locale: "en_US",
@@ -57,7 +59,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nahornyi AILab — AI automation that drives revenue",
-    description: "n8n, chatbots, integrations, QA autotests, LLM agents. Valencia → global.",
+    description: "We create AI that works for your business. n8n workflows, RAG chatbots, LLM agents, QA autotests from Valencia to global.",
     images: ["/ogphoto.png"]
   },
   robots: {
