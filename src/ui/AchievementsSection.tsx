@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import Image from 'next/image';
+import OptimizedImage from './OptimizedImage';
 
 interface AchievementsSectionProps {
   title: string;
@@ -102,9 +102,6 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
               >
                 {extendedImages.map((image, slideIndex) => {
                   const originalIndex = slideIndex % images.length;
-                  // For continuous scroll, no need for center detection
-                  const isCenter = false;
-                  const relativePosition = 0; // No relative positioning needed for continuous scroll
                   return (
                     <div
                       key={slideIndex}
@@ -144,7 +141,7 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
                           className="relative overflow-hidden rounded-lg transition-all duration-500 w-full h-[320px] sm:h-[380px] lg:h-[420px]"
                         >
                           <motion.div className="w-full h-full flex items-center justify-center p-2" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                            <Image
+                            <OptimizedImage
                               src={`/achievements/${image}`}
                               alt={`Achievement ${originalIndex + 1} - ${String(image)
                                 .replace(/\.(jpg|png|jpeg)$/i, '')
@@ -264,10 +261,12 @@ const AchievementsSection = ({ title, images }: AchievementsSectionProps) => {
                     transition={{ duration: 0.3 }}
                     className="w-full h-full"
                   >
-                    <Image
+                    <OptimizedImage
                       src={`/achievements/${images[lightboxIndex]}`}
                       alt={`Achievement ${lightboxIndex + 1}`}
                       fill
+                      width={1200}
+                      height={800}
                       sizes="(max-width: 640px) 95vw, (max-width: 1024px) 90vw, 1200px"
                       className="object-contain p-4"
                       priority

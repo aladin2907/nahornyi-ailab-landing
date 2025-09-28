@@ -97,8 +97,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         {/* Preload critical resources */}
-        <link rel="preload" href="/achievements/hllielsertificat.png" as="image" />
-        <link rel="preload" href="/achievements/platonPythonPro.jpg" as="image" />
+        <link rel="preload" href="/achievements/hllielsertificat.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/achievements/platonPythonPro.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/achievements/hllielsertificat.png" as="image" type="image/png" />
+        <link rel="preload" href="/achievements/platonPythonPro.jpg" as="image" type="image/jpeg" />
       </head>
       <body className={`${inter.variable} antialiased`}>
         {/* Skip link for accessibility */}
