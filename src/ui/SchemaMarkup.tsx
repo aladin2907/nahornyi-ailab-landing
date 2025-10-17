@@ -6,7 +6,7 @@ export default function SchemaMarkup() {
     "name": "Nahornyi AILab",
     "url": "https://nahornyi.ai",
     "logo": "https://nahornyi.ai/ogphoto.png",
-    "description": "AI automation that drives revenue. n8n workflows, RAG chatbots, LLM agents, QA autotests.",
+    "description": "AI solutions. n8n workflows, RAG chatbots, LLM agents, QA autotests.",
     "foundingDate": "2024",
     "founder": {
       "@type": "Person",
@@ -93,7 +93,7 @@ export default function SchemaMarkup() {
     "@type": "WebSite",
     "name": "Nahornyi AILab",
     "url": "https://nahornyi.ai",
-    "description": "AI automation that drives revenue",
+    "description": "AI solutions",
     "inLanguage": ["en", "ru", "es", "uk"]
   };
 

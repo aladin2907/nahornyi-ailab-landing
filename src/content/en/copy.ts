@@ -92,8 +92,8 @@ export const copy = {
     contact_button: "Contact"
   },
   hero_hardcoded: {
-    subtitle_mobile: "AI automation that drives revenue",
-    subtitle_desktop: "AI automation that drives revenue — not reports.",
+    subtitle_mobile: "AI solutions",
+    subtitle_desktop: "AI solutions — not reports.",
     cta_primary: "Discuss your use case", 
     cta_secondary: "What we build"
   },

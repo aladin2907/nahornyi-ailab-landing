@@ -49,9 +49,15 @@ interface HeaderProps {
 }
 
 export default function Header({ copy }: HeaderProps) {
-  const { locale, setLocale } = useLocale();
+  const { locale: actualLocale, setLocale } = useLocale();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [locale, setLocalLocale] = useState<Locale>('en'); // Default for SSR
+  
+  // Sync locale after hydration to avoid mismatch
+  useEffect(() => {
+    setLocalLocale(actualLocale);
+  }, [actualLocale]);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);

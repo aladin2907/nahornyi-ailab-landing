@@ -215,7 +215,7 @@ export default function Hero({ copy }: HeroProps) {
                       &ldquo;{copy.hero.slogan}&rdquo;
                     </p>
                     <p className="text-base text-[--foreground]/70 max-w-sm mx-auto">
-                      {copy?.hero.subtitle || 'AI automation that drives revenue'}
+                      {copy?.hero.subtitle || 'AI solutions'}
                     </p>
                   </>
                 )}
@@ -250,7 +250,7 @@ export default function Hero({ copy }: HeroProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  {copy?.hero.subtitle || 'AI automation that drives revenue'}
+                  {copy?.hero.subtitle || 'AI solutions'}
                 </motion.p>
               </>
             )}

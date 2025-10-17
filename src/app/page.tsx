@@ -3,7 +3,7 @@ import ClientWrapper from './ClientWrapper';
 import HomeContent from '@/ui/HomeContent';
 
 export const metadata: Metadata = {
-  title: 'Nahornyi AILab — AI automation that drives revenue',
+  title: 'Nahornyi AILab — AI solutions',
   description: 'We create AI that works for your business. Advanced AI solutions, n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach from Valencia to global.',
   keywords: [
     // EN
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'Nahornyi AILab',
-    title: 'Nahornyi AILab — AI automation that drives revenue',
+    title: 'Nahornyi AILab — AI solutions',
     description: 'We create AI that works for your business. Advanced AI solutions, n8n workflows, RAG chatbots, LLM agents, QA autotests.',
     url: 'https://nahornyi.ai',
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         url: '/ogphoto.png',
         width: 1200,
         height: 630,
-        alt: 'Nahornyi AILab - AI automation that drives revenue',
+        alt: 'Nahornyi AILab - AI solutions',
       },
     ],
     locale: 'en_US',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nahornyi AILab — AI automation that drives revenue',
+    title: 'Nahornyi AILab — AI solutions',
     description: 'We create AI that works for your business. n8n workflows, RAG chatbots, LLM agents, QA autotests from Valencia.',
     images: ['/ogphoto.png'],
     creator: '@VadymNahornyi',

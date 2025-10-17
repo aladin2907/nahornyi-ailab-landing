@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nahornyi AILab — AI automation that drives revenue",
+  title: "Nahornyi AILab — AI solutions",
   description: "We create AI that works for your business. Advanced AI solutions, n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach from Valencia to global.",
   keywords: [
     // EN
@@ -29,6 +29,19 @@ export const metadata: Metadata = {
   creator: "Nahornyi AILab",
   publisher: "Nahornyi AILab",
   metadataBase: new URL('https://nahornyi.ai'),
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+  },
+  manifest: '/site.webmanifest',
   alternates: {
     canonical: '/',
     languages: {
@@ -40,7 +53,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Nahornyi AILab — AI automation that drives revenue",
+    title: "Nahornyi AILab — AI solutions",
     description: "We create AI that works for your business. Advanced AI solutions, n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach from Valencia to global.",
     url: "https://nahornyi.ai",
     siteName: "Nahornyi AILab",
@@ -52,13 +65,13 @@ export const metadata: Metadata = {
         url: "/ogphoto.png",
         width: 1200,
         height: 630,
-        alt: "Nahornyi AILab - AI automation that drives revenue"
+        alt: "Nahornyi AILab - AI solutions"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nahornyi AILab — AI automation that drives revenue",
+    title: "Nahornyi AILab — AI solutions",
     description: "We create AI that works for your business. n8n workflows, RAG chatbots, LLM agents, QA autotests from Valencia to global.",
     images: ["/ogphoto.png"]
   },

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { FaMobile, FaCogs, FaTelegramPlane } from 'react-icons/fa';
 import { copy as enCopy } from '@/content/en/copy';
 import { useCopyLocalized } from '@/app/ClientWrapper';
@@ -54,7 +55,11 @@ export default function HomeContent() {
   const copy = localizedCopy || enCopy;
   
   // Use static hero for better SEO, will be replaced by 3D version on client
-  const useStaticHero = !localizedCopy; // Use static on first render (SSR)
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   
   // Combine copy data with static config
   const worksProjects = copy.worksProjects.items.map((item: { title: string; description: string }, index: number) => ({
@@ -67,7 +72,7 @@ export default function HomeContent() {
       <Header copy={copy} />
       
       <main id="main-content" role="main" aria-label="Main content">
-        {useStaticHero ? (
+        {!isClient ? (
           <HeroStatic copy={copy} />
         ) : (
           <HeroClient copy={copy} />
