@@ -26,6 +26,7 @@ export default function SchemaMarkup() {
       "url": "https://nahornyi.ai#contact"
     },
     "sameAs": [
+      "https://www.linkedin.com/in/vadym-nahornyi-3b2959158",
       "https://apps.apple.com/ua/app/traduktor/id6743999452"
     ]
   };
@@ -38,6 +39,9 @@ export default function SchemaMarkup() {
     "alternateName": ["Вадим Нагорный", "Vadim Nahornyi"],
     "jobTitle": "AI Implementation & Automation Specialist",
     "url": "https://nahornyi.ai",
+    "sameAs": [
+      "https://www.linkedin.com/in/vadym-nahornyi-3b2959158"
+    ],
     "affiliation": { "@id": "https://nahornyi.ai/#organization" },
     "knowsLanguage": ["en", "ru", "es", "uk"],
     "knowsAbout": [

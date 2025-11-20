@@ -13,17 +13,21 @@ export const metadata: Metadata = {
   title: "Nahornyi AILab — AI solutions",
   description: "We create AI that works for your business. Advanced AI solutions, n8n workflows, RAG chatbots, LLM agents, QA autotests. Fast, pragmatic, ROI-first approach from Valencia to global.",
   keywords: [
-    // EN
+    // EN - High Tech & Agentic Focus
+    "Agentic AI", "Multi-agent systems", "Autonomous Agents", "AI Agents Development", "LangGraph", "LangChain", "RAG pipelines",
     "AI automation", "n8n", "chatbots", "QA autotests", "LLM agents", "Valencia", "automation consulting",
     "AI implementation", "implement AI", "AI integration", "AI process automation", "AI implementation specialist", "Vadym Nahornyi", "Nahornyi AI Lab",
     "Valencia AI consultant", "AI consultant Spain", "automation specialist Valencia", "n8n expert Valencia", "AI consultant near me", "Spain AI automation", "Valencia tech consultant",
     // RU
+    "разработка ИИ агентов", "мультиагентные системы", "автономные агенты", "RAG системы", "LangGraph разработка",
     "внедрение ИИ", "внедрить ИИ", "интеграция ИИ", "автоматизация процессов с ИИ", "специалист по внедрению ИИ", "Вадим Нагорный", "Nahornyi AI Lab",
     // ES
+    "sistemas multi-agente", "agentes autónomos IA", "desarrollo IA",
     "implementación de IA", "integración de IA", "automatización con IA", "especialista en implementación de IA", "Vadym Nahornyi", "Nahornyi AI Lab",
     "consultor IA Valencia", "especialista IA España", "automatización Valencia", "consultor tecnológico Valencia", "experto n8n Valencia", "IA empresarial Valencia",
     // UK
-    "впровадження ШІ", "інтеграція ШІ", "автоматизація процесів ШІ", "спеціаліст зі впровадження ШІ", "Вадим Нагорний", "Nahornyi AI Lab"
+    "розробка ШІ агентів", "мультиагентні системи",
+    "впровадження ШІ", "інтеграція ШІ", "автоматизація процесів ШІ", "спеціаліст зі впровадження ШІ", "Вадим Нагорный", "Nahornyi AI Lab"
   ],
   authors: [{ name: "Nahornyi AILab" }],
   creator: "Nahornyi AILab",

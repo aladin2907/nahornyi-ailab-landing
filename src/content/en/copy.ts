@@ -7,7 +7,7 @@ export const copy = {
   },
   hero: {
     title: 'We create AI that works for your business',
-    subtitle: 'We implement advanced AI solutions that optimize processes, reduce costs and accelerate growth.',
+    subtitle: 'We build autonomous AI agents and multi-agent systems. Optimize processes, cut costs, and deliver real ROI.',
     slogan: 'AI won\'t take over the world unless we help it.',
     primary_cta: 'Discuss your project',
     secondary_cta: 'Book a call',
@@ -19,9 +19,9 @@ export const copy = {
       {title: "AI/ML Infrastructure", desc: "Dedicated GPU servers, model deployment, MLOps pipelines, monitoring & scaling."},
       {title: "Data Science & Engineering", desc: "ETL for ML, feature engineering, model validation, A/B testing for AI features."},
       {title: "n8n Automation", desc: "Integrations, pipelines, alerts, ETL, production hardening."},
-      {title: "LLM Agents", desc: "RAG, vector DBs, prompt engineering, MCP, fine-tuning."},
+      {title: "Multi-Agent Systems", desc: "Autonomous AI Agents (LangGraph, LangChain). Complex workflows, RAG, planning & execution."},
       {title: "Chatbots", desc: "Telegram/WhatsApp/Viber — leadgen, support, payments."},
-      {title: "QA Autotests", desc: "E2E/UI, case generation, regression, screenshots & reports."},
+      {title: "AI QA Automation", desc: "AI-generated tests, E2E, regression. Saving hundreds of manual testing hours."},
       {title: "BI & Analytics", desc: "Data collection, dashboards, messenger alerts."},
       {title: "Consulting & Architecture", desc: "Audits, solution design, MVP launch."}
     ]

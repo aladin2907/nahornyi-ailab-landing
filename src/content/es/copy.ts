@@ -7,7 +7,7 @@ export const copy = {
   },
   hero: {
     title: 'Creamos IA que funciona para tu negocio',
-    subtitle: 'Implementamos soluciones de IA avanzadas que optimizan procesos, reducen costos y aceleran el crecimiento.',
+    subtitle: 'Desarrollamos agentes de IA autónomos y sistemas multi-agente. Optimizamos procesos y generamos ROI real.',
     slogan: 'La IA no conquistará el mundo a menos que la ayudemos.',
     primary_cta: 'Hablar del proyecto',
     secondary_cta: 'Reservar llamada',
@@ -19,9 +19,9 @@ export const copy = {
       {title: "Infraestructura AI/ML", desc: "Servidores GPU dedicados, despliegue de modelos, pipelines MLOps, monitoreo y escalado."},
       {title: "Data Science & Engineering", desc: "ETL para ML, feature engineering, validación de modelos, A/B testing para funciones AI."},
       {title: "Automatización n8n", desc: "Integraciones, pipelines, alertas, ETL, endurecimiento en producción."},
-      {title: "Agentes LLM", desc: "RAG, BD vectoriales, prompt engineering, MCP, fine-tuning."},
+      {title: "Sistemas Multi-Agente", desc: "Agentes IA autónomos (LangGraph, LangChain). Flujos complejos, RAG, planificación y ejecución."},
       {title: "Chatbots", desc: "Telegram/WhatsApp/Viber — captación, soporte, pagos."},
-      {title: "Pruebas QA automáticas", desc: "E2E/UI, generación de casos, regresión, capturas e informes."},
+      {title: "QA Automation con IA", desc: "Generación de tests con IA, E2E, regresión. Ahorro de cientos de horas de pruebas manuales."},
       {title: "BI & Analítica", desc: "Recogida de datos, dashboards, alertas a mensajería."},
       {title: "Consultoría y Arquitectura", desc: "Auditorías, diseño de soluciones, lanzamiento de MVP."}
     ]
