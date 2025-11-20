@@ -1,9 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaFolderOpen } from 'react-icons/fa';
 
 interface WorkProject {
   title: string;
@@ -11,7 +9,7 @@ interface WorkProject {
   link: string;
   type: 'app' | 'platform' | 'telegram_bot' | 'web_app' | 'automation';
   icon: React.ReactNode;
-  username?: string; // For Telegram bots
+  username?: string;
 }
 
 interface WorksProjectsSectionProps {
@@ -21,110 +19,81 @@ interface WorksProjectsSectionProps {
   copy: any;
 }
 
-function WorkProjectCard({ item, index, copy }: { item: WorkProject; index: number; copy: { worksProjects: { buttons: { view: string; openInTelegram: string }; types: Record<string, string> } } }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  
+function ProjectCard({ item, index }: { item: WorkProject; index: number }) {
+  const num = (index + 1).toString().padStart(2, '0');
+
   return (
     <motion.article
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-hover p-6 sm:p-8 card-3d shimmer group w-72 sm:w-96 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg min-h-[220px] flex flex-col justify-between text-center touch-feedback mobile-animation"
-      tabIndex={0}
-      role="article"
-      aria-labelledby={`item-title-${index}`}
-      aria-describedby={`item-desc-${index}`}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="acid-card p-8 md:p-10 flex flex-col h-full group rounded-2xl"
     >
-      <div className="w-full">
-        <div className="flex justify-center mb-4">
-          <div className="p-3 rounded-full bg-[--accent]/10 group-hover:bg-[--accent]/20 transition-colors">
-            {item.icon}
-          </div>
+      <div className="flex justify-between items-start mb-8">
+        <div className="font-mono text-xs text-[--neon-pink] border border-[--neon-pink]/30 px-3 py-1 rounded-full">
+          CASE_FILE_{num}
         </div>
-        
-        <h3 
-          id={`item-title-${index}`}
-          className="text-xl sm:text-2xl font-semibold mb-3 text-[--accent] gradient-text group-hover:scale-105 transition-transform"
-        >
+        <FaFolderOpen className="text-white/20 w-8 h-8 group-hover:text-[--neon-lime] transition-colors duration-300" />
+      </div>
+
+      <div className="mb-8">
+        <h3 className="text-3xl md:text-4xl font-black uppercase leading-none mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[--neon-cyan] group-hover:to-[--neon-lime] transition-all duration-300">
           {item.title}
         </h3>
         
         {item.username && (
-          <p className="text-sm text-[--accent]/80 mb-2 font-mono">
+          <div className="inline-block bg-white/10 px-3 py-1 mb-4 font-mono text-xs text-[--neon-cyan] rounded">
             {item.username}
-          </p>
+          </div>
         )}
-        
-        <p 
-          id={`item-desc-${index}`}
-          className="text-sm sm:text-base text-[--foreground]/80 leading-relaxed mb-4"
-        >
+
+        <p className="text-gray-400 font-mono text-sm leading-relaxed">
           {item.description}
         </p>
       </div>
-      
-      <motion.a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[--accent] text-white rounded-lg font-medium hover:bg-[--accent]/90 transition-colors group-hover:scale-105 transform"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label={`Open ${item.title}`}
-      >
-        <span>
-          {item.type === 'telegram_bot' ? copy.worksProjects.buttons.openInTelegram : copy.worksProjects.buttons.view}
-        </span>
-        <FaExternalLinkAlt className="w-3 h-3" />
-      </motion.a>
-      
-      {/* Touch-friendly area indicator for mobile */}
-      <div className="mt-4 pt-2 border-t border-[--subtle] opacity-0 group-hover:opacity-100 transition-opacity w-full text-center">
-        <span className="text-xs text-[--accent]/60">
-          {copy.worksProjects.types[item.type]}
-        </span>
+
+      <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 bg-[--neon-lime] rounded-full animate-pulse"></div>
+          <span className="text-xs font-bold uppercase text-gray-500">Active</span>
+        </div>
+        
+        <a 
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-2 bg-white/5 hover:bg-[--neon-purple] text-white rounded-lg transition-all duration-300 font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_15px_var(--neon-purple)]"
+        >
+          <span>Open</span>
+          <FaExternalLinkAlt className="w-3 h-3" />
+        </a>
       </div>
     </motion.article>
   );
 }
 
-export default function WorksProjectsSection({ title, items, copy }: WorksProjectsSectionProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  
+export default function WorksProjectsSection({ items }: WorksProjectsSectionProps) {
   return (
-    <section 
-      id="works-projects" 
-      className="py-20 sm:py-28 lg:py-36 bg-gradient-to-b from-[#0F0F1A]/60 to-[--background]/60 backdrop-blur-sm"
-      aria-labelledby="works-projects-heading"
-    >
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.header
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-          style={{ paddingTop: '40px' }}
-        >
-          <h2 
-            id="works-projects-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-8 sm:mb-12"
-          >
-            {title}
-          </h2>
-        </motion.header>
-        
-        <div 
-          className="flex flex-wrap justify-center gap-6 sm:gap-8 pt-20 sm:pt-24 lg:pt-32"
-          style={{ paddingTop: '56px' }}
-          role="list"
-          aria-label={copy.worksProjects.ariaLabel}
-        >
+    <section className="py-16 bg-black/50 grid-pattern border-t border-white/10">
+      <div className="w-full max-w-[1400px] mx-auto px-6">
+        <div className="mb-20 flex flex-col md:flex-row justify-between items-end gap-6">
+          <div>
+            <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-white mb-2">
+              Selected <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--neon-pink] to-[--neon-purple]">Works</span>
+            </h2>
+          </div>
+          
+          <div className="font-mono text-right text-xs text-gray-500 hidden md:block mb-4">
+            {'// DEPLOYED_PROJECTS'} <br/>
+            {'// STATUS: ONLINE'}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {items.map((item, index) => (
-            <WorkProjectCard key={index} item={item} index={index} copy={copy} />
+            <ProjectCard key={index} item={item} index={index} />
           ))}
         </div>
       </div>

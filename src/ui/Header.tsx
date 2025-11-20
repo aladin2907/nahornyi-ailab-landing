@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, type Locale } from '@/lib/i18n';
-import { brand } from '@/content/brand';
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;
@@ -12,31 +11,32 @@ interface LanguageSwitcherProps {
 
 function LanguageSwitcher({ currentLocale, onLocaleChange }: LanguageSwitcherProps) {
   const locales = [
-    { code: 'en', name: 'EN', fullName: 'English' },
-    { code: 'ru', name: 'RU', fullName: 'Русский' },
-    { code: 'es', name: 'ES', fullName: 'Español' },
-    { code: 'uk', name: 'UK', fullName: 'Українська' }
+    { code: 'en', name: 'EN' },
+    { code: 'ru', name: 'RU' },
+    { code: 'es', name: 'ES' },
+    { code: 'uk', name: 'UK' }
   ] as const;
 
   return (
-    <div className="flex gap-2" role="group" aria-label="Language selection">
+    <div className="flex gap-1 bg-black/40 backdrop-blur-lg p-1 rounded-xl border border-white/10">
       {locales.map((locale) => (
         <button
           key={locale.code}
-          type="button"
-          onClick={() => {
-            onLocaleChange(locale.code as Locale);
-          }}
-          className={`px-4 py-2 text-sm font-bold rounded-lg transition-all duration-200 flex items-center justify-center min-w-[44px] min-h-[44px] ${
+          onClick={() => onLocaleChange(locale.code as Locale)}
+          style={
             currentLocale === locale.code
-              ? 'bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] text-black'
-              : 'bg-[--glass] text-[--foreground] hover:bg-[--accent]/20 border border-[--subtle]'
-          }`}
-          aria-label={`Switch to ${locale.fullName}`}
-          aria-pressed={currentLocale === locale.code}
+              ? { backgroundColor: 'var(--neon-lime)', color: '#000000', boxShadow: '0 0 10px var(--neon-lime)' }
+              : {}
+          }
+          className={`
+            relative px-3 py-1.5 text-xs font-bold rounded-lg transition-all duration-200
+            ${currentLocale === locale.code 
+              ? '' 
+              : 'text-gray-400 hover:text-white hover:bg-white/5'
+            }
+          `}
         >
-          <span className="sr-only sm:not-sr-only">{locale.name}</span>
-          <span className="sm:hidden">{locale.name}</span>
+          {locale.name}
         </button>
       ))}
     </div>
@@ -52,17 +52,15 @@ export default function Header({ copy }: HeaderProps) {
   const { locale: actualLocale, setLocale } = useLocale();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [locale, setLocalLocale] = useState<Locale>('en'); // Default for SSR
+  const [locale, setLocalLocale] = useState<Locale>('en');
   
-  // Sync locale after hydration to avoid mismatch
   useEffect(() => {
     setLocalLocale(actualLocale);
   }, [actualLocale]);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   
@@ -70,146 +68,92 @@ export default function Header({ copy }: HeaderProps) {
   
   return (
     <header 
-      className={`fixed top-0 w-full z-50 backdrop-blur-md bg-[--background]/95 border-b border-[--accent]/20 ${isScrolled ? 'shadow-md' : 'shadow-lg'} shadow-[--background]/50 transition-all duration-300`}
-      role="banner"
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled 
+          ? 'py-4 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5' 
+          : 'py-6 bg-transparent border-transparent'
+      }`}
     >
-      <nav className={`w-full flex items-center justify-between ${isScrolled ? 'h-16' : 'h-20'} transition-all duration-300`} role="navigation" aria-label="Main navigation">
-        {/* Left: Logo */}
-        <div 
-          className="flex-shrink-0" 
-          style={{ paddingLeft: '24px' }}
-        >
-          <a 
-            href="#" 
-            className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent tracking-tight"
-            aria-label={`${brand.name} - Go to homepage`}
+      <nav className="w-full max-w-[1400px] mx-auto px-6 flex items-center justify-between">
+        
+        {/* Logo */}
+        <a href="#" className="relative group">
+          <div className="absolute -inset-2 bg-gradient-to-r from-[--neon-lime] to-[--neon-cyan] rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+          <div className="relative text-2xl font-black tracking-tighter text-white">
+            NAHORNYI<span className="text-[--neon-lime]">.AI</span>
+          </div>
+        </a>
+        
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {[
+            { name: copy.nav.services, href: '#services' },
+            { name: copy.nav.contact, href: '#contact' }
+          ].map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-sm font-mono text-gray-400 hover:text-[--neon-cyan] transition-colors uppercase tracking-widest hover-glitch-text"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              {item.name}
+            </a>
+          ))}
+          
+          <LanguageSwitcher currentLocale={locale} onLocaleChange={setLocale} />
+          
+          <a
+            href="#contact"
+            className="group relative px-6 py-2 bg-[--neon-lime] text-black font-black text-sm uppercase tracking-wider rounded-lg overflow-hidden hover:shadow-[0_0_20px_var(--neon-lime)] transition-all duration-300"
           >
-            {brand.name}
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            <span className="relative">Let&apos;s Talk</span>
           </a>
         </div>
         
-        {/* Center: Desktop Navigation */}
-        <div className="hidden md:flex items-center justify-center flex-grow">
-          <div className="flex items-center gap-8 lg:gap-12">
-            <a
-              href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent hover:brightness-125 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg"
-              aria-label={`${copy.nav.services} - Navigate to services section`}
-            >
-              {copy.nav.services}
-            </a>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent hover:brightness-125 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[--accent] focus-visible:ring-offset-[--background] rounded-lg"
-              aria-label={`${copy.nav.contact} - Navigate to contact section`}
-            >
-              {copy.nav.contact}
-            </a>
-          </div>
-        </div>
-        
-        {/* Right: Language Switcher & Mobile Menu */}
-        <div 
-          className="flex items-center gap-4 flex-shrink-0"
-          style={{ paddingRight: '24px' }}
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden relative z-50 w-10 h-10 flex flex-col justify-center items-center gap-1.5 group"
         >
-          {/* Language Switcher - always visible */}
-          <div className="hidden sm:block">
-            <LanguageSwitcher currentLocale={locale} onLocaleChange={setLocale} />
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-3 text-[--foreground] hover:text-[--accent] transition-colors flex items-center justify-center min-w-[44px] min-h-[44px] rounded-lg"
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-haspopup="true"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center items-center" aria-hidden="true">
-              <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
-              <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-              <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} />
-            </div>
-          </button>
-        </div>
-      </nav>
-      
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-[--background]/98 backdrop-blur-md border-b border-[--accent]/20"
-            role="menu"
-            aria-label="Mobile navigation menu"
-          >
-            <div className="px-4 py-6 space-y-4">
-              <motion.a
-                href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block text-lg font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent py-2 min-h-[44px] flex items-center"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.1 }}
-                role="menuitem"
-                aria-label={`${copy.nav.services} - Navigate to services section`}
-              >
-                {copy.nav.services}
-              </motion.a>
-              <motion.a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block text-lg font-semibold bg-gradient-to-r from-[#00FFF0] to-[#8A7CFF] bg-clip-text text-transparent py-2 min-h-[44px] flex items-center"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                role="menuitem"
-                aria-label={`${copy.nav.contact} - Navigate to contact section`}
-              >
-                {copy.nav.contact}
-              </motion.a>
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2 bg-[--neon-lime]' : ''}`} />
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2 bg-[--neon-lime]' : ''}`} />
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-6 md:hidden shadow-2xl"
+            >
+              {[
+                { name: copy.nav.services, href: '#services' },
+                { name: copy.nav.contact, href: '#contact' }
+              ].map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-2xl font-black text-white hover:text-[--neon-lime] uppercase tracking-tighter"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
               
-              {/* Mobile Language Switcher */}
-              <motion.div
-                className="pt-4 border-t border-[--subtle]"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                role="group"
-                aria-label="Mobile language selection"
-              >
-                <p className="text-sm text-[--foreground]/60 mb-2">Language:</p>
-                <LanguageSwitcher currentLocale={locale} onLocaleChange={(newLocale) => {
-                  setLocale(newLocale);
-                  setMobileMenuOpen(false);
-                }} />
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="pt-6 border-t border-white/10">
+                <LanguageSwitcher currentLocale={locale} onLocaleChange={setLocale} />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
     </header>
   );
 }

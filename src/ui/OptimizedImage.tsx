@@ -6,8 +6,8 @@ import { useState } from 'react';
 interface OptimizedImageProps {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   className?: string;
   sizes?: string;
   priority?: boolean;

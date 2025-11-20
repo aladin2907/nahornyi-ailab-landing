@@ -21,11 +21,6 @@ const ScrollProgress = dynamic(() => import('@/ui/ScrollProgress'), {
   loading: () => null
 });
 
-const CustomCursor = dynamic(() => import('@/ui/CustomCursor'), {
-  ssr: false,
-  loading: () => null
-});
-
 // Copy Context
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CopyContext = createContext<any>(null);
@@ -79,8 +74,7 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
   
   return (
     <CopyContext.Provider value={copy}>
-      <div className="min-h-screen bg-[--background] text-[--foreground] relative custom-cursor-active">
-        <CustomCursor />
+      <div className="min-h-screen bg-[--background] text-[--foreground] relative">
         <ScrollProgress />
         <FloatingParticles />
         <SmoothScroll />

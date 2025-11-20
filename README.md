@@ -1,27 +1,24 @@
 # Nahornyi AILab Landing
 
-A world-class landing page showcasing AI automation services with advanced 3D scenes and multi-language support.
+A futuristic, high-performance landing page showcasing AI automation services, featuring a unique "Acid Cyber-Urban" aesthetic and multi-language support.
 
 🌐 **Live Site**: [nahornyi.ai](https://nahornyi.ai)
 
 ## Features
 
-- **3D Hero Scene**: Neural swarm with 3K-6K particles, curl noise, and cursor magnetism
-- **Scroll-driven 3D Chapters**: Interactive scenes for n8n pipelines, LLM agents, and QA autotests
-- **Multi-language Support**: Full translations for EN/RU/ES/UK
-- **Performance Optimization**: Adaptive quality modes (ultra/high/balanced/lite) with 60fps target
-- **ROI Calculator**: Client-side computation for automation value
-- **Contact Integration**: Direct Telegram bot messaging
-- **Responsive Design**: Desktop-first with mobile fallbacks
+- **Neo-Urban / Acid Design**: Custom "Acid Cyber-Urban" aesthetic with holographic cards, neon glows, and glitch effects.
+- **Multi-language Support**: Full translations for EN/RU/ES/UK.
+- **Responsive Layouts**: "Case Files" project grid, "Hall of Fame" achievements gallery, and "System Capabilities" services list.
+- **Performance Optimization**: Optimized images with WebP fallbacks, minimal client-side load.
+- **Contact Integration**: Direct Telegram bot messaging and contact links.
+- **Interactive Elements**: Custom scrollbars, hover effects, and localized content switching.
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 (App Router, TypeScript)
-- **3D Graphics**: React Three Fiber, drei, postprocessing
-- **Animations**: Framer Motion, GSAP ScrollTrigger
-- **State Management**: Zustand with persistence
-- **Styling**: Tailwind CSS with custom design tokens
-- **Performance**: Adaptive quality modes, device detection
+- **Styling**: Tailwind CSS (v4 via @theme), Framer Motion for animations
+- **State Management**: React Hooks & Context (for Locale)
+- **Assets**: Optimized SVGs and WebP images
 
 ## Setup
 
@@ -35,38 +32,29 @@ npm install
 cp .env.example .env.local
 ```
 
-3. Configure Telegram integration (optional):
-   - Create a bot via @BotFather
-   - Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` to `.env.local`
-
-4. Start development server:
+3. Start development server:
 ```bash
 npm run dev
 ```
-
-## Performance Targets
-
-- **Desktop (M1 "balanced")**: 60 fps, <8ms frame time
-- **Mobile ("lite")**: 30-45 fps
-- **Auto-downgrade**: If fps < 50 for 3+ seconds
 
 ## Project Structure
 
 ```
 src/
-├── app/                 # Next.js App Router
-├── modules/3d/          # 3D scenes (Hero, Chapters)
-├── ui/                  # UI components
-├── content/             # Multi-language content
-├── lib/                 # Utilities (i18n, performance, ROI)
-└── styles/              # Design tokens and globals
+├── app/                 # Next.js App Router & Global Styles
+├── ui/                  # UI Components (Header, Footer, Sections)
+├── content/             # Multi-language content (copy.ts)
+├── lib/                 # Utilities (i18n, performance)
+└── styles/              # Tailwind configuration
 ```
 
-## Quality Modes
+## Key Components
 
-- **Ultra**: 6K particles, all effects
-- **High**: 4K particles, most effects  
-- **Balanced**: 3K particles, essential effects
-- **Lite**: 1K particles, minimal effects
+- **HeroClient**: Massive typographic hero with marquee and neon effects.
+- **ServicesSection**: "System Capabilities" grid with industrial/cyber aesthetics.
+- **AchievementsSection**: "Hall of Fame" with holographic image grid and lightbox.
+- **WorksProjectsSection**: "Case Files" displaying selected projects.
 
-Automatically switches based on device capabilities and performance.
+## Deployment
+
+Push to main branch to trigger Vercel deployment.
