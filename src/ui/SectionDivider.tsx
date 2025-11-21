@@ -8,7 +8,7 @@ interface SectionDividerProps {
 
 export default function SectionDivider({ className = '' }: SectionDividerProps) {
   return (
-    <div className={`relative py-20 sm:py-28 lg:py-36 ${className}`}>
+    <div className={`relative py-4 sm:py-8 ${className}`}>
       <motion.div
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}

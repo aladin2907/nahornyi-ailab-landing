@@ -46,7 +46,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export default function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section className="py-16 relative overflow-hidden">
+    <section id="services" className="py-10 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
       

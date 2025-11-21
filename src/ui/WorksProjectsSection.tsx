@@ -75,7 +75,7 @@ function ProjectCard({ item, index }: { item: WorkProject; index: number }) {
 
 export default function WorksProjectsSection({ items }: WorksProjectsSectionProps) {
   return (
-    <section className="py-16 bg-black/50 grid-pattern border-t border-white/10">
+    <section className="py-10 bg-black/50 grid-pattern border-t border-white/10">
       <div className="w-full max-w-[1400px] mx-auto px-6">
         <div className="mb-20 flex flex-col md:flex-row justify-between items-end gap-6">
           <div>
