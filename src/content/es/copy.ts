@@ -10,7 +10,7 @@ export const copy = {
     subtitle: 'Desarrollamos agentes de IA autónomos y sistemas multi-agente. Optimizamos procesos y generamos ROI real.',
     slogan: 'La IA no conquistará el mundo a menos que la ayudemos.',
     primary_cta: 'Hablar del proyecto',
-    secondary_cta: 'Reservar llamada',
+    secondary_cta: 'Chatear en WhatsApp',
   },
   services: {
     title: "Servicios",

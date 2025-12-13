@@ -84,7 +84,9 @@ export default function HeroClient({ copy }: HeroClientProps) {
           </a>
           
           <a 
-            href="#services" 
+            href="https://wa.me/34617537254" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto group px-12 py-5 border border-white/20 text-white font-bold text-lg uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 skew-x-[-10deg] hover:skew-x-0 backdrop-blur-md"
           >
             <span className="inline-block skew-x-[10deg] group-hover:skew-x-0 transition-transform">

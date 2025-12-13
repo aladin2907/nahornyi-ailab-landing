@@ -10,7 +10,7 @@ export const copy = {
     subtitle: 'We build autonomous AI agents and multi-agent systems. Optimize processes, cut costs, and deliver real ROI.',
     slogan: 'AI won\'t take over the world unless we help it.',
     primary_cta: 'Discuss your project',
-    secondary_cta: 'Book a call',
+    secondary_cta: 'Chat on WhatsApp',
   },
   services: {
     title: "Services",
