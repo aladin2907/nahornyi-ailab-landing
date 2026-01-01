@@ -56,7 +56,7 @@ function ProjectCard({ item, index }: { item: WorkProject; index: number }) {
       <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-[--neon-lime] rounded-full animate-pulse"></div>
-          <span className="text-xs font-bold uppercase text-gray-500">Active</span>
+          <span className="text-xs font-bold uppercase text-gray-400">Active</span>
         </div>
         
         <a 
@@ -85,7 +85,7 @@ export default function WorksProjectsSection({ items }: WorksProjectsSectionProp
             </h2>
           </div>
           
-          <div className="font-mono text-right text-xs text-gray-500 hidden md:block mb-4">
+          <div className="font-mono text-right text-xs text-gray-400 hidden md:block mb-4">
             {'// DEPLOYED_PROJECTS'} <br/>
             {'// STATUS: ONLINE'}
           </div>

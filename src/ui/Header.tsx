@@ -11,18 +11,24 @@ interface LanguageSwitcherProps {
 
 function LanguageSwitcher({ currentLocale, onLocaleChange }: LanguageSwitcherProps) {
   const locales = [
-    { code: 'en', name: 'EN' },
-    { code: 'ru', name: 'RU' },
-    { code: 'es', name: 'ES' },
-    { code: 'uk', name: 'UK' }
+    { code: 'en', name: 'EN', label: 'Switch to English' },
+    { code: 'ru', name: 'RU', label: 'Переключить на русский' },
+    { code: 'es', name: 'ES', label: 'Cambiar a español' },
+    { code: 'uk', name: 'UK', label: 'Перемкнути на українську' }
   ] as const;
 
   return (
-    <div className="flex gap-1 bg-black/40 backdrop-blur-lg p-1 rounded-xl border border-white/10">
+    <div 
+      className="flex gap-1 bg-black/40 backdrop-blur-lg p-1 rounded-xl border border-white/10"
+      role="group"
+      aria-label="Language selection"
+    >
       {locales.map((locale) => (
         <button
           key={locale.code}
           onClick={() => onLocaleChange(locale.code as Locale)}
+          aria-label={locale.label}
+          aria-pressed={currentLocale === locale.code}
           style={
             currentLocale === locale.code
               ? { backgroundColor: 'var(--neon-lime)', color: '#000000', boxShadow: '0 0 10px var(--neon-lime)' }
@@ -118,6 +124,9 @@ export default function Header({ copy }: HeaderProps) {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden relative z-50 w-10 h-10 flex flex-col justify-center items-center gap-1.5 group"
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2 bg-[--neon-lime]' : ''}`} />
           <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
@@ -128,10 +137,13 @@ export default function Header({ copy }: HeaderProps) {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
+              id="mobile-menu"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               className="absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-6 md:hidden shadow-2xl"
+              role="menu"
+              aria-label="Mobile navigation"
             >
               {[
                 { name: copy.nav.services, href: '#services' },

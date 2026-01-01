@@ -113,11 +113,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* Preload critical resources */}
-        <link rel="preload" href="/achievements/hllielsertificat.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/achievements/platonPythonPro.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/achievements/hllielsertificat.png" as="image" type="image/png" />
-        <link rel="preload" href="/achievements/platonPythonPro.jpg" as="image" type="image/jpeg" />
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://wa.me" />
+        <link rel="dns-prefetch" href="https://t.me" />
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${inter.variable} antialiased`}>
         {/* Skip link for accessibility */}

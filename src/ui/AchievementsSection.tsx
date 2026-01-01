@@ -41,7 +41,7 @@ const AchievementsSection = ({ images }: AchievementsSectionProps) => {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <FaTrophy className="text-[--neon-lime] text-xl" />
-            <span className="font-mono text-xs text-gray-500 uppercase tracking-wider">Featured Certificate</span>
+            <span className="font-mono text-xs text-gray-400 uppercase tracking-wider">Featured Certificate</span>
             <div className="flex-1 h-px bg-white/10" />
             <span className="font-mono text-xs text-[--neon-lime] border border-[--neon-lime]/30 px-2 py-1 rounded">
               {String(featuredIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
@@ -123,7 +123,7 @@ const AchievementsSection = ({ images }: AchievementsSectionProps) => {
                     absolute top-0 right-0 px-1.5 py-0.5 font-mono text-[10px] font-bold transition-colors
                     ${featuredIndex === index 
                       ? 'bg-[--neon-lime] text-black' 
-                      : 'bg-black/70 text-gray-500'
+                      : 'bg-black/70 text-gray-400'
                     }
                   `}>
                     {String(index + 1).padStart(2, '0')}
@@ -178,7 +178,7 @@ const AchievementsSection = ({ images }: AchievementsSectionProps) => {
                 />
               </div>
               
-              <div className="absolute bottom-10 font-mono text-xs text-gray-500">
+              <div className="absolute bottom-10 font-mono text-xs text-gray-400">
                 Press ESC to close
               </div>
             </motion.div>

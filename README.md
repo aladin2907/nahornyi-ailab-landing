@@ -9,7 +9,7 @@ A futuristic, high-performance landing page showcasing AI automation services, f
 - **Neo-Urban / Acid Design**: Custom "Acid Cyber-Urban" aesthetic with holographic cards, neon glows, and glitch effects.
 - **Multi-language Support**: Full translations for EN/RU/ES/UK.
 - **Responsive Layouts**: "Case Files" project grid, "Hall of Fame" achievements gallery, and "System Capabilities" services list.
-- **Performance Optimization**: Optimized images with WebP fallbacks, minimal client-side load.
+- **Performance Optimization**: Multi-format images (AVIF/WebP/JPG), lazy loading, GPU-accelerated animations.
 - **Contact Integration**: Direct Telegram bot messaging and contact links.
 - **Interactive Elements**: Custom scrollbars, hover effects, and localized content switching.
 
@@ -55,6 +55,31 @@ src/
 - **AchievementsSection**: "Hall of Fame" with holographic image grid and lightbox.
 - **WorksProjectsSection**: "Case Files" displaying selected projects.
 
+## Performance Optimization
+
+### Image Optimization
+- **Multi-format support**: AVIF → WebP → JPG fallback chain
+- **Automatic format detection**: Browser capability check for AVIF support
+- **Lazy loading**: Images below fold load on demand
+- **Optimized compression**: WebP @ 75% quality, AVIF @ 60% quality
+
+### Accessibility (WCAG 2.1 AA)
+- **Language switcher**: Full aria-labels for all language buttons
+- **Mobile menu**: aria-expanded, aria-controls attributes
+- **Skip links**: "Skip to main content" for keyboard navigation
+- **Color contrast**: Improved text contrast (gray-400 minimum)
+
+### Animation Performance
+- **GPU-accelerated**: All animations use `transform` and `opacity`
+- **will-change hints**: Marquee animation optimized for compositor
+- **Reduced motion**: Respects user's prefers-reduced-motion settings
+
+### PageSpeed Scores (Desktop)
+- **Performance**: 93
+- **Accessibility**: 96
+- **Best Practices**: 96
+- **SEO**: 100
+
 ## Deployment
 
-Push to main branch to trigger Vercel deployment.
+Push to main branch to trigger GitHub Pages deployment via Actions.

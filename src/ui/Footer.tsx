@@ -54,7 +54,7 @@ export default function Footer({ copy }: FooterProps) {
             
             {/* Socials */}
             <div className="bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
-              <h3 className="font-mono text-xs text-gray-500 mb-6 uppercase tracking-widest">{'// Connect'}</h3>
+              <h3 className="font-mono text-xs text-gray-400 mb-6 uppercase tracking-widest">{'// Connect'}</h3>
               <ul className="space-y-4">
                 {socialLinks.map((link) => (
                   <li key={link.name}>

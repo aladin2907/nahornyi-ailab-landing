@@ -5,11 +5,10 @@ import { brand } from '@/content/brand';
 import { FaLinkedin, FaTelegram, FaTiktok, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaGlobe } from 'react-icons/fa';
 
 interface ContactListProps {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   title: string;
 }
 
-export default function ContactList({ title }: ContactListProps) {
+export default function ContactList({ title: _title }: ContactListProps) {
   const contacts = [
     {
       label: 'Telegram',
@@ -70,7 +69,7 @@ export default function ContactList({ title }: ContactListProps) {
             </h2>
           </div>
           
-          <div className="font-mono text-right text-xs text-gray-500 hidden md:block mb-4">
+          <div className="font-mono text-right text-xs text-gray-400 hidden md:block mb-4">
             {'// SECURE_CHANNEL_OPEN'} <br/>
             {'// AWAITING_INPUT...'}
           </div>
@@ -105,7 +104,7 @@ export default function ContactList({ title }: ContactListProps) {
                   <h3 className="text-xl font-bold text-white mb-1 uppercase tracking-wide group-hover:text-[--neon-lime] transition-colors">
                     {contact.label}
                   </h3>
-                  <p className="font-mono text-sm text-gray-500 group-hover:text-white transition-colors truncate">
+                  <p className="font-mono text-sm text-gray-400 group-hover:text-white transition-colors truncate">
                     {contact.value}
                   </p>
                 </div>

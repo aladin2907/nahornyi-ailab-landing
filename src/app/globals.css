@@ -136,4 +136,21 @@ body::after {
   linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
   mask-image: linear-gradient(to bottom, transparent, black, transparent);
-  }
+}
+
+/* Marquee Animation - GPU accelerated */
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Border spin animation for acid cards */
+@keyframes border-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
