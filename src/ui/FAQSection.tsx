@@ -26,7 +26,7 @@ export default function FAQSection({ title, items }: FAQSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white"
+            className="text-4xl md:text-5xl font-black uppercase tracking-tight text-gradient-acid"
           >
             {title}
           </motion.h2>

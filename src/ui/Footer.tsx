@@ -31,7 +31,7 @@ export default function Footer({ copy }: FooterProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-black tracking-tight text-white mb-4"
+              className="text-3xl md:text-4xl font-black tracking-tight text-gradient-acid mb-4"
             >
               NAHORNYI <span className="text-[--neon-lime]">AILAB</span>
             </motion.h2>

@@ -29,7 +29,7 @@ export default function TrustSection({ title, subtitle, items }: TrustSectionPro
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-4"
+            className="text-4xl md:text-5xl font-black uppercase tracking-tight text-gradient-acid mb-4"
           >
             {title}
           </motion.h2>
