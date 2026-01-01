@@ -95,7 +95,7 @@ export default function Header({ copy }: HeaderProps) {
           {[
             { name: copy.nav.services, href: '#services' },
             { name: copy.nav.industries, href: '#industries' },
-            { name: copy.nav.contact, href: '#contact-form' }
+            { name: copy.nav.contact, href: '#contact' }
           ].map((item) => (
             <a
               key={item.name}
@@ -149,7 +149,7 @@ export default function Header({ copy }: HeaderProps) {
               {[
                 { name: copy.nav.services, href: '#services' },
                 { name: copy.nav.industries, href: '#industries' },
-                { name: copy.nav.contact, href: '#contact-form' }
+                { name: copy.nav.contact, href: '#contact' }
               ].map((item) => (
                 <a
                   key={item.name}

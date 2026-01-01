@@ -57,7 +57,7 @@ export default function HeroClient({ copy }: HeroClientProps) {
           </a>
           
           <a 
-            href="#contact-form" 
+            href="#contact" 
             className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-medium text-base hover:border-white/40 hover:bg-white/5 transition-all"
           >
             {copy.hero.secondary_cta}

@@ -11,7 +11,6 @@ import ServicesSection from '@/ui/ServicesSection';
 import TrustSection from '@/ui/TrustSection';
 import IndustriesSection from '@/ui/IndustriesSection';
 import FAQSection from '@/ui/FAQSection';
-import ContactForm from '@/ui/ContactForm';
 import AchievementsSection from '@/ui/AchievementsSection';
 import WorksProjectsSection from '@/ui/WorksProjectsSection';
 import ContactList from '@/ui/ContactList';
@@ -130,18 +129,6 @@ export default function HomeContent() {
         <FAQSection 
           title={copy.faq.title}
           items={[...copy.faq.items]}
-        />
-        
-        <SectionDivider />
-        
-        {/* Contact Form */}
-        <ContactForm 
-          title={copy.contact.title}
-          subtitle={copy.contact.subtitle}
-          form={copy.contact.form}
-          submit={copy.contact.submit}
-          thanks={copy.contact.thanks}
-          sending={copy.contact.sending}
         />
         
         <SectionDivider />
