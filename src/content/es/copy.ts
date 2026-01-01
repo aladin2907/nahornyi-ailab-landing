@@ -1,141 +1,162 @@
 export const copy = {
   nav: {
     services: "Servicios",
+    industries: "Industrias",
     cases: "Casos",
-    value: "Valor",
     contact: "Contacto"
   },
   hero: {
-    title: 'Creamos IA que funciona para tu negocio',
-    subtitle: 'Desarrollamos agentes de IA autónomos y sistemas multi-agente. Optimizamos procesos y generamos ROI real.',
+    title: 'Agentes de IA y Automatización de Procesos',
+    subtitle: 'Construimos sistemas inteligentes para tu negocio. Desde agentes autónomos hasta flujos n8n — nosotros manejamos la complejidad.',
     slogan: 'La IA no conquistará el mundo a menos que la ayudemos.',
-    primary_cta: 'Hablar del proyecto',
-    secondary_cta: 'Chatear en WhatsApp',
+    primary_cta: 'Ver proyectos',
+    secondary_cta: 'Contactar',
+  },
+  trust: {
+    title: "Por qué elegirnos",
+    subtitle: "Lo que necesitas para una implementación exitosa de IA",
+    items: [
+      {
+        title: "Transparencia",
+        desc: "Visibilidad total en cada paso. Documentamos procesos, compartimos progreso y te mantenemos informado para mejores decisiones."
+      },
+      {
+        title: "Fiabilidad", 
+        desc: "Nuestros sistemas funcionan 24/7. Construimos con estándares de producción, monitoreo y alertas — tu automatización nunca duerme."
+      },
+      {
+        title: "Personalización",
+        desc: "Sin soluciones genéricas. Cada agente y flujo se adapta a tus procesos, datos y objetivos de negocio específicos."
+      },
+      {
+        title: "Pragmatismo",
+        desc: "Nos enfocamos en lo que funciona. Sin hype ni complejidad innecesaria — solo soluciones de IA prácticas con resultados medibles."
+      }
+    ]
   },
   services: {
-    title: "Servicios",
+    title: "Qué construimos",
+    subtitle: "Experiencia enfocada en automatización IA",
     items: [
-      {title: "Modelos ML Personalizados", desc: "Entrenamos tus modelos en servidores privados. Manejo de datos sensibles con aislamiento total."},
-      {title: "Infraestructura AI/ML", desc: "Servidores GPU dedicados, despliegue de modelos, pipelines MLOps, monitoreo y escalado."},
-      {title: "Data Science & Engineering", desc: "ETL para ML, feature engineering, validación de modelos, A/B testing para funciones AI."},
-      {title: "Automatización n8n", desc: "Integraciones, pipelines, alertas, ETL, endurecimiento en producción."},
-      {title: "Sistemas Multi-Agente", desc: "Agentes IA autónomos (LangGraph, LangChain). Flujos complejos, RAG, planificación y ejecución."},
-      {title: "Chatbots", desc: "Telegram/WhatsApp/Viber — captación, soporte, pagos."},
-      {title: "QA Automation con IA", desc: "Generación de tests con IA, E2E, regresión. Ahorro de cientos de horas de pruebas manuales."},
-      {title: "BI & Analítica", desc: "Recogida de datos, dashboards, alertas a mensajería."},
-      {title: "Consultoría y Arquitectura", desc: "Auditorías, diseño de soluciones, lanzamiento de MVP."}
+      {
+        title: "Sistemas Multi-Agente", 
+        desc: "Agentes de IA autónomos que trabajan juntos. LangGraph, LangChain, pipelines RAG — flujos complejos que piensan y actúan."
+      },
+      {
+        title: "Automatización n8n", 
+        desc: "Flujos listos para producción. Integraciones, pipelines de datos, alertas, procesos ETL. Probados en batalla y escalables."
+      },
+      {
+        title: "Chatbots de IA", 
+        desc: "Bots de Telegram, WhatsApp, Viber para captación, soporte al cliente y procesamiento de pagos."
+      },
+      {
+        title: "Consultoría y Arquitectura", 
+        desc: "Estrategia de IA, diseño de sistemas y desarrollo de MVP. Te ayudamos a encontrar el enfoque correcto antes de construir."
+      }
     ]
   },
-  value: {
-    title: "Qué dinero generamos",
-    lead: "Medimos valor en ingresos, horas ahorradas y menos paradas.",
-    bullets: [
-      {title: "Leads y ventas", desc: "+15–40% de conversión con bots y embudos."},
-      {title: "Ahorro operativo", desc: "−20–60 h/semana de rutina (≈ −1–3 FTE)."},
-      {title: "Velocidad de releases", desc: "−50–80% del tiempo de regresión con pruebas automáticas."},
-      {title: "SLA e incidentes", desc: "−30–70% tiempo de reacción; menos downtime."},
-      {title: "Retención", desc: "+5–12% de recompras con personalización."}
+  industries: {
+    title: "Industrias que servimos",
+    subtitle: "Nuestras soluciones de IA funcionan en diversos sectores",
+    items: [
+      { title: "E-commerce", desc: "Procesamiento de pedidos, alertas de inventario, automatización de soporte" },
+      { title: "Logística", desc: "Seguimiento, notificaciones, optimización de rutas, despacho" },
+      { title: "RRHH y Reclutamiento", desc: "Filtrado de CVs, programación de entrevistas, onboarding" },
+      { title: "Soporte al Cliente", desc: "Enrutamiento de tickets, bots FAQ, sistemas de escalación" },
+      { title: "Inmobiliaria", desc: "Calificación de leads, matching de propiedades, programación de visitas" },
+      { title: "Salud", desc: "Reservas de citas, recordatorios, comunicación con pacientes" }
     ]
   },
-  roi: {
-    title: "Calculadora de ROI",
-    cta: "Calcular ROI",
-    fields: [
-      {id: "leadsPerMonth", label: "Leads al mes"},
-      {id: "avgConversionUplift", label: "Mejora de conversión, %"},
-      {id: "avgCheck", label: "Ticket medio, €"},
-      {id: "hoursSavedPerWeek", label: "Horas ahorradas/semana"},
-      {id: "hourlyCost", label: "Coste por hora, €"}
-    ],
-    formulaDesc: "Ingresos = Leads × Mejora% × Ticket; Ahorro = Horas × Tarifa × 4.3; ROI = (Ingresos+Ahorro−Costo)/Costo"
-  },
-  cases: {
-    title: "Casos",
+  faq: {
+    title: "Preguntas y Respuestas",
     items: [
-      {title: "Alertas de errores n8n → Telegram/WhatsApp", desc: "Plantilla multilingüe + guías. Respuesta más rápida."},
-      {title: "Casos de prueba autogenerados", desc: "De requisitos a casos, export a Sheets/TestRail."}
+      {
+        q: "¿Cuánto tiempo lleva un proyecto típico?",
+        a: "Automatizaciones simples: 1-2 semanas. Sistemas de agentes complejos: 4-8 semanas. Siempre empezamos con una fase de descubrimiento para darte un timeline preciso."
+      },
+      {
+        q: "¿Cuál es el rango de presupuesto típico?",
+        a: "Los proyectos empiezan desde €2,000 para automatizaciones básicas. Sistemas multi-agente e integraciones complejas típicamente €5,000-15,000. Proporcionamos estimaciones detalladas después de entender tus necesidades."
+      },
+      {
+        q: "¿Proporcionan soporte continuo?",
+        a: "Sí. Ofrecemos paquetes de mantenimiento y podemos estar disponibles para sistemas críticos. La mayoría de clientes eligen soporte mensual después del lanzamiento."
+      },
+      {
+        q: "¿Pueden trabajar con nuestros sistemas existentes?",
+        a: "Absolutamente. Nos integramos con cualquier API — CRMs, ERPs, bases de datos, plataformas de mensajería. Si tiene API, podemos conectarlo."
+      },
+      {
+        q: "¿Qué pasa si la solución no funciona como se esperaba?",
+        a: "Iteramos hasta que funcione. Nuestro proceso incluye fases de testing y no consideramos un proyecto terminado hasta que estés satisfecho con los resultados."
+      }
     ]
   },
   contact: {
-    title: "Contacto",
+    title: "Hablemos",
+    subtitle: "Cuéntanos sobre tu proyecto y te responderemos en 24 horas",
     form: {
-      name: "Nombre",
-      email: "Email o Telegram @",
-      message: "¿Qué hay que automatizar?"
+      name: "Tu nombre",
+      email: "Email o Telegram",
+      message: "¿Qué te gustaría automatizar?"
     },
-    submit: "Enviar",
-    thanks: "¡Gracias! Te contactaremos pronto."
+    submit: "Enviar mensaje",
+    thanks: "¡Gracias! Te contactaremos pronto.",
+    sending: "Enviando..."
   },
   footer: {
     rights: "© Nahornyi AILab, Valencia",
-    description: "Automatización de IA para Valencia y más allá. Rápido, pragmático, con foco en ROI.",
+    description: "Agentes de IA y automatización de procesos. Valencia, trabajamos globalmente.",
     sections: {
       contact: "Contacto",
       services: "Servicios",
-      location: "Ubicación",
-      bot: "Bot"
+      location: "Ubicación"
     },
     whatsapp: "WhatsApp",
     services_list: {
+      agents: "Agentes IA",
       n8n: "Automatización n8n",
       chatbots: "Chatbots",
-      qa: "Pruebas QA",
-      llm: "Agentes LLM"
+      consulting: "Consultoría"
     },
     location_info: {
-      city: "Valencia",
-      remote: "Remoto Global"
-    },
-    made_with: "Hecho con Claude Code"
+      city: "Valencia, España",
+      remote: "Remoto Mundial"
+    }
   },
   header: {
-    contact_button: "Contacto"
-  },
-  hero_hardcoded: {
-    subtitle_mobile: "Automatización de IA que genera ingresos",
-    subtitle_desktop: "Automatización de IA que genera ingresos — no informes.",
-    cta_primary: "Hablar del proyecto", 
-    cta_secondary: "Qué hacemos"
-  },
-  roi_results: {
-    monthly_revenue: "Ingresos Mensuales",
-    monthly_savings: "Ahorro Mensual", 
-    roi: "ROI",
-    total_monthly_benefit: "Beneficio Mensual Total",
-    sending: "Enviando..."
-  },
-  contact_messages: {
-    response_time: "Normalmente respondemos en 24 horas."
+    contact_button: "Contactar"
   },
   achievements: {
-    title: "Nuestros Logros"
+    title: "Certificaciones"
   },
   worksProjects: {
-    title: "Nuestros Trabajos y Proyectos",
-    ariaLabel: "Nuestros trabajos y proyectos",
+    title: "Proyectos Destacados",
+    ariaLabel: "Nuestros proyectos destacados",
     buttons: {
       view: "Ver",
       openInTelegram: "Abrir en Telegram"
     },
     types: {
-      app: "Aplicación Móvil",
-      platform: "Plataforma Web",
+      app: "App Móvil",
+      platform: "Plataforma",
       telegram_bot: "Bot de Telegram",
-      web_app: "Aplicación Web", 
-      automation: "Proyecto de Automatización"
+      web_app: "App Web",
+      automation: "Automatización"
     },
     items: [
       {
         title: "Traduktor",
-        description: "Traductor de voz con IA que soporta más de 30 idiomas. Reconocimiento de voz en tiempo real y traducción neuronal."
+        description: "Traductor de voz con IA para 30+ idiomas. Reconocimiento de voz en tiempo real y traducción neuronal."
       },
       {
-        title: "n8n Automation",
-        description: "Poderosa plataforma de automatización de flujos de trabajo para integraciones, pipelines y automatización de procesos empresariales."
+        title: "n8n Workflows",
+        description: "Plantillas de automatización en producción en n8n.io. Alertas de errores, sincronización de datos, integraciones."
       },
       {
         title: "Valencia Info Bot",
-        description: "Bot de Telegram con información útil sobre Valencia. Ayuda a recién llegados y residentes de la ciudad a encontrar la información que necesitan."
+        description: "Asistente de Telegram para Valencia. Información local, recomendaciones, navegación por la ciudad."
       }
     ]
   }

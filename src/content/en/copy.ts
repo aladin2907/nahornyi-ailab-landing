@@ -1,141 +1,162 @@
 export const copy = {
   nav: {
     services: "Services",
+    industries: "Industries",
     cases: "Cases", 
-    value: "Value",
     contact: "Contact"
   },
   hero: {
-    title: 'We create AI that works for your business',
-    subtitle: 'We build autonomous AI agents and multi-agent systems. Optimize processes, cut costs, and deliver real ROI.',
+    title: 'AI Agents & Process Automation',
+    subtitle: 'Building intelligent systems that work for your business. From autonomous agents to n8n workflows — we handle the complexity.',
     slogan: 'AI won\'t take over the world unless we help it.',
-    primary_cta: 'Discuss your project',
-    secondary_cta: 'Chat on WhatsApp',
+    primary_cta: 'See our work',
+    secondary_cta: 'Contact us',
+  },
+  trust: {
+    title: "Why partner with us",
+    subtitle: "What you need for a successful AI implementation",
+    items: [
+      {
+        title: "Transparency",
+        desc: "You get full visibility into every step. We document processes, share progress, and keep you informed so you can make the best decisions."
+      },
+      {
+        title: "Reliability", 
+        desc: "Our systems run 24/7. We build with production-grade standards, monitoring, and alerting to ensure your automation never sleeps."
+      },
+      {
+        title: "Personalisation",
+        desc: "No cookie-cutter solutions. Every agent and workflow is tailored to your specific processes, data, and business goals."
+      },
+      {
+        title: "Pragmatism",
+        desc: "We focus on what works. No hype, no unnecessary complexity — just practical AI solutions that deliver measurable results."
+      }
+    ]
   },
   services: {
-    title: "Services",
+    title: "What we build",
+    subtitle: "Focused expertise in AI automation",
     items: [
-      {title: "Custom ML Models", desc: "Train your own models on private servers. Sensitive data handling with full security isolation."},
-      {title: "AI/ML Infrastructure", desc: "Dedicated GPU servers, model deployment, MLOps pipelines, monitoring & scaling."},
-      {title: "Data Science & Engineering", desc: "ETL for ML, feature engineering, model validation, A/B testing for AI features."},
-      {title: "n8n Automation", desc: "Integrations, pipelines, alerts, ETL, production hardening."},
-      {title: "Multi-Agent Systems", desc: "Autonomous AI Agents (LangGraph, LangChain). Complex workflows, RAG, planning & execution."},
-      {title: "Chatbots", desc: "Telegram/WhatsApp/Viber — leadgen, support, payments."},
-      {title: "AI QA Automation", desc: "AI-generated tests, E2E, regression. Saving hundreds of manual testing hours."},
-      {title: "BI & Analytics", desc: "Data collection, dashboards, messenger alerts."},
-      {title: "Consulting & Architecture", desc: "Audits, solution design, MVP launch."}
+      {
+        title: "Multi-Agent Systems", 
+        desc: "Autonomous AI agents that work together. LangGraph, LangChain, RAG pipelines — complex workflows that think and act."
+      },
+      {
+        title: "n8n Automation", 
+        desc: "Production-ready workflows. Integrations, data pipelines, alerts, ETL processes. Battle-tested and scalable."
+      },
+      {
+        title: "AI Chatbots", 
+        desc: "Telegram, WhatsApp, Viber bots for lead generation, customer support, and payment processing."
+      },
+      {
+        title: "Consulting & Architecture", 
+        desc: "AI strategy, system design, and MVP development. We help you find the right approach before building."
+      }
     ]
   },
-  value: {
-    title: "What money we make",
-    lead: "We measure value in revenue gained, hours saved, and downtime avoided.",
-    bullets: [
-      {title: "Leads & sales", desc: "+15–40% conversion via bots and funnels."},
-      {title: "Operational savings", desc: "−20–60 hours/week of routine (≈ −1–3 FTE)."},
-      {title: "Release speed", desc: "−50–80% regression time with autotests."},
-      {title: "SLA & incidents", desc: "−30–70% reaction time; less downtime (TG/WA alerts)."},
-      {title: "Retention", desc: "+5–12% repeat purchases with personalization."}
+  industries: {
+    title: "Industries we serve",
+    subtitle: "Our AI solutions work across sectors",
+    items: [
+      { title: "E-commerce", desc: "Order processing, inventory alerts, customer support automation" },
+      { title: "Logistics", desc: "Tracking, notifications, route optimization, dispatch automation" },
+      { title: "HR & Recruiting", desc: "CV screening, interview scheduling, onboarding workflows" },
+      { title: "Customer Support", desc: "Ticket routing, FAQ bots, escalation systems" },
+      { title: "Real Estate", desc: "Lead qualification, property matching, viewing scheduling" },
+      { title: "Healthcare", desc: "Appointment booking, reminders, patient communication" }
     ]
   },
-  roi: {
-    title: "ROI calculator",
-    cta: "Calculate ROI",
-    fields: [
-      {id: "leadsPerMonth", label: "Leads per month"},
-      {id: "avgConversionUplift", label: "Conversion uplift, %"},
-      {id: "avgCheck", label: "Average order value, €"},
-      {id: "hoursSavedPerWeek", label: "Hours saved/week"},
-      {id: "hourlyCost", label: "Hourly cost, €"}
-    ],
-    formulaDesc: "Revenue = Leads × Uplift% × AOV; Savings = Hours × Rate × 4.3. ROI = (Revenue+Savings−Cost)/Cost"
-  },
-  cases: {
-    title: "Cases",
+  faq: {
+    title: "Questions & Answers",
     items: [
-      {title: "n8n error alerts → Telegram/WhatsApp", desc: "Multilingual template + guides. Incident response time slashed."},
-      {title: "Autogenerated QA test cases", desc: "From BRD to cases, export to Sheets/TestRail. Dozens of hours saved."}
+      {
+        q: "How long does a typical project take?",
+        a: "Simple automations: 1-2 weeks. Complex agent systems: 4-8 weeks. We always start with a discovery phase to give you an accurate timeline."
+      },
+      {
+        q: "What's the typical budget range?",
+        a: "Projects start from €2,000 for basic automations. Multi-agent systems and complex integrations typically range €5,000-15,000. We provide detailed estimates after understanding your needs."
+      },
+      {
+        q: "Do you provide ongoing support?",
+        a: "Yes. We offer maintenance packages and can be on-call for critical systems. Most clients choose monthly support after launch."
+      },
+      {
+        q: "Can you work with our existing systems?",
+        a: "Absolutely. We integrate with any API — CRMs, ERPs, databases, messaging platforms. If it has an API, we can connect it."
+      },
+      {
+        q: "What if the solution doesn't work as expected?",
+        a: "We iterate until it works. Our process includes testing phases and we don't consider a project done until you're satisfied with the results."
+      }
     ]
   },
   contact: {
-    title: "Contact",
+    title: "Let's talk",
+    subtitle: "Tell us about your project and we'll get back to you within 24 hours",
     form: {
-      name: "Name",
-      email: "Email or Telegram @",
-      message: "What do you need to automate?"
+      name: "Your name",
+      email: "Email or Telegram",
+      message: "What would you like to automate?"
     },
-    submit: "Send",
-    thanks: "Thanks! We'll get back to you shortly."
+    submit: "Send message",
+    thanks: "Thanks! We'll be in touch shortly.",
+    sending: "Sending..."
   },
   footer: {
     rights: "© Nahornyi AILab, Valencia",
-    description: "AI automation for Valencia and beyond. Fast, pragmatic, ROI-first.",
+    description: "AI agents and process automation. Valencia-based, working globally.",
     sections: {
       contact: "Contact",
       services: "Services",
-      location: "Location",
-      bot: "Bot"
+      location: "Location"
     },
     whatsapp: "WhatsApp",
     services_list: {
+      agents: "AI Agents",
       n8n: "n8n Automation",
       chatbots: "Chatbots",
-      qa: "QA Autotests",
-      llm: "LLM Agents"
+      consulting: "Consulting"
     },
     location_info: {
-      city: "Valencia",
-      remote: "Global Remote"
-    },
-    made_with: "Made with Claude Code"
+      city: "Valencia, Spain",
+      remote: "Remote Worldwide"
+    }
   },
   header: {
-    contact_button: "Contact"
-  },
-  hero_hardcoded: {
-    subtitle_mobile: "AI solutions",
-    subtitle_desktop: "AI solutions — not reports.",
-    cta_primary: "Discuss your use case", 
-    cta_secondary: "What we build"
-  },
-  roi_results: {
-    monthly_revenue: "Monthly Revenue",
-    monthly_savings: "Monthly Savings", 
-    roi: "ROI",
-    total_monthly_benefit: "Total Monthly Benefit",
-    sending: "Sending..."
-  },
-  contact_messages: {
-    response_time: "We typically respond within 24 hours."
+    contact_button: "Contact us"
   },
   achievements: {
-    title: "Our Achievements"
+    title: "Certifications"
   },
   worksProjects: {
-    title: "Our Works & Projects",
-    ariaLabel: "Our works and projects",
+    title: "Selected Projects",
+    ariaLabel: "Our selected projects",
     buttons: {
       view: "View",
       openInTelegram: "Open in Telegram"
     },
     types: {
       app: "Mobile App",
-      platform: "Web Platform",
+      platform: "Platform",
       telegram_bot: "Telegram Bot", 
-      web_app: "Web Application",
-      automation: "Automation Project"
+      web_app: "Web App",
+      automation: "Automation"
     },
     items: [
       {
         title: "Traduktor",
-        description: "AI-powered voice translator supporting 30+ languages. Real-time speech recognition and neural translation."
+        description: "AI voice translator with 30+ languages. Real-time speech recognition and neural translation."
       },
       {
-        title: "n8n Automation",
-        description: "Powerful workflow automation platform for integrations, pipelines, and business process automation."
+        title: "n8n Workflows",
+        description: "Production automation templates published on n8n.io. Error alerts, data sync, integrations."
       },
       {
         title: "Valencia Info Bot", 
-        description: "Telegram bot with useful information about Valencia. Helps newcomers and city residents find the information they need."
+        description: "Telegram assistant for Valencia. Local information, recommendations, city navigation."
       }
     ]
   }

@@ -8,6 +8,10 @@ import { useCopyLocalized } from '@/app/ClientWrapper';
 import Header from '@/ui/Header';
 import Footer from '@/ui/Footer';
 import ServicesSection from '@/ui/ServicesSection';
+import TrustSection from '@/ui/TrustSection';
+import IndustriesSection from '@/ui/IndustriesSection';
+import FAQSection from '@/ui/FAQSection';
+import ContactForm from '@/ui/ContactForm';
 import AchievementsSection from '@/ui/AchievementsSection';
 import WorksProjectsSection from '@/ui/WorksProjectsSection';
 import ContactList from '@/ui/ContactList';
@@ -78,22 +82,34 @@ export default function HomeContent() {
           <HeroClient copy={copy} />
         )}
         
+        {/* Trust Section - Why partner with us */}
+        <TrustSection 
+          title={copy.trust.title}
+          subtitle={copy.trust.subtitle}
+          items={[...copy.trust.items]}
+        />
+        
+        <SectionDivider />
+        
+        {/* Services - What we build */}
         <ServicesSection 
           title={copy.services.title}
+          subtitle={copy.services.subtitle}
           services={copy.services.items}
         />
         
         <SectionDivider />
         
-        
-        
-        <AchievementsSection 
-          title={copy.achievements.title}
-          images={achievementImages} 
+        {/* Industries we serve */}
+        <IndustriesSection 
+          title={copy.industries.title}
+          subtitle={copy.industries.subtitle}
+          items={[...copy.industries.items]}
         />
         
         <SectionDivider />
         
+        {/* Projects */}
         <WorksProjectsSection 
           title={copy.worksProjects.title}
           items={worksProjects}
@@ -102,9 +118,36 @@ export default function HomeContent() {
         
         <SectionDivider />
         
-        <ContactList
-          title={copy.contact.title}
+        {/* Certifications */}
+        <AchievementsSection 
+          title={copy.achievements.title}
+          images={achievementImages} 
         />
+        
+        <SectionDivider />
+        
+        {/* FAQ */}
+        <FAQSection 
+          title={copy.faq.title}
+          items={[...copy.faq.items]}
+        />
+        
+        <SectionDivider />
+        
+        {/* Contact Form */}
+        <ContactForm 
+          title={copy.contact.title}
+          subtitle={copy.contact.subtitle}
+          form={copy.contact.form}
+          submit={copy.contact.submit}
+          thanks={copy.contact.thanks}
+          sending={copy.contact.sending}
+        />
+        
+        <SectionDivider />
+        
+        {/* Contact Links */}
+        <ContactList />
       </main>
       
       <Footer copy={copy} />

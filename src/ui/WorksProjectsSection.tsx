@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaExternalLinkAlt, FaFolderOpen } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 interface WorkProject {
   title: string;
@@ -24,48 +24,52 @@ function ProjectCard({ item, index }: { item: WorkProject; index: number }) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="acid-card p-8 md:p-10 flex flex-col h-full group rounded-2xl"
+      className="group relative p-8 bg-white/[0.02] border border-white/10 hover:border-[--neon-lime]/30 transition-all duration-300"
     >
-      <div className="flex justify-between items-start mb-8">
-        <div className="font-mono text-xs text-[--neon-pink] border border-[--neon-pink]/30 px-3 py-1 rounded-full">
-          CASE_FILE_{num}
-        </div>
-        <FaFolderOpen className="text-white/20 w-8 h-8 group-hover:text-[--neon-lime] transition-colors duration-300" />
+      {/* Corner accents */}
+      <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-white/10 group-hover:border-[--neon-lime]/30 transition-colors" />
+      <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-white/10 group-hover:border-[--neon-lime]/30 transition-colors" />
+
+      {/* Number badge */}
+      <div className="absolute top-4 right-4 text-sm text-gray-500 font-mono">
+        {num}
       </div>
 
-      <div className="mb-8">
-        <h3 className="text-3xl md:text-4xl font-black uppercase leading-none mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[--neon-cyan] group-hover:to-[--neon-lime] transition-all duration-300">
+      {/* Content */}
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-white group-hover:text-[--neon-lime] transition-colors mb-2">
           {item.title}
         </h3>
         
         {item.username && (
-          <div className="inline-block bg-white/10 px-3 py-1 mb-4 font-mono text-xs text-[--neon-cyan] rounded">
+          <div className="inline-block text-xs text-[--neon-cyan] mb-3">
             {item.username}
           </div>
         )}
 
-        <p className="text-gray-400 font-mono text-sm leading-relaxed">
+        <p className="text-gray-400 text-sm leading-relaxed">
           {item.description}
         </p>
       </div>
 
-      <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
+      {/* Footer */}
+      <div className="flex items-center justify-between pt-6 border-t border-white/10">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-[--neon-lime] rounded-full animate-pulse"></div>
-          <span className="text-xs font-bold uppercase text-gray-400">Active</span>
+          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          <span className="text-xs text-gray-500">Live</span>
         </div>
         
         <a 
           href={item.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-6 py-2 bg-white/5 hover:bg-[--neon-purple] text-white rounded-lg transition-all duration-300 font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_15px_var(--neon-purple)]"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-300 hover:text-[--neon-lime] transition-colors"
         >
-          <span>Open</span>
+          <span>View project</span>
           <FaExternalLinkAlt className="w-3 h-3" />
         </a>
       </div>
@@ -73,25 +77,36 @@ function ProjectCard({ item, index }: { item: WorkProject; index: number }) {
   );
 }
 
-export default function WorksProjectsSection({ items }: WorksProjectsSectionProps) {
+export default function WorksProjectsSection({ title, items }: WorksProjectsSectionProps) {
   return (
-    <section className="py-10 bg-black/50 grid-pattern border-t border-white/10">
-      <div className="w-full max-w-[1400px] mx-auto px-6">
-        <div className="mb-20 flex flex-col md:flex-row justify-between items-end gap-6">
-          <div>
-            <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-white mb-2">
-              Selected <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--neon-pink] to-[--neon-purple]">Works</span>
-            </h2>
-          </div>
-          
-          <div className="font-mono text-right text-xs text-gray-400 hidden md:block mb-4">
-            {'// DEPLOYED_PROJECTS'} <br/>
-            {'// STATUS: ONLINE'}
-          </div>
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Subtle background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[--neon-purple] blur-[300px] opacity-5 rounded-full pointer-events-none" />
+
+      <div className="w-full max-w-[1200px] mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-4"
+          >
+            {title}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-400 text-lg"
+          >
+            Real solutions deployed in production
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Projects grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((item, index) => (
             <ProjectCard key={index} item={item} index={index} />
           ))}

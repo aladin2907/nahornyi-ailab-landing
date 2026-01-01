@@ -10,6 +10,7 @@ interface Service {
 
 interface ServicesSectionProps {
   title: string;
+  subtitle?: string;
   services: readonly Service[];
 }
 
@@ -20,49 +21,69 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="acid-card p-8 flex flex-col h-full group"
+      className="group relative p-8 bg-white/[0.02] border border-white/10 hover:border-[--neon-lime]/30 transition-all duration-500"
     >
       <div className="flex justify-between items-start mb-6">
-        <div className="text-4xl text-[--neon-cyan] group-hover:text-[--neon-pink] transition-colors duration-300 drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+        <div className="text-3xl text-gray-400 group-hover:text-[--neon-lime] transition-colors duration-300">
           {getServiceIcon(service.title)}
         </div>
-        <span className="font-mono text-xs text-white/40 border border-white/10 px-2 py-1 rounded group-hover:border-[--neon-lime] group-hover:text-[--neon-lime] transition-colors">
-          MOD_{num}
+        <span className="font-mono text-xs text-gray-500 border border-white/10 px-2 py-1 group-hover:border-[--neon-lime]/50 group-hover:text-[--neon-lime] transition-colors">
+          {num}
         </span>
       </div>
 
-      <h3 className="text-2xl font-black uppercase mb-4 text-white group-hover:text-gradient-acid transition-all">
+      <h3 className="text-xl font-bold mb-4 text-white group-hover:text-[--neon-lime] transition-colors">
         {service.title}
       </h3>
       
-      <p className="text-gray-400 font-mono text-sm leading-relaxed group-hover:text-white transition-colors">
+      <p className="text-gray-400 text-sm leading-relaxed">
         {service.desc}
       </p>
+
+      {/* Corner accents */}
+      <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-white/10 group-hover:border-[--neon-lime]/30 transition-colors" />
+      <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-white/10 group-hover:border-[--neon-lime]/30 transition-colors" />
     </motion.div>
   );
 }
 
-export default function ServicesSection({ services }: ServicesSectionProps) {
+export default function ServicesSection({ title, subtitle, services }: ServicesSectionProps) {
+  // Determine grid layout based on number of services
+  const gridCols = services.length <= 4 
+    ? 'grid-cols-1 md:grid-cols-2' 
+    : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+
   return (
-    <section id="services" className="py-10 relative overflow-hidden">
+    <section id="services" className="py-24 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent" />
       
-      <div className="w-full max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="mb-20 text-center">
-          <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-white mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--neon-lime] via-[--neon-cyan] to-[--neon-pink]">
-              SYSTEM
-            </span> CAPABILITIES
-          </h2>
-          <p className="font-mono text-[--neon-purple] tracking-[0.2em] text-sm md:text-base">
-            {'/// DEPLOYING_NEXT_GEN_SOLUTIONS'}
-          </p>
+      <div className="w-full max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="mb-16 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-4"
+          >
+            {title}
+          </motion.h2>
+          {subtitle && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-400 font-mono text-lg"
+            >
+              {subtitle}
+            </motion.p>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid ${gridCols} gap-6`}>
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} index={index} />
           ))}

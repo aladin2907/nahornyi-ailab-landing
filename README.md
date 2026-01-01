@@ -1,24 +1,49 @@
 # Nahornyi AILab Landing
 
-A futuristic, high-performance landing page showcasing AI automation services, featuring a unique "Acid Cyber-Urban" aesthetic and multi-language support.
+A professional B2B landing page for AI agents and process automation services. Features a modern dark theme, multi-language support, and conversion-focused design.
 
 🌐 **Live Site**: [nahornyi.ai](https://nahornyi.ai)
 
+## Core Services
+
+- **Multi-Agent Systems**: Autonomous AI agents with LangGraph, LangChain, RAG pipelines
+- **n8n Automation**: Production-ready workflows, integrations, ETL processes
+- **AI Chatbots**: Telegram, WhatsApp, Viber bots for lead gen and support
+- **Consulting**: AI strategy, system design, and MVP development
+
 ## Features
 
-- **Neo-Urban / Acid Design**: Custom "Acid Cyber-Urban" aesthetic with holographic cards, neon glows, and glitch effects.
-- **Multi-language Support**: Full translations for EN/RU/ES/UK.
-- **Responsive Layouts**: "Case Files" project grid, "Hall of Fame" achievements gallery, and "System Capabilities" services list.
-- **Performance Optimization**: Multi-format images (AVIF/WebP/JPG), lazy loading, GPU-accelerated animations.
-- **Contact Integration**: Direct Telegram bot messaging and contact links.
-- **Interactive Elements**: Custom scrollbars, hover effects, and localized content switching.
+- **Modern B2B Design**: Professional dark theme with neon accents
+- **Multi-language Support**: EN/RU/ES/UK with full translations
+- **Trust Section**: Transparency, Reliability, Personalisation, Pragmatism
+- **Industries Grid**: E-commerce, Logistics, HR, Support, Real Estate, Healthcare
+- **FAQ Accordion**: Common questions with expandable answers
+- **Contact Form**: Direct project inquiries with email integration
+- **Performance Optimized**: Multi-format images (AVIF/WebP), lazy loading
+
+## Site Structure
+
+```
+Homepage
+├── Hero              → AI Agents & Process Automation
+├── Trust Section     → Why partner with us (4 pillars)
+├── Services          → What we build (4 core services)
+├── Industries        → Industries we serve (6 sectors)
+├── Projects          → Selected Works (case studies)
+├── Achievements      → Certifications gallery
+├── FAQ               → Questions & Answers (5 Q&As)
+├── Contact Form      → Let's talk (project form)
+├── Contact Links     → Social & messaging links
+└── Footer            → Company info & quick links
+```
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 (App Router, TypeScript)
-- **Styling**: Tailwind CSS (v4 via @theme), Framer Motion for animations
-- **State Management**: React Hooks & Context (for Locale)
-- **Assets**: Optimized SVGs and WebP images
+- **Styling**: Tailwind CSS v4, Framer Motion
+- **State Management**: React Hooks & Context (Locale)
+- **Icons**: React Icons (Font Awesome)
+- **Deployment**: GitHub Pages
 
 ## Setup
 
@@ -27,14 +52,14 @@ A futuristic, high-performance landing page showcasing AI automation services, f
 npm install
 ```
 
-2. Copy environment variables:
-```bash
-cp .env.example .env.local
-```
-
-3. Start development server:
+2. Start development server:
 ```bash
 npm run dev
+```
+
+3. Build for production:
+```bash
+npm run build
 ```
 
 ## Project Structure
@@ -42,37 +67,24 @@ npm run dev
 ```
 src/
 ├── app/                 # Next.js App Router & Global Styles
-├── ui/                  # UI Components (Header, Footer, Sections)
-├── content/             # Multi-language content (copy.ts)
-├── lib/                 # Utilities (i18n, performance)
-└── styles/              # Tailwind configuration
+├── ui/                  # UI Components
+│   ├── Header.tsx       # Navigation & language switcher
+│   ├── TrustSection.tsx # Trust pillars (Transparency, etc.)
+│   ├── ServicesSection.tsx # Core services grid
+│   ├── IndustriesSection.tsx # Industries grid
+│   ├── FAQSection.tsx   # FAQ accordion
+│   ├── ContactForm.tsx  # Project inquiry form
+│   ├── ContactList.tsx  # Social/contact links
+│   └── Footer.tsx       # Site footer
+├── content/             # Multi-language content
+│   ├── en/copy.ts       # English
+│   ├── ru/copy.ts       # Russian
+│   ├── es/copy.ts       # Spanish
+│   └── uk/copy.ts       # Ukrainian
+└── lib/                 # Utilities (i18n, etc.)
 ```
 
-## Key Components
-
-- **HeroClient**: Massive typographic hero with marquee and neon effects.
-- **ServicesSection**: "System Capabilities" grid with industrial/cyber aesthetics.
-- **AchievementsSection**: "Hall of Fame" with holographic image grid and lightbox.
-- **WorksProjectsSection**: "Case Files" displaying selected projects.
-
-## Performance Optimization
-
-### Image Optimization
-- **Multi-format support**: AVIF → WebP → JPG fallback chain
-- **Automatic format detection**: Browser capability check for AVIF support
-- **Lazy loading**: Images below fold load on demand
-- **Optimized compression**: WebP @ 75% quality, AVIF @ 60% quality
-
-### Accessibility (WCAG 2.1 AA)
-- **Language switcher**: Full aria-labels for all language buttons
-- **Mobile menu**: aria-expanded, aria-controls attributes
-- **Skip links**: "Skip to main content" for keyboard navigation
-- **Color contrast**: Improved text contrast (gray-400 minimum)
-
-### Animation Performance
-- **GPU-accelerated**: All animations use `transform` and `opacity`
-- **will-change hints**: Marquee animation optimized for compositor
-- **Reduced motion**: Respects user's prefers-reduced-motion settings
+## Performance
 
 ### PageSpeed Scores (Desktop)
 - **Performance**: 93
@@ -80,6 +92,16 @@ src/
 - **Best Practices**: 96
 - **SEO**: 100
 
+### Optimizations
+- Multi-format images (AVIF → WebP → JPG)
+- Lazy loading for below-fold images
+- GPU-accelerated animations
+- Prefers-reduced-motion support
+
 ## Deployment
 
-Push to main branch to trigger GitHub Pages deployment via Actions.
+Push to main branch triggers GitHub Pages deployment via Actions.
+
+---
+
+Built with ❤️ by Nahornyi AILab, Valencia

@@ -13,92 +13,78 @@ interface FooterProps {
 export default function Footer({ copy }: FooterProps) {
 
   const socialLinks = [
-    { name: 'Telegram', href: `https://t.me/${brand.contacts.telegram.slice(1)}`, icon: FaTelegram, color: 'hover:text-cyan-400', desc: 'Chat directly' },
-    { name: 'Email', href: `mailto:${brand.contacts.email}`, icon: FaEnvelope, color: 'hover:text-pink-500', desc: 'Send request' },
-    { name: 'LinkedIn', href: brand.contacts.linkedin, icon: FaLinkedin, color: 'hover:text-blue-500', desc: 'Professional' },
-    { name: 'n8n', href: brand.contacts.n8n, icon: SiN8N, color: 'hover:text-red-500', desc: 'Templates' },
-    { name: 'TikTok', href: brand.contacts.tiktok, icon: FaTiktok, color: 'hover:text-purple-500', desc: 'Content' },
+    { name: 'Telegram', href: `https://t.me/${brand.contacts.telegram.slice(1)}`, icon: FaTelegram },
+    { name: 'Email', href: `mailto:${brand.contacts.email}`, icon: FaEnvelope },
+    { name: 'LinkedIn', href: brand.contacts.linkedin, icon: FaLinkedin },
+    { name: 'n8n', href: brand.contacts.n8n, icon: SiN8N },
+    { name: 'TikTok', href: brand.contacts.tiktok, icon: FaTiktok },
   ];
 
   return (
-    <footer className="relative py-12 overflow-hidden border-t border-white/10 bg-[#050505] grid-pattern">
-      <div className="w-full max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+    <footer className="relative py-16 overflow-hidden border-t border-white/10 bg-[#050505]">
+      <div className="w-full max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
           
           {/* Brand Section */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6"
-              >
-                NAHORNYI <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--neon-lime] to-[--neon-cyan]">AILAB</span>
-              </motion.h2>
-              <p className="text-xl font-mono text-gray-400 max-w-md leading-relaxed">
-                {`// ${copy.hero.slogan}`}
-              </p>
-            </div>
-            
-            <div className="mt-12 flex items-center gap-3">
-              <span className="w-3 h-3 bg-[--neon-lime] rounded-full animate-pulse shadow-[0_0_10px_var(--neon-lime)]"></span>
-              <span className="font-mono text-sm text-white/60 tracking-widest uppercase">
-                System Online • {copy.footer.location_info.remote}
-              </span>
-            </div>
+          <div className="lg:col-span-5">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-black tracking-tight text-white mb-4"
+            >
+              NAHORNYI <span className="text-[--neon-lime]">AILAB</span>
+            </motion.h2>
+            <p className="text-gray-400 mb-6 max-w-sm">
+              {copy.hero.subtitle}
+            </p>
+            <p className="text-sm text-gray-500">
+              {brand.location} • {copy.footer.location_info.remote}
+            </p>
           </div>
 
-          {/* Links Grid */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            
-            {/* Socials */}
-            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
-              <h3 className="font-mono text-xs text-gray-400 mb-6 uppercase tracking-widest">{'// Connect'}</h3>
-              <ul className="space-y-4">
-                {socialLinks.map((link) => (
-                  <li key={link.name}>
-                    <a 
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`group flex items-center gap-4 text-lg font-bold text-white transition-all duration-300 ${link.color}`}
-                    >
-                      <span className="bg-white/10 p-2 rounded-lg group-hover:bg-white/20 transition-colors">
-                        <link.icon />
-                      </span>
-                      <span className="group-hover:translate-x-2 transition-transform">
-                        {link.name}
-                      </span>
-                      <span className="font-mono text-xs text-gray-600 ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                        {link.desc}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Links */}
+          <div className="lg:col-span-4">
+            <h3 className="text-sm font-medium text-gray-400 mb-4 uppercase tracking-wider">Connect</h3>
+            <ul className="space-y-3">
+              {socialLinks.map((link) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 text-gray-300 hover:text-[--neon-lime] transition-colors"
+                  >
+                    <link.icon className="text-lg text-gray-500 group-hover:text-[--neon-lime] transition-colors" />
+                    <span>{link.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Contacts Card */}
-            <div className="flex flex-col gap-6">
-              <div className="bg-gradient-to-br from-white/5 to-white/0 border border-white/10 p-8 rounded-2xl flex-1 flex flex-col justify-center items-center text-center hover:border-[--neon-cyan] transition-colors duration-500 group cursor-pointer">
-                <div className="w-16 h-16 bg-[--neon-cyan]/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <FaEnvelope className="text-2xl text-[--neon-cyan]" />
-                </div>
-                <h4 className="text-white font-bold text-xl mb-1">Start Project?</h4>
-                <a href={`mailto:${brand.contacts.email}`} className="text-gray-400 hover:text-white transition-colors font-mono text-sm">
-                  {brand.contacts.email}
-                </a>
-              </div>
+          {/* Contact Card */}
+          <div className="lg:col-span-3">
+            <h3 className="text-sm font-medium text-gray-400 mb-4 uppercase tracking-wider">Start a project</h3>
+            <a 
+              href={`mailto:${brand.contacts.email}`} 
+              className="block p-4 bg-white/[0.02] border border-white/10 hover:border-[--neon-lime]/30 transition-colors"
+            >
+              <span className="block text-[--neon-lime] font-medium mb-1">Email us</span>
+              <span className="text-sm text-gray-400">{brand.contacts.email}</span>
+            </a>
+          </div>
 
-              <div className="p-6 rounded-2xl border border-white/5 bg-black/40 text-center">
-                <p className="text-xs font-mono text-gray-600">
-                  © {new Date().getFullYear()} {brand.name}. <br/>
-                  All systems nominal.
-                </p>
-              </div>
-            </div>
+        </div>
 
+        {/* Bottom bar */}
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-500">
+            © {new Date().getFullYear()} {brand.name}. All rights reserved.
+          </p>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+            <span className="text-sm text-gray-500">All systems operational</span>
           </div>
         </div>
       </div>

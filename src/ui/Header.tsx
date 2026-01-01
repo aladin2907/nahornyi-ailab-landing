@@ -94,7 +94,8 @@ export default function Header({ copy }: HeaderProps) {
         <div className="hidden md:flex items-center gap-8">
           {[
             { name: copy.nav.services, href: '#services' },
-            { name: copy.nav.contact, href: '#contact' }
+            { name: copy.nav.industries, href: '#industries' },
+            { name: copy.nav.contact, href: '#contact-form' }
           ].map((item) => (
             <a
               key={item.name}
@@ -147,7 +148,8 @@ export default function Header({ copy }: HeaderProps) {
             >
               {[
                 { name: copy.nav.services, href: '#services' },
-                { name: copy.nav.contact, href: '#contact' }
+                { name: copy.nav.industries, href: '#industries' },
+                { name: copy.nav.contact, href: '#contact-form' }
               ].map((item) => (
                 <a
                   key={item.name}
